@@ -1,6 +1,9 @@
 // 24K Media — single source of truth for all site content.
 // Served by the Express API and mirrored to the client as an offline fallback.
 
+// Unsplash image helper — builds an optimised CDN URL from a photo id.
+const U = (id, w = 900) => `https://images.unsplash.com/${id}?auto=format&fit=crop&w=${w}&q=80`
+
 export const company = {
   name: '24K Media',
   tagline: 'We Build Internet Brands.',
@@ -327,34 +330,35 @@ export const caseStudies = [
 ]
 
 export const portfolio = [
-  { id: 'p1', title: 'Finance Channel Relaunch', client: 'NovaCast', category: 'Creator', type: 'Video', metric: '9.4M monthly views' },
-  { id: 'p2', title: 'Founder Thumbnail System', client: 'LedgerIQ', category: 'SaaS', type: 'Thumbnail', metric: '+47% CTR' },
-  { id: 'p3', title: 'D2C Brand Site', client: 'Saffron D2C', category: 'D2C', type: 'Website', metric: '2.5% conversion' },
-  { id: 'p4', title: 'Podcast Launch Campaign', client: 'Foundr Labs', category: 'Startup', type: 'Campaign', metric: 'Top 50 chart' },
-  { id: 'p5', title: 'Shorts Engine', client: 'ApexFit', category: 'Personal Brand', type: 'Video', metric: '60M plays' },
-  { id: 'p6', title: 'LinkedIn Authority Build', client: 'TenetAI', category: 'SaaS', type: 'Campaign', metric: '+850% inbound' },
-  { id: 'p7', title: 'Course Brand Identity', client: 'Quill & Co', category: 'Education', type: 'Website', metric: '₹3.1Cr / yr' },
-  { id: 'p8', title: 'Creator Membership Site', client: 'CreatorOS', category: 'Creator', type: 'Website', metric: '12K members' },
-  { id: 'p9', title: 'Performance Creative Set', client: 'BharatBuild', category: 'D2C', type: 'Campaign', metric: '4.6x ROAS' },
-  { id: 'p10', title: 'Founder Documentary', client: 'NorthStar VC', category: 'Startup', type: 'Video', metric: '1.2M views' },
-  { id: 'p11', title: 'Education Thumbnail Suite', client: 'Studio Mango', category: 'Education', type: 'Thumbnail', metric: '+52% CTR' },
-  { id: 'p12', title: 'Personal Brand Refresh', client: 'Hindwave', category: 'Personal Brand', type: 'Website', metric: '3.2x inbound' },
+  { id: 'p1', title: 'Finance Channel Relaunch', client: 'NovaCast', category: 'Creator', type: 'Video', metric: '9.4M monthly views', image: U('photo-1605810230434-7631ac76ec81') },
+  { id: 'p2', title: 'Founder Thumbnail System', client: 'LedgerIQ', category: 'SaaS', type: 'Thumbnail', metric: '+47% CTR', image: U('photo-1626785774573-4b799315345d') },
+  { id: 'p3', title: 'D2C Brand Site', client: 'Saffron D2C', category: 'D2C', type: 'Website', metric: '2.5% conversion', image: U('photo-1551434678-e076c223a692') },
+  { id: 'p4', title: 'Podcast Launch Campaign', client: 'Foundr Labs', category: 'Startup', type: 'Campaign', metric: 'Top 50 chart', image: U('photo-1593720213428-28a5b9e94613') },
+  { id: 'p5', title: 'Shorts Engine', client: 'ApexFit', category: 'Personal Brand', type: 'Video', metric: '60M plays', image: U('photo-1611162617474-5b21e879e113') },
+  { id: 'p6', title: 'LinkedIn Authority Build', client: 'TenetAI', category: 'SaaS', type: 'Campaign', metric: '+850% inbound', image: U('photo-1600880292089-90a7e086ee0c') },
+  { id: 'p7', title: 'Course Brand Identity', client: 'Quill & Co', category: 'Education', type: 'Website', metric: '₹3.1Cr / yr', image: U('photo-1542744094-3a31f272c490') },
+  { id: 'p8', title: 'Creator Membership Site', client: 'CreatorOS', category: 'Creator', type: 'Website', metric: '12K members', image: U('photo-1556761175-b413da4baf72') },
+  { id: 'p9', title: 'Performance Creative Set', client: 'BharatBuild', category: 'D2C', type: 'Campaign', metric: '4.6x ROAS', image: U('photo-1492619375914-88005aa9e8fb') },
+  { id: 'p10', title: 'Founder Documentary', client: 'NorthStar VC', category: 'Startup', type: 'Video', metric: '1.2M views', image: U('photo-1598550874175-4d0ef436c909') },
+  { id: 'p11', title: 'Education Thumbnail Suite', client: 'Studio Mango', category: 'Education', type: 'Thumbnail', metric: '+52% CTR', image: U('photo-1574717024653-61fd2cf4d44d') },
+  { id: 'p12', title: 'Personal Brand Refresh', client: 'Hindwave', category: 'Personal Brand', type: 'Website', metric: '3.2x inbound', image: U('photo-1579632652768-6cb9dcf85912') },
 ]
 
 export const portfolioFilters = ['All', 'Creator', 'Startup', 'Education', 'D2C', 'SaaS', 'Personal Brand']
 
 export const testimonials = [
-  { id: 't1', quote: 'They treated my channel like a product. The growth wasn’t luck — it was a system we could repeat every single week.', name: 'Aarav Mehta', role: 'Finance Educator', company: 'NovaCast', rating: 5 },
-  { id: 't2', quote: 'Our cheapest, highest-intent pipeline now comes from content. 24K turned our founder into a real distribution channel.', name: 'Priya Nair', role: 'Co-Founder', company: 'LedgerIQ', rating: 5 },
-  { id: 't3', quote: 'We finally own our audience instead of renting it from the ad auction. CAC down, community up — every quarter.', name: 'Rohan Shah', role: 'Head of Growth', company: 'Saffron D2C', rating: 5 },
-  { id: 't4', quote: 'The craft is on another level. Every thumbnail, every edit, every transition feels intentional. It reads premium.', name: 'Sneha Kulkarni', role: 'Creator', company: 'ApexFit', rating: 5 },
-  { id: 't5', quote: 'When people think of my category now, they think of me first. That is the entire game and they delivered it.', name: 'Vikram Rao', role: 'Founder', company: 'Quill & Co', rating: 5 },
-  { id: 't6', quote: 'Working with them feels like having a media company on retainer, not an agency. Fast, sharp, accountable.', name: 'Ananya Gupta', role: 'CEO', company: 'TenetAI', rating: 5 },
+  { id: 't1', quote: 'They treated my channel like a product. The growth wasn’t luck — it was a system we could repeat every single week.', name: 'Aarav Mehta', role: 'Finance Educator', company: 'NovaCast', rating: 5, avatar: U('photo-1500648767791-00dcc994a43e', 160) },
+  { id: 't2', quote: 'Our cheapest, highest-intent pipeline now comes from content. 24K turned our founder into a real distribution channel.', name: 'Priya Nair', role: 'Co-Founder', company: 'LedgerIQ', rating: 5, avatar: U('photo-1494790108377-be9c29b29330', 160) },
+  { id: 't3', quote: 'We finally own our audience instead of renting it from the ad auction. CAC down, community up — every quarter.', name: 'Rohan Shah', role: 'Head of Growth', company: 'Saffron D2C', rating: 5, avatar: U('photo-1507003211169-0a1dd7228f2d', 160) },
+  { id: 't4', quote: 'The craft is on another level. Every thumbnail, every edit, every transition feels intentional. It reads premium.', name: 'Sneha Kulkarni', role: 'Creator', company: 'ApexFit', rating: 5, avatar: U('photo-1438761681033-6461ffad8d80', 160) },
+  { id: 't5', quote: 'When people think of my category now, they think of me first. That is the entire game and they delivered it.', name: 'Vikram Rao', role: 'Founder', company: 'Quill & Co', rating: 5, avatar: U('photo-1472099645785-5658abf4ff4e', 160) },
+  { id: 't6', quote: 'Working with them feels like having a media company on retainer, not an agency. Fast, sharp, accountable.', name: 'Ananya Gupta', role: 'CEO', company: 'TenetAI', rating: 5, avatar: U('photo-1544005313-94ddf0286df2', 160) },
 ]
 
 export const founder = {
   name: 'The Founder',
   role: 'Founder & Operator, 24K Media',
+  image: U('photo-1556761175-b413da4baf72', 800),
   bio:
     'An operator who has shipped products, grown audiences from zero and obsessed over the craft of attention. 24K Media is the studio that turns that playbook into infrastructure for the next generation of Indian creators and founders.',
   mission: 'Help 10,000 Indian creators build sustainable businesses on the back of their own audience.',

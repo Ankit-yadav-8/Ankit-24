@@ -14,6 +14,7 @@ export default function FounderSection() {
         <div className="founder__wrap">
           <Reveal>
             <div className="founder__portrait">
+              {founder.image && <img src={founder.image} alt="24K Media studio" loading="lazy" />}
               <span className="mono">24K</span>
             </div>
             <div className="founder__mission">

@@ -7,10 +7,6 @@ const Star = () => (
   <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l2.9 6.3 6.9.8-5.1 4.7 1.4 6.8L12 17.8 5.9 20.6l1.4-6.8L2.2 9.1l6.9-.8z" /></svg>
 )
 
-function initials(name) {
-  return name.split(' ').map((n) => n[0]).slice(0, 2).join('')
-}
-
 export default function Testimonials() {
   const { testimonials } = useSite()
   const trackRef = useRef(null)
@@ -41,7 +37,7 @@ export default function Testimonials() {
                 </div>
                 <p className="testi-card__quote">“{t.quote}”</p>
                 <div className="testi-card__who">
-                  <div className="testi-card__avatar">{initials(t.name)}</div>
+                  <div className="testi-card__avatar"><img src={t.avatar} alt={t.name} loading="lazy" /></div>
                   <div>
                     <div className="testi-card__name">{t.name}</div>
                     <div className="testi-card__role">{t.role} · {t.company}</div>

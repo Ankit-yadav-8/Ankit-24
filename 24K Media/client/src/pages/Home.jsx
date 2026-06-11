@@ -1,5 +1,6 @@
 import Hero from '../components/sections/Hero.jsx'
 import SocialProof from '../components/sections/SocialProof.jsx'
+import ShowReel from '../components/sections/ShowReel.jsx'
 import ServicesSection from '../components/sections/ServicesSection.jsx'
 import WhyUs from '../components/sections/WhyUs.jsx'
 import Results from '../components/sections/Results.jsx'
@@ -17,6 +18,7 @@ export default function Home() {
     <>
       <Hero />
       <SocialProof />
+      <ShowReel />
       <ServicesSection limit={6} />
       <WhyUs />
       <Results />

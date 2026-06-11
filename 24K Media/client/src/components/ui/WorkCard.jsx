@@ -6,6 +6,7 @@ const PlayIcon = () => (
 export default function WorkCard({ item }) {
   return (
     <article className="card work-card" data-cursor="hover">
+      {item.image && <img className="work-card__img" src={item.image} alt={item.title} loading="lazy" />}
       <div className="work-card__bg" />
       <span className="work-card__type">{item.type}</span>
       <span className="work-card__play"><PlayIcon /></span>
