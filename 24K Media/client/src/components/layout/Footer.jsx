@@ -17,7 +17,7 @@ export default function Footer() {
         <div className="footer__top">
           <div className="footer__brand">
             <div className="nav__logo">
-              <img src="/logo.png" alt="24K Media" />
+              <img src={`${import.meta.env.BASE_URL}logo.png`} alt="24K Media" />
               <span>24K<b style={{ color: 'var(--gold-2)' }}> Media</b></span>
             </div>
             <p className="footer__tagline">{company.positioning}</p>

@@ -31,7 +31,7 @@ export default function Navbar() {
     <header className={`nav ${scrolled ? 'nav--scrolled' : ''}`}>
       <div className="container nav__inner">
         <Link to="/" className="nav__logo" onClick={() => setOpen(false)}>
-          <img src="/logo.png" alt="24K Media" />
+          <img src={`${import.meta.env.BASE_URL}logo.png`} alt="24K Media" />
           <span>24K<b> Media</b></span>
         </Link>
 
