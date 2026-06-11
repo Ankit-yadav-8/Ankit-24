@@ -3,7 +3,7 @@ import react from '@vitejs/plugin-react'
 
 export default defineConfig({
   plugins: [react()],
-  base: '/Ankit-Edu2/',
+  base: '/Ankit-24/',
   server: {
     port: 5173,
     proxy: {
