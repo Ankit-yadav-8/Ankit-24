@@ -11,6 +11,9 @@ import CaseStudies from './pages/CaseStudies.jsx'
 import CaseStudyDetail from './pages/CaseStudyDetail.jsx'
 import Portfolio from './pages/Portfolio.jsx'
 import About from './pages/About.jsx'
+import Team from './pages/Team.jsx'
+import Collaborations from './pages/Collaborations.jsx'
+import Process from './pages/Process.jsx'
 import Resources from './pages/Resources.jsx'
 import ResourceDetail from './pages/ResourceDetail.jsx'
 import Pricing from './pages/Pricing.jsx'
@@ -34,6 +37,9 @@ export default function App() {
             <Route path="case-studies/:slug" element={<CaseStudyDetail />} />
             <Route path="portfolio" element={<Portfolio />} />
             <Route path="about" element={<About />} />
+            <Route path="team" element={<Team />} />
+            <Route path="collaborations" element={<Collaborations />} />
+            <Route path="process" element={<Process />} />
             <Route path="resources" element={<Resources />} />
             <Route path="resources/:slug" element={<ResourceDetail />} />
             <Route path="pricing" element={<Pricing />} />

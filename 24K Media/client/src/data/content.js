@@ -541,3 +541,41 @@ export const nicheRPM = [
   { id: 'lifestyle', label: 'Lifestyle & Fitness', rpm: 110 },
   { id: 'gaming', label: 'Gaming', rpm: 90 },
 ]
+
+// —— The team behind the studio (/team) ——
+export const team = [
+  { id: 'tm1', name: 'Arjun Khanna', role: 'Founder & Growth Lead', accent: 'purple', bio: 'Operator-turned-builder. Sets the thesis and owns the growth engine end to end.', socials: { x: '#', linkedin: '#' }, image: U('photo-1500648767791-00dcc994a43e', 480) },
+  { id: 'tm2', name: 'Riya Sharma', role: 'Head of Content Strategy', accent: 'blue', bio: 'Turns positioning into pillars, calendars and topic systems that compound weekly.', socials: { x: '#', linkedin: '#' }, image: U('photo-1494790108377-be9c29b29330', 480) },
+  { id: 'tm3', name: 'Kabir Mehta', role: 'Lead Video Editor', accent: 'orange', bio: 'Cuts every frame to the retention graph — ruthless openings, clean sound design.', socials: { x: '#', linkedin: '#' }, image: U('photo-1507003211169-0a1dd7228f2d', 480) },
+  { id: 'tm4', name: 'Naina Verma', role: 'Design & Thumbnails', accent: 'pink', bio: 'The 5% of pixels that win 50% of the clicks. Builds a brand’s whole visual language.', socials: { x: '#', linkedin: '#' }, image: U('photo-1438761681033-6461ffad8d80', 480) },
+  { id: 'tm5', name: 'Dev Patel', role: 'Distribution & Paid', accent: 'green', bio: 'Pairs winning organic creative with tight funnels and tests relentlessly to revenue.', socials: { x: '#', linkedin: '#' }, image: U('photo-1544005313-94ddf0286df2', 480) },
+  { id: 'tm6', name: 'Ishaan Roy', role: 'Web & AI Systems', accent: 'yellow', bio: 'Ships fast, beautiful sites and brand-trained AI pipelines that multiply output.', socials: { x: '#', linkedin: '#' }, image: U('photo-1472099645785-5658abf4ff4e', 480) },
+]
+
+// —— Brand-impact headline metrics (/collaborations) ——
+export const brandImpact = [
+  { id: 'retention', value: '93%', accent: 'orange', title: 'Brand Retention', desc: 'We build strong partnerships and support our creators, leading to a 93% retention rate.' },
+  { id: 'success', value: '94%', accent: 'green', title: 'Success Rate', desc: 'Our data-driven campaigns hit a 94% success rate, exceeding client goals consistently.' },
+  { id: 'reach', value: '480M+', accent: 'blue', title: 'Monthly Reach', desc: 'Combined monthly reach across the creators and brands we operate with worldwide.' },
+  { id: 'roi', value: '4.6x', accent: 'purple', title: 'Avg. Campaign ROI', desc: 'Blended return our paid + organic collaborations return against spend.' },
+]
+
+// —— Creator × brand collaborations (/collaborations) ——
+export const collaborations = [
+  { id: 'cl1', creator: 'NovaCast', brand: 'Razorpay', accent: 'purple', category: 'Finance', result: '9.4M views · +47% CTR', creatorImg: U('photo-1500648767791-00dcc994a43e', 240) },
+  { id: 'cl2', creator: 'Hindwave', brand: 'Odoo', accent: 'blue', category: 'SaaS', result: '38 demos / mo · +850%', creatorImg: U('photo-1494790108377-be9c29b29330', 240) },
+  { id: 'cl3', creator: 'ApexFit', brand: 'HostArmor', accent: 'orange', category: 'Fitness', result: '60M plays · 12K signups', creatorImg: U('photo-1507003211169-0a1dd7228f2d', 240) },
+  { id: 'cl4', creator: 'Quill & Co', brand: 'Scaler', accent: 'green', category: 'Education', result: '₹3.1Cr / yr · +675%', creatorImg: U('photo-1438761681033-6461ffad8d80', 240) },
+  { id: 'cl5', creator: 'LedgerIQ', brand: 'PhysicsWallah', accent: 'pink', category: 'EdTech', result: '46K followers · +3,733%', creatorImg: U('photo-1544005313-94ddf0286df2', 240) },
+  { id: 'cl6', creator: 'Studio Mango', brand: 'Sanfe', accent: 'yellow', category: 'D2C', result: '4.6x ROAS · -38% CAC', creatorImg: U('photo-1472099645785-5658abf4ff4e', 240) },
+]
+
+// —— Detailed, narrative process steps (/process) ——
+export const processDetail = [
+  { step: '01', accent: 'purple', title: 'Discovery', duration: 'Week 1', summary: 'We map your goals, audience, niche and the unfair advantage only you have.', points: ['Goal & audience workshop', 'Niche & competitor teardown', 'Unfair-advantage audit'] },
+  { step: '02', accent: 'blue', title: 'Strategy', duration: 'Week 1–2', summary: 'A documented content thesis: formats, hooks, cadence and the metrics that matter.', points: ['Content pillars & formats', 'Hook & packaging frameworks', '90-day measurement plan'] },
+  { step: '03', accent: 'orange', title: 'Production', duration: 'Ongoing', summary: 'Retention-first editing, click-worthy packaging and on-brand design — at scale.', points: ['48-hour edit cycles', 'Thumbnail A/B testing', 'Motion & sound design'] },
+  { step: '04', accent: 'green', title: 'Distribution', duration: 'Ongoing', summary: 'Multi-platform publishing engineered for the algorithm and the human at once.', points: ['Native per-platform cuts', 'Publishing calendar', 'Community management'] },
+  { step: '05', accent: 'pink', title: 'Growth', duration: 'Month 2+', summary: 'We compound reach into subscribers, leads and revenue with weekly iteration.', points: ['Weekly iteration sprints', 'Funnel & offer tuning', 'Revenue attribution'] },
+  { step: '06', accent: 'yellow', title: 'Optimization', duration: 'Quarterly', summary: 'Every asset feeds the next. We double down on winners and cut what stalls.', points: ['Win/loss reviews', 'Format expansion', 'System documentation'] },
+]

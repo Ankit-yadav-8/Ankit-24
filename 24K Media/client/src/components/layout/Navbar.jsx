@@ -16,13 +16,15 @@ const RESOURCE_ITEMS = [
   { label: 'Playbooks & Guides', to: '/resources', desc: 'Field-tested frameworks for growth.' },
   { label: 'Case Studies', to: '/case-studies', desc: 'Real results, real numbers.' },
   { label: 'Portfolio', to: '/portfolio', desc: 'Selected work across every format.' },
+  { label: 'Brand Collaborations', to: '/collaborations', desc: 'Creator × brand campaigns that impact.' },
   { label: 'Free Tools', to: '/tools', desc: 'Calculators & templates for creators.' },
 ]
 
 const COMPANY_ITEMS = [
   { label: 'About 24K', to: '/about', desc: 'Who we are and how we operate.' },
-  { label: 'Our Story', to: '/about', desc: 'Founded May 2026 — the journey so far.' },
-  { label: 'Our Process', to: '/about', desc: 'Discovery to growth, step by step.' },
+  { label: 'The Team', to: '/team', desc: 'The people behind the studio.' },
+  { label: 'Our Process', to: '/process', desc: 'Discovery to growth, step by step.' },
+  { label: 'Collaborations', to: '/collaborations', desc: 'Creator × brand partnerships.' },
   { label: 'Contact', to: '/contact', desc: 'Book a growth call with the team.' },
 ]
 
@@ -165,8 +167,15 @@ export default function Navbar() {
         </nav>
 
         <div className="nav__right">
-          <a className="nav__cta-ghost" href="tel:+919000024000">Free audit</a>
-          <Button to="/contact" size="sm" arrow>Book Growth Call</Button>
+          <Link to="/contact" className="nav__cta">
+            Let’s Collaborate
+            <span className="nav__cta-ic">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round">
+                <line x1="7" y1="17" x2="17" y2="7" />
+                <polyline points="8 7 17 7 17 16" />
+              </svg>
+            </span>
+          </Link>
           <button
             className={`nav__menu-btn ${open ? 'open' : ''}`}
             onClick={() => setOpen((v) => !v)}

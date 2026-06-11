@@ -5,36 +5,44 @@
 
 :root {
   /* —— Canvas: warm white smoke —— */
-  --smoke: #f7f7f4;
-  --smoke-2: #f0efea;
-  --smoke-3: #e7e6df;
+  --smoke: #ffffff;
+  --smoke-2: #f5f6f9;
+  --smoke-3: #eceef3;
   --ivory: #ffffff;
   --white: #ffffff;
 
   /* —— Ink —— */
-  --ink: #14130f;
-  --ink-2: #2b2924;
-  --ink-soft: #5f5c53;
-  --ink-faint: #8a877d;
+  --ink: #1b1d1e;
+  --ink-2: #2c2f30;
+  --ink-soft: rgba(27, 29, 30, 0.6);
+  --ink-faint: rgba(27, 29, 30, 0.42);
 
-  /* —— 24K Gold —— */
-  --gold: #b1842b;          /* deep gold — text / borders on light */
-  --gold-bright: #d4af37;   /* brand gold — fills / glow */
-  --gold-2: #e8c873;        /* highlight */
-  --gold-soft: rgba(212, 175, 55, 0.14);
-  --gold-glow: rgba(212, 175, 55, 0.35);
+  /* —— Primary: electric violet (re-uses the --gold* names across the app) —— */
+  --gold: #4928fd;
+  --gold-bright: #4928fd;
+  --gold-2: #7c5cff;
+  --gold-soft: rgba(73, 40, 253, 0.08);
+  --gold-glow: rgba(73, 40, 253, 0.2);
+
+  /* —— Pastel accents —— */
+  --c-blue: #70b5ff;   --c-blue-t: rgba(112, 181, 255, 0.2);
+  --c-purple: #ba81ee; --c-purple-t: rgba(186, 129, 238, 0.2);
+  --c-orange: #ffaf68; --c-orange-t: rgba(255, 175, 104, 0.2);
+  --c-green: #79d45e;  --c-green-t: rgba(121, 212, 94, 0.2);
+  --c-pink: #f4889a;   --c-pink-t: rgba(244, 136, 154, 0.2);
+  --c-yellow: #f6e683; --c-yellow-t: rgba(246, 230, 131, 0.28);
 
   /* —— Lines & surfaces —— */
-  --line: rgba(20, 19, 15, 0.09);
-  --line-strong: rgba(20, 19, 15, 0.16);
-  --card: rgba(255, 255, 255, 0.72);
+  --line: rgba(27, 29, 30, 0.1);
+  --line-strong: rgba(27, 29, 30, 0.2);
+  --card: rgba(255, 255, 255, 0.8);
   --card-solid: #ffffff;
 
-  /* —— Shadows (soft, light-theme luxury) —— */
-  --shadow-sm: 0 1px 2px rgba(20, 19, 15, 0.04), 0 2px 8px rgba(20, 19, 15, 0.04);
-  --shadow-md: 0 8px 24px rgba(20, 19, 15, 0.07), 0 2px 6px rgba(20, 19, 15, 0.05);
-  --shadow-lg: 0 24px 60px rgba(20, 19, 15, 0.1), 0 8px 20px rgba(20, 19, 15, 0.06);
-  --shadow-gold: 0 18px 50px rgba(212, 175, 55, 0.22);
+  /* —— Shadows (soft, floating) —— */
+  --shadow-sm: 0 2px 10px rgba(27, 29, 30, 0.05);
+  --shadow-md: 0 12px 34px rgba(27, 29, 30, 0.08);
+  --shadow-lg: 0 30px 70px rgba(27, 29, 30, 0.12);
+  --shadow-gold: 0 16px 44px rgba(73, 40, 253, 0.24);
 
   /* —— Type —— */
   --font-display: 'Fraunces', 'Times New Roman', serif;
@@ -65,8 +73,7 @@ html {
 
 body {
   font-family: var(--font-sans);
-  background: radial-gradient(135% 70% at 50% 0%, #ffffff 0%, var(--smoke) 62%);
-  background-repeat: no-repeat;
+  background: #ffffff;
   color: var(--ink);
   font-size: 17px;
   line-height: 1.65;
@@ -203,7 +210,7 @@ h1, h2, h3 { font-family: var(--font-display); font-weight: 500; line-height: 1.
 
 .btn--gold {
   background: linear-gradient(100deg, var(--gold) 0%, var(--gold-bright) 55%, var(--gold-2) 120%);
-  color: #1a1407;
+  color: #ffffff;
   box-shadow: var(--shadow-gold);
 }
 .btn--gold:hover { box-shadow: 0 22px 60px rgba(212, 175, 55, 0.42); }

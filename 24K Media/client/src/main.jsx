@@ -5,6 +5,7 @@ import App from './App.jsx'
 import { SiteProvider } from './context/SiteContext.jsx'
 import './styles/index.css'
 import './styles/components.css'
+import './styles/premium.css'
 
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>

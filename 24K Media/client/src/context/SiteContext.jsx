@@ -24,6 +24,10 @@ const initialData = {
   faqs: fallback.faqs,
   tools: fallback.tools,
   nicheRPM: fallback.nicheRPM,
+  team: fallback.team,
+  brandImpact: fallback.brandImpact,
+  collaborations: fallback.collaborations,
+  processDetail: fallback.processDetail,
 }
 
 export function SiteProvider({ children }) {
