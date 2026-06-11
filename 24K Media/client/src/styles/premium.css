@@ -26,7 +26,20 @@
   --radius-pill: 999px;
   --nav-h: 64px;
   --nav-gap: 16px;
+
+  /* —— Darker, high-contrast ink so EVERYTHING reads clearly on white —— */
+  --ink: #15171a;
+  --ink-2: #23262a;
+  --ink-soft: rgba(21, 23, 26, 0.74);   /* body copy — was 0.6, too faint */
+  --ink-faint: rgba(21, 23, 26, 0.56);  /* labels / meta — was 0.42 */
+  --line: rgba(21, 23, 26, 0.10);
+  --line-strong: rgba(21, 23, 26, 0.2);
 }
+
+/* Body copy: a touch heavier + solid ink for maximum legibility */
+body { color: var(--ink); font-weight: 420; }
+p, li, .text-soft { color: var(--ink-soft); }
+.section-head p, .hero__sub, .pagehead p { color: var(--ink-soft); }
 
 /* Accent palette — soft tint for fills, darker ink for legible text */
 .accent-purple { --accent: #ba81ee; --accent-ink: #7c3fc4; --accent-tint: #f3ebfc; --accent-line: rgba(186, 129, 238, 0.35); }
@@ -709,10 +722,12 @@ body::before {
    on every device.
    ══════════════════════════════════════════════════════════ */
 
-/* Hard guarantee: nothing may create a second (horizontal) scrollbar */
+/* Hard guarantee: nothing may create a second (horizontal) scrollbar.
+   NOTE: do NOT cap .container here — it would override .pagehead__inner's
+   820px / the 1240px container caps and flatten page padding. overflow-x:clip
+   on the root is enough to kill horizontal scroll. */
 html, body { overflow-x: clip; }
 img, svg, video, iframe, canvas { max-width: 100%; height: auto; }
-.container, .section, .footer, .nav { max-width: 100vw; }
 
 /* —— Ultra-wide: keep content centered, lift the pill a touch —— */
 @media (min-width: 1600px) {
@@ -823,10 +838,115 @@ img, svg, video, iframe, canvas { max-width: 100%; height: auto; }
   .hero__headline { font-size: clamp(2rem, 10vw, 2.7rem) !important; }
 }
 
+/* ══════════════════════════════════════════════════════════
+   23 · CREATORTUBE PATTERNS  ·  creator marquee · merge band ·
+        big stats · richer hover & colour effects
+   ══════════════════════════════════════════════════════════ */
+
+/* —— "Loved by Top Content Creators" single-line auto-scroll —— */
+.creatorwall {
+  padding: clamp(26px, 4vw, 46px) 0;
+  border-block: 1px solid var(--line);
+  background: var(--surface);
+  overflow: hidden;
+}
+.creatorwall__label {
+  text-align: center;
+  font-size: 0.8rem;
+  letter-spacing: 0.04em;
+  color: var(--ink-faint);
+  font-weight: 600;
+  margin-bottom: 1.6rem;
+}
+.creatorwall__marquee .marquee__track { gap: 2.6rem; padding-right: 2.6rem; animation-duration: 44s; }
+.creator-chip { display: flex; align-items: center; gap: 0.85rem; flex: 0 0 auto; }
+.creator-chip__avatar {
+  width: 60px; height: 60px; flex: none;
+  border-radius: 50%; overflow: hidden;
+  border: 2px solid #fff;
+  box-shadow: var(--elev-1);
+  position: relative;
+}
+.creator-chip__avatar::after {
+  content: ''; position: absolute; inset: 0; border-radius: 50%;
+  box-shadow: inset 0 0 0 2px var(--accent-line);
+}
+.creator-chip__avatar img { width: 100%; height: 100%; object-fit: cover; }
+.creator-chip__text { display: flex; flex-direction: column; line-height: 1.2; }
+.creator-chip__subs { font-family: var(--font-display); font-size: 1.18rem; font-weight: 600; color: var(--ink); letter-spacing: -0.01em; }
+.creator-chip__name { font-style: normal; font-size: 0.8rem; color: var(--ink-faint); font-weight: 600; }
+
+/* —— "We merge …" pill-highlight band —— */
+.mergeband { text-align: center; }
+.mergeband__head {
+  max-width: 64ch;
+  margin-inline: auto;
+  font-family: var(--font-display);
+  font-weight: 500;
+  font-size: clamp(1.55rem, 3.4vw, 2.6rem);
+  line-height: 1.32;
+  letter-spacing: -0.02em;
+  color: var(--ink);
+}
+.pill-hl {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  padding: 0.06em 0.62em;
+  margin: 0.1em 0.12em;
+  border-radius: 999px;
+  background: var(--accent-tint);
+  border: 1px solid var(--accent-line);
+  color: var(--accent-ink);
+  font-style: italic;
+  font-weight: 500;
+  white-space: nowrap;
+  box-shadow: var(--elev-1);
+  transition: transform 0.4s var(--ease), box-shadow 0.4s var(--ease), background 0.3s ease;
+}
+.pill-hl:hover { transform: translateY(-2px); box-shadow: var(--elev-2); background: #fff; }
+.pill-hl__ico { font-style: normal; font-size: 0.82em; color: var(--accent); }
+
+/* —— Big, black, CreatorTube-style stat numbers —— */
+.stat__value { font-size: clamp(2.6rem, 5.2vw, 4.2rem); font-weight: 600; color: var(--ink); letter-spacing: -0.035em; }
+.stat__value .suffix { font-size: 0.46em; vertical-align: super; color: var(--gold); font-weight: 700; margin-left: 0.04em; }
+.stat__label { color: var(--ink-faint); font-weight: 600; margin-top: 0.9rem; }
+.stat { padding: 2.6rem 1.8rem; }
+.about-stat__value { color: var(--ink); }
+.about-stat__value:not(:empty) { background: none; }
+
+/* —— Richer hover + colour effects across interactive cards —— */
+.btn { transition: transform 0.35s var(--ease), box-shadow 0.35s var(--ease), background 0.3s ease, color 0.3s ease; }
+.btn--gold:hover { transform: translateY(-3px); }
+.service-card, .industry, .impact-card, .value-card, .team-card, .collab-card,
+.price-card, .tool-card, .about-stat, .card { will-change: transform; }
+.nav__link:active, .btn:active { transform: translateY(0); }
+.logowall__item { transition: color 0.3s ease, transform 0.3s var(--ease); }
+.logowall__item:hover { color: var(--gold); transform: translateY(-2px); }
+.footer__col a:hover, .footer__contact a:hover { color: var(--gold); }
+
+/* —— Slightly tighter, cleaner pill navbar (matches reference) —— */
+.nav__links { gap: 0.1rem; padding: 0.22rem; }
+.nav__link { padding: 0.5rem 0.95rem; font-size: 0.9rem; }
+
+/* —— Mobile rules for the new sections —— */
+@media (max-width: 860px) {
+  .creator-chip__avatar { width: 52px; height: 52px; }
+  .creator-chip__subs { font-size: 1.05rem; }
+  .mergeband__head { font-size: clamp(1.4rem, 5.5vw, 2rem); }
+}
+@media (max-width: 640px) {
+  .stat { padding: 1.9rem 1.2rem; }
+  .stat__value { font-size: clamp(2.3rem, 12vw, 3rem); }
+  /* hero collage stays hidden on phones — keep the hero clean & single-column */
+  .hero__media, .hero__chip { display: none !important; }
+}
+
 /* ——————————————————————————————————————————————————————————
-   22 · MISC  ·  reduced motion + tiny helpers
+   24 · MISC  ·  reduced motion + tiny helpers
    —————————————————————————————————————————————————————————— */
 @media (prefers-reduced-motion: reduce) {
   body::before { display: none; }
+  .marquee__track { animation: none; }
 }
 .text-balance { text-wrap: balance; }

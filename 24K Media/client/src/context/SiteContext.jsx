@@ -28,6 +28,8 @@ const initialData = {
   brandImpact: fallback.brandImpact,
   collaborations: fallback.collaborations,
   processDetail: fallback.processDetail,
+  creators: fallback.creators,
+  mergePillars: fallback.mergePillars,
 }
 
 export function SiteProvider({ children }) {

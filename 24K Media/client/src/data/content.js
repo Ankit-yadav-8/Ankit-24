@@ -9,9 +9,9 @@ export const company = {
   tagline: 'We Build Internet Brands.',
   heroHeadline: "We Build Internet Brands That People Can't Ignore.",
   heroSub:
-    'Content, distribution, growth and media infrastructure for creators, founders and modern businesses.',
+    'Content, distribution and growth — engineered into a brand people remember.',
   positioning:
-    '24K Media is the growth partner behind modern creators, founders and businesses — turning attention into authority, and authority into durable, monetisable internet brands.',
+    '24K Media turns attention into authority — and authority into durable, ownable internet brands for creators and founders.',
   email: 'hello@24kmedia.in',
   whatsapp: '+919000024000',
   calendly: 'https://calendly.com/24kmedia/growth-call',
@@ -568,6 +568,25 @@ export const collaborations = [
   { id: 'cl4', creator: 'Quill & Co', brand: 'Scaler', accent: 'green', category: 'Education', result: '₹3.1Cr / yr · +675%', creatorImg: U('photo-1438761681033-6461ffad8d80', 240) },
   { id: 'cl5', creator: 'LedgerIQ', brand: 'PhysicsWallah', accent: 'pink', category: 'EdTech', result: '46K followers · +3,733%', creatorImg: U('photo-1544005313-94ddf0286df2', 240) },
   { id: 'cl6', creator: 'Studio Mango', brand: 'Sanfe', accent: 'yellow', category: 'D2C', result: '4.6x ROAS · -38% CAC', creatorImg: U('photo-1472099645785-5658abf4ff4e', 240) },
+]
+
+// —— Loved-by creators (single-line auto-scroll marquee) ——
+export const creators = [
+  { id: 'cr1', name: 'Prince Singh', subs: '507K', accent: 'purple', img: U('photo-1500648767791-00dcc994a43e', 200) },
+  { id: 'cr2', name: 'Yash Mishra', subs: '21K', accent: 'blue', img: U('photo-1507003211169-0a1dd7228f2d', 200) },
+  { id: 'cr3', name: 'Pathshala by Nova', subs: '603K', accent: 'orange', img: U('photo-1544005313-94ddf0286df2', 200) },
+  { id: 'cr4', name: 'Polaris School', subs: '7.24K', accent: 'green', img: U('photo-1472099645785-5658abf4ff4e', 200) },
+  { id: 'cr5', name: 'Science & Fun Edu', subs: '1.82M', accent: 'pink', img: U('photo-1438761681033-6461ffad8d80', 200) },
+  { id: 'cr6', name: 'Oswaal Books', subs: '40K', accent: 'yellow', img: U('photo-1494790108377-be9c29b29330', 200) },
+  { id: 'cr7', name: 'Nisha Verma', subs: '698K', accent: 'purple', img: U('photo-1534528741775-53994a69daeb', 200) },
+  { id: 'cr8', name: 'Adarsh Tech', subs: '312K', accent: 'blue', img: U('photo-1506794778202-cad84cf45f1d', 200) },
+]
+
+// —— "We merge …" pastel pill highlights (home band) ——
+export const mergePillars = [
+  { id: 'm1', icon: '✦', label: 'Fresh Ideas', accent: 'purple' },
+  { id: 'm2', icon: '◎', label: 'Proven Systems', accent: 'orange' },
+  { id: 'm3', icon: '◐', label: 'Smart Execution', accent: 'blue' },
 ]
 
 // —— Detailed, narrative process steps (/process) ——

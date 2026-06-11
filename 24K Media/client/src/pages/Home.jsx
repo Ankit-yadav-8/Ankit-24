@@ -1,4 +1,6 @@
 import Hero from '../components/sections/Hero.jsx'
+import CreatorWall from '../components/sections/CreatorWall.jsx'
+import MergeBand from '../components/sections/MergeBand.jsx'
 import SocialProof from '../components/sections/SocialProof.jsx'
 import ShowReel from '../components/sections/ShowReel.jsx'
 import ServicesSection from '../components/sections/ServicesSection.jsx'
@@ -22,6 +24,8 @@ export default function Home() {
   return (
     <>
       <Hero />
+      <CreatorWall />
+      <MergeBand />
       <SocialProof />
       <ShowReel />
       <ServicesSection limit={6} />
