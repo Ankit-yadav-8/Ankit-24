@@ -363,7 +363,48 @@ export const founder = {
     { year: '2018', title: 'Startups', description: 'Early operator roles — learning growth, distribution and the reality of shipping under pressure.' },
     { year: '2020', title: 'Product', description: 'Built and scaled products, owning the full loop from positioning to retention.' },
     { year: '2022', title: 'Growth', description: 'Grew audiences from zero and reverse-engineered what actually compounds online.' },
-    { year: '2024', title: '24K Media', description: 'Turned the playbook into a studio — media infrastructure for creators and founders.' },
+    { year: '2026', title: '24K Media', description: 'Turned the playbook into a studio — media infrastructure for creators and founders.' },
+  ],
+}
+
+// The company origin story — 24K Media was founded in May 2026.
+export const story = {
+  founded: 'May 2026',
+  intro:
+    'Every internet brand begins with one decision: to stop being invisible. 24K Media was born from that decision — in May 2026 — to give India’s creators and founders the kind of media infrastructure usually reserved for billion-dollar companies.',
+  highlight: 'Founded in May 2026 — and building like it’s day one, every single day.',
+  milestones: [
+    {
+      date: 'May 2026',
+      title: 'The Spark',
+      description:
+        'Founded on one conviction — attention, engineered properly, compounds into a durable, ownable asset.',
+    },
+    {
+      date: 'May 2026',
+      title: 'The Studio Takes Shape',
+      description:
+        'A core team of strategists, editors, designers and distribution leads came together around the craft of attention.',
+    },
+    {
+      date: 'June 2026',
+      title: 'First Internet Brands',
+      description:
+        'Onboarded our first creators and founders — proving the retention-first system from the very first upload.',
+      current: true,
+    },
+    {
+      date: 'Q3 2026',
+      title: 'Scaling the System',
+      description:
+        'Turning the playbook into repeatable media infrastructure — formats, pipelines and dashboards built to scale.',
+    },
+    {
+      date: '2027 & Beyond',
+      title: 'The Vision',
+      description:
+        'Help 10,000 Indian creators build sustainable businesses on the back of an audience they truly own.',
+    },
   ],
 }
 

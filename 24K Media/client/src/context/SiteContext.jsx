@@ -16,6 +16,7 @@ const initialData = {
   portfolioFilters: fallback.portfolioFilters,
   testimonials: fallback.testimonials,
   founder: fallback.founder,
+  story: fallback.story,
   resources: fallback.resources,
 }
 

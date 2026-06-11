@@ -3,6 +3,7 @@ import SocialProof from '../components/sections/SocialProof.jsx'
 import ServicesSection from '../components/sections/ServicesSection.jsx'
 import WhyUs from '../components/sections/WhyUs.jsx'
 import Results from '../components/sections/Results.jsx'
+import StorySection from '../components/sections/StorySection.jsx'
 import PortfolioSection from '../components/sections/PortfolioSection.jsx'
 import FounderSection from '../components/sections/FounderSection.jsx'
 import Testimonials from '../components/sections/Testimonials.jsx'
@@ -19,6 +20,7 @@ export default function Home() {
       <ServicesSection limit={6} />
       <WhyUs />
       <Results />
+      <StorySection />
       <PortfolioSection />
       <ProcessSection />
       <FounderSection />
