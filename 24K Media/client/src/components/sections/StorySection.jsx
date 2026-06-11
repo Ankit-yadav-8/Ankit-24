@@ -8,6 +8,7 @@ const ease = [0.22, 1, 0.36, 1]
 // "Our Story" — company origin narrative (left) + animated timeline card (right).
 export default function StorySection() {
   const { story } = useSite()
+  if (!story) return null
 
   return (
     <section className="section story">

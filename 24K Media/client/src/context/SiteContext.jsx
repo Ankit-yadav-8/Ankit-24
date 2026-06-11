@@ -29,7 +29,9 @@ export function SiteProvider({ children }) {
     let alive = true
     fetchSite().then((res) => {
       if (!alive) return
-      setData(res.data)
+      // Merge over the bundled defaults so a partial/older API payload can
+      // never drop a field (which would crash a section that reads it).
+      setData({ ...initialData, ...res.data })
       setSource(res.source)
     })
     return () => {
