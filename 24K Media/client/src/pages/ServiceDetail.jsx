@@ -20,7 +20,7 @@ export default function ServiceDetail() {
   return (
     <>
       <PageHeader
-        eyebrow={`Service ${service.number}`}
+        eyebrow={`${service.category} Service`}
         title={<>{service.title.split(' ').slice(0, -1).join(' ')} <span className="gold-fill italic-serif">{service.title.split(' ').slice(-1)}</span></>}
         text={service.summary}
         crumbs={[{ label: 'Services', to: '/services' }, { label: service.title }]}
