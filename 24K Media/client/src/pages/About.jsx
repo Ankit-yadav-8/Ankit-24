@@ -26,7 +26,10 @@ export default function About() {
         <div className="container">
           <div className="founder__wrap">
             <Reveal>
-              <div className="founder__portrait"><span className="mono">24K</span></div>
+              <div className="founder__portrait">
+                {founder.image && <img src={founder.image} alt="24K Media studio" loading="lazy" />}
+                <span className="mono">24K</span>
+              </div>
               <div className="founder__mission">
                 <span>The Mission</span>
                 <p>{founder.mission}</p>

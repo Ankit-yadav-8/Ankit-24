@@ -466,3 +466,78 @@ export const resources = [
     ],
   },
 ]
+
+// —— Who we serve ——
+export const industries = [
+  { id: 'creators', icon: '▶', title: 'Creators & YouTubers', desc: 'Turn a channel into a predictable growth engine and a real business.' },
+  { id: 'founders', icon: '♦', title: 'Founders & Operators', desc: 'Make the founder the most valuable distribution channel the company owns.' },
+  { id: 'd2c', icon: '◐', title: 'D2C & E-commerce', desc: 'Build an owned audience that lowers CAC and compounds every quarter.' },
+  { id: 'saas', icon: '◈', title: 'SaaS & Startups', desc: 'Category authority and inbound pipeline your sales team can actually close.' },
+  { id: 'education', icon: '◎', title: 'Educators & Coaches', desc: 'A personal monopoly that makes you the default name in your niche.' },
+  { id: 'agencies', icon: '⬡', title: 'Agencies & Studios', desc: 'White-label production and systems that scale your delivery without the chaos.' },
+]
+
+// —— Pricing / engagement tiers ——
+export const pricing = [
+  {
+    id: 'starter', name: 'Starter', price: '₹75K', period: '/month',
+    tagline: 'For creators finding their footing and ready to get serious.',
+    featured: false, cta: 'Start with Starter',
+    features: ['1 primary channel managed', '8 short-form + 4 long-form / month', 'Retention-first editing', 'Thumbnail design & A/B tests', 'Monthly analytics review', 'Dedicated strategist'],
+  },
+  {
+    id: 'growth', name: 'Growth', price: '₹1.8L', period: '/month',
+    tagline: 'Our most popular plan — a full, compounding content engine.',
+    featured: true, cta: 'Scale with Growth',
+    features: ['Up to 3 platforms managed', '20 shorts + 8 long-form / month', 'Podcast or founder-branding track', 'Full design & motion graphics', 'Distribution & community management', 'Bi-weekly strategy sprints', 'Priority 48-hour turnaround'],
+  },
+  {
+    id: 'scale', name: 'Scale', price: 'Custom', period: '',
+    tagline: 'For brands going all-in on media as core infrastructure.',
+    featured: false, cta: 'Talk to us',
+    features: ['Everything in Growth', 'Unlimited platforms & formats', 'Dedicated pod (4–6 specialists)', 'Performance marketing & funnels', 'AI content systems & automation', 'Quarterly business reviews', 'Embedded media team'],
+  },
+]
+
+// —— 24K vs the usual ——
+export const comparison = {
+  columns: ['24K Media', 'Freelancers', 'In-house hire'],
+  rows: [
+    { label: 'Documented strategy before shooting', values: [true, false, false] },
+    { label: 'Full team (strategy, edit, design, distro)', values: [true, false, false] },
+    { label: 'Retention-first, data-driven editing', values: [true, false, true] },
+    { label: '48-hour turnaround, held to a calendar', values: [true, false, false] },
+    { label: 'Scales without hiring & management overhead', values: [true, true, false] },
+    { label: 'Tied to revenue, not vanity metrics', values: [true, false, false] },
+  ],
+}
+
+// —— FAQ ——
+export const faqs = [
+  { q: 'How fast do we see results?', a: 'Most clients see measurable lifts in retention and reach inside 60–90 days. Compounding subscriber and revenue growth typically follows in months 3–6 as the system stabilises.' },
+  { q: 'Do you work with creators outside India?', a: 'Yes. We are based in India and work with creators, founders and brands worldwide across time zones, all in English.' },
+  { q: 'Do I keep ownership of everything?', a: 'Always. Every asset, channel, account and piece of content is 100% yours. We build infrastructure you own — never rent.' },
+  { q: 'What platforms do you cover?', a: 'YouTube (long + Shorts), Instagram, LinkedIn, TikTok, podcasts, newsletters and your website. One content engine adapted natively to each.' },
+  { q: 'Is there a minimum commitment?', a: 'We work in 90-day engagements because compounding needs runway. After that it is month-to-month — we earn the renewal with results.' },
+  { q: 'Can you just edit, without the full system?', a: 'Yes — editing and thumbnails are available à la carte. But the biggest gains come from the full strategy-to-distribution loop.' },
+]
+
+// —— Free tools (showcased on /tools) ——
+export const tools = [
+  { id: 'revenue', icon: '◍', title: 'Creator Revenue Estimator', desc: 'Estimate monthly ad + sponsorship income from your views and niche.', tag: 'Live', kind: 'calc' },
+  { id: 'engagement', icon: '◐', title: 'Engagement Rate Calculator', desc: 'Benchmark your true engagement rate against your follower count.', tag: 'Live', kind: 'calc' },
+  { id: 'hooks', icon: '✦', title: 'Hook Formula Library', desc: '30 proven opening hooks that stop the scroll in the first 3 seconds.', tag: 'Free', kind: 'link' },
+  { id: 'thumbnail', icon: '❖', title: 'Thumbnail Scorecard', desc: 'A 10-point checklist to pressure-test any thumbnail before you publish.', tag: 'Free', kind: 'link' },
+  { id: 'calendar', icon: '◈', title: 'Content Calendar Template', desc: 'A plug-and-play 12-month publishing calendar used by our studio.', tag: 'Free', kind: 'link' },
+  { id: 'audit', icon: '▣', title: 'Free Channel Audit', desc: 'Get a personalised, no-pitch teardown of your channel from our team.', tag: 'Book', kind: 'cta' },
+]
+
+// niche RPM presets (₹ per 1,000 views) for the revenue estimator
+export const nicheRPM = [
+  { id: 'finance', label: 'Finance & Business', rpm: 280 },
+  { id: 'tech', label: 'Tech & SaaS', rpm: 210 },
+  { id: 'education', label: 'Education', rpm: 140 },
+  { id: 'entertainment', label: 'Entertainment & Vlogs', rpm: 70 },
+  { id: 'lifestyle', label: 'Lifestyle & Fitness', rpm: 110 },
+  { id: 'gaming', label: 'Gaming', rpm: 90 },
+]

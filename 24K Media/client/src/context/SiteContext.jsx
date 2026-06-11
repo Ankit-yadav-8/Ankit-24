@@ -18,6 +18,12 @@ const initialData = {
   founder: fallback.founder,
   story: fallback.story,
   resources: fallback.resources,
+  industries: fallback.industries,
+  pricing: fallback.pricing,
+  comparison: fallback.comparison,
+  faqs: fallback.faqs,
+  tools: fallback.tools,
+  nicheRPM: fallback.nicheRPM,
 }
 
 export function SiteProvider({ children }) {
