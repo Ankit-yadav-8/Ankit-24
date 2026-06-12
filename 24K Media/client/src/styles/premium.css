@@ -123,8 +123,24 @@ body::before {
   width: 34px; height: 34px; border-radius: 10px;
   box-shadow: 0 4px 12px rgba(73, 40, 253, 0.22);
 }
-.nav__logo span { letter-spacing: -0.02em; }
-.nav__logo span b { color: var(--gold); }
+/* animated multi-colour wordmark — 24K → Media flows through the brand palette */
+.nav__logo span {
+  letter-spacing: -0.02em;
+  font-weight: 800;
+  background: linear-gradient(100deg,
+    #4928fd 0%, #7c5cff 22%, #ba81ee 42%, #70b5ff 62%, #4928fd 82%, #7c5cff 100%);
+  background-size: 240% auto;
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  color: transparent;
+  animation: navLogoFlow 6s linear infinite;
+}
+.nav__logo span b { -webkit-text-fill-color: transparent; color: transparent; font-weight: 800; }
+.nav__logo:hover span { animation-duration: 2.2s; }       /* spin the colours faster on hover */
+.nav__logo:hover img { transform: rotate(-4deg) scale(1.05); }
+.nav__logo img { transition: transform 0.4s var(--ease), box-shadow 0.4s var(--ease); }
+@keyframes navLogoFlow { to { background-position: 240% center; } }
 
 /* link group — sits as a soft segmented control inside the pill */
 .nav__links {
@@ -199,6 +215,113 @@ body::before {
 }
 .mega__svc:hover, .mega__item:hover { background: rgba(73, 40, 253, 0.06); }
 .mega__feature { border-radius: 18px; }
+
+/* —— Mega-menu legibility: clearly readable at rest, full-black on hover —— */
+.mega__svc-txt b, .mega__item b { color: var(--ink); }
+.mega__svc-txt em, .mega__item em { color: var(--ink-soft); }   /* was --ink-faint, too light */
+.mega__svc:hover .mega__svc-txt b,
+.mega__item:hover b { color: #000; }
+.mega__svc:hover .mega__svc-txt em,
+.mega__item:hover em { color: var(--ink-2); }
+.mega__svc:hover .mega__ico { background: var(--gold); color: #fff; }
+
+/* nav links: solid dark text on hover so labels never wash out */
+.nav__link:hover { color: var(--ink); background: rgba(255, 255, 255, 0.85); }
+
+/* mobile menu sub-links: darken to ink on hover instead of low-contrast tint */
+.nav__msub a:hover { color: var(--ink); border-color: var(--gold); }
+
+/* brighter copy on the dark feature card + viewall link */
+.mega__feature p { color: rgba(255, 255, 255, 0.86); }
+.mega__viewall { color: #cdbcff; }
+
+/* ——————————————————————————————————————————————————————————
+   3b · RICHER LIST DROPDOWNS  ·  icon cards + featured aside
+   (Solutions · Resources · Company — clean, education-site feel)
+   —————————————————————————————————————————————————————————— */
+.mega--rich {
+  display: grid;
+  grid-template-columns: 1fr 0.42fr;
+  gap: 1.8rem;
+  align-items: stretch;
+}
+.mega--rich-solo { grid-template-columns: 1fr; }      /* no feature panel */
+.mega__grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0.4rem;
+  align-content: start;
+}
+.mega__card {
+  display: flex;
+  align-items: center;
+  gap: 0.9rem;
+  padding: 0.8rem 0.9rem;
+  border-radius: 14px;
+  border: 1px solid transparent;
+  transition: background 0.2s ease, border-color 0.2s ease,
+              box-shadow 0.25s var(--ease), transform 0.25s var(--ease);
+}
+.mega__card .mega__ico {
+  width: 42px; height: 42px; flex: none;
+  display: grid; place-items: center;
+  border-radius: 12px;
+  background: var(--surface-2);
+  color: var(--gold);
+  font-size: 1.15rem;
+  transition: background 0.22s ease, color 0.22s ease, transform 0.3s var(--ease);
+}
+.mega__card-txt { display: flex; flex-direction: column; line-height: 1.32; min-width: 0; }
+.mega__card-txt b { font-size: 0.96rem; font-weight: 650; color: var(--ink); letter-spacing: -0.01em; }
+.mega__card-txt em { font-style: normal; font-size: 0.8rem; color: var(--ink-soft); }
+.mega__card-arrow {
+  margin-left: auto; flex: none;
+  color: var(--gold); font-weight: 700;
+  opacity: 0; transform: translateX(-6px);
+  transition: opacity 0.22s var(--ease), transform 0.22s var(--ease);
+}
+.mega__card:hover {
+  background: #fff;
+  border-color: var(--line);
+  box-shadow: var(--elev-1);
+  transform: translateY(-1px);
+}
+.mega__card:hover .mega__ico {
+  background: linear-gradient(135deg, var(--gold), var(--gold-2));
+  color: #fff;
+  transform: scale(1.06) rotate(-4deg);
+}
+.mega__card:hover .mega__card-txt b { color: #000; }      /* black on hover — fully legible */
+.mega__card:hover .mega__card-arrow { opacity: 1; transform: translateX(0); }
+
+/* the featured aside, refreshed to match the cards */
+.mega--rich .mega__feature {
+  background: linear-gradient(155deg, #2a2540, var(--ink));
+  justify-content: center;
+}
+.mega--rich .mega__feature .tag--gold {
+  align-self: flex-start;
+  background: rgba(255, 255, 255, 0.12);
+  border-color: transparent;
+  color: #fff;
+}
+
+/* mobile sub-link icons */
+.nav__mico {
+  display: inline-grid; place-items: center;
+  width: 26px; height: 26px; margin-right: 0.7rem;
+  border-radius: 8px; background: var(--surface-2);
+  color: var(--gold); font-size: 0.85rem;
+}
+.nav__msub a { display: flex; align-items: center; }
+
+@media (max-width: 980px) {
+  .mega--rich { grid-template-columns: 1fr; }
+  .mega--rich .mega__feature { display: none; }   /* keep the dropdown compact */
+}
+@media (max-width: 600px) {
+  .mega__grid { grid-template-columns: 1fr; }
+}
 
 /* mobile sheet — also a floating rounded panel */
 .nav__mobile {

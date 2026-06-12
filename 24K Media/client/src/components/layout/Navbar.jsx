@@ -13,27 +13,34 @@ const Chevron = () => (
 )
 
 const RESOURCE_ITEMS = [
-  { label: 'Playbooks & Guides', to: '/resources', desc: 'Field-tested frameworks for growth.' },
-  { label: 'Case Studies', to: '/case-studies', desc: 'Real results, real numbers.' },
-  { label: 'Portfolio', to: '/portfolio', desc: 'Selected work across every format.' },
-  { label: 'Brand Collaborations', to: '/collaborations', desc: 'Creator × brand campaigns that impact.' },
-  { label: 'Free Tools', to: '/tools', desc: 'Calculators & templates for creators.' },
+  { label: 'Playbooks & Guides', to: '/resources', desc: 'Field-tested frameworks for growth.', icon: '◈' },
+  { label: 'Case Studies', to: '/case-studies', desc: 'Real results, real numbers.', icon: '◍' },
+  { label: 'Portfolio', to: '/portfolio', desc: 'Selected work across every format.', icon: '❖' },
+  { label: 'Brand Collaborations', to: '/collaborations', desc: 'Creator × brand campaigns that impact.', icon: '⬡' },
+  { label: 'Free Tools', to: '/tools', desc: 'Calculators & templates for creators.', icon: '◇' },
 ]
 
 const COMPANY_ITEMS = [
-  { label: 'About 24K', to: '/about', desc: 'Who we are and how we operate.' },
-  { label: 'The Team', to: '/team', desc: 'The people behind the studio.' },
-  { label: 'Our Process', to: '/process', desc: 'Discovery to growth, step by step.' },
-  { label: 'Collaborations', to: '/collaborations', desc: 'Creator × brand partnerships.' },
-  { label: 'Contact', to: '/contact', desc: 'Book a growth call with the team.' },
+  { label: 'About 24K', to: '/about', desc: 'Who we are and how we operate.', icon: '✦' },
+  { label: 'The Team', to: '/team', desc: 'The people behind the studio.', icon: '◓' },
+  { label: 'Our Process', to: '/process', desc: 'Discovery to growth, step by step.', icon: '◎' },
+  { label: 'Collaborations', to: '/collaborations', desc: 'Creator × brand partnerships.', icon: '⬡' },
+  { label: 'Contact', to: '/contact', desc: 'Book a growth call with the team.', icon: '◆' },
 ]
 
+// Featured promo shown on the right of each list dropdown (premium balance).
+const PANEL_FEATURE = {
+  solutions: { tag: 'Not sure?', title: 'Find your growth play', body: 'Tell us your niche and goals — we’ll map the fastest path to traction.', cta: 'Book a strategy call', to: '/contact' },
+  resources: { tag: 'Free', title: 'Get a free channel audit', body: 'A no-pitch teardown of your channel with 3 things you can fix this week.', cta: 'Explore free tools', to: '/tools' },
+  company: { tag: 'Say hi', title: 'Let’s build something', body: 'Meet the team and see whether 24K is the right partner for your next chapter.', cta: 'Start a conversation', to: '/contact' },
+}
+
+// One merged, tidy bar: two list menus + one mega + a direct Pricing link.
 const MENU = [
   { key: 'services', label: 'Services', mega: true },
   { key: 'solutions', label: 'Solutions' },
-  { key: 'pricing', label: 'Pricing', to: '/pricing' },
-  { key: 'tools', label: 'Tools', to: '/tools' },
   { key: 'resources', label: 'Resources' },
+  { key: 'pricing', label: 'Pricing', to: '/pricing' },
   { key: 'company', label: 'Company' },
 ]
 
@@ -72,7 +79,7 @@ export default function Navbar() {
   }, [services])
 
   const solutions = useMemo(
-    () => (industries || []).map((i) => ({ label: i.title, to: '/contact', desc: i.desc })),
+    () => (industries || []).map((i) => ({ label: i.title, to: '/contact', desc: i.desc, icon: i.icon })),
     [industries]
   )
 
@@ -118,14 +125,29 @@ export default function Navbar() {
       )
     }
     const items = childrenFor(key)
+    const feature = PANEL_FEATURE[key]
     return (
-      <div className="mega mega--list">
-        {items.map((it) => (
-          <Link className="mega__item" to={it.to} key={it.label}>
-            <b>{it.label}</b>
-            {it.desc && <em>{it.desc}</em>}
-          </Link>
-        ))}
+      <div className={`mega mega--rich ${feature ? '' : 'mega--rich-solo'}`}>
+        <div className="mega__grid">
+          {items.map((it) => (
+            <Link className="mega__card" to={it.to} key={it.label + it.to}>
+              <span className="mega__ico">{it.icon || '◇'}</span>
+              <span className="mega__card-txt">
+                <b>{it.label}</b>
+                {it.desc && <em>{it.desc}</em>}
+              </span>
+              <span className="mega__card-arrow" aria-hidden>→</span>
+            </Link>
+          ))}
+        </div>
+        {feature && (
+          <aside className="mega__feature">
+            <span className="tag tag--gold">{feature.tag}</span>
+            <h4>{feature.title}</h4>
+            <p>{feature.body}</p>
+            <Button to={feature.to} size="sm" arrow magnetic={false}>{feature.cta}</Button>
+          </aside>
+        )}
       </div>
     )
   }
@@ -238,6 +260,7 @@ export default function Navbar() {
                       >
                         {childrenFor(item.key).map((c) => (
                           <Link key={c.label + c.to} to={c.to} onClick={() => setOpen(false)}>
+                            {c.icon && <span className="nav__mico">{c.icon}</span>}
                             {c.label}
                           </Link>
                         ))}
