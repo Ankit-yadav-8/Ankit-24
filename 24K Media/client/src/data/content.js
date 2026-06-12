@@ -479,6 +479,90 @@ export const industries = [
   { id: 'b2b', icon: '▣', title: 'B2B & Enterprise', desc: 'Executive thought leadership and demand that your sales team can attribute.' },
 ]
 
+// —— Per-segment detail (one dedicated page each at /solutions/:id) ——
+export const solutionsDetail = {
+  creators: {
+    tagline: 'Turn a channel into a predictable growth engine — and a real business.',
+    summary: 'We give creators the strategy, production and distribution system that turns sporadic uploads into compounding reach, subscribers and revenue.',
+    problem: 'Talented creators plateau because publishing is random, packaging is weak, and retention is never measured. Growth feels like luck instead of a system.',
+    approach: 'We install a documented format system, edit every video to the retention graph, and A/B-test packaging until the channel compounds on its own.',
+    proof: 'A finance creator went from 18K to 410K subscribers in nine months on this exact system.',
+    outcomes: [{ value: '11x', label: 'Avg. views in 6 months' }, { value: '+340%', label: 'Watch-time lift' }, { value: '48h', label: 'Edit turnaround' }],
+    includes: ['Channel strategy & format system', 'Retention-first long & short-form edits', 'Thumbnail & title A/B testing', 'Multi-platform clip distribution', 'Monthly analytics & iteration'],
+    services: ['youtube-growth', 'video-editing', 'thumbnail-design'],
+  },
+  founders: {
+    tagline: 'Make the founder the most valuable distribution channel the company owns.',
+    summary: 'We turn operators into category authorities — a sharp narrative, a weekly content engine and inbound your sales team can actually close.',
+    problem: 'Founders are respected offline but invisible online — no narrative, no consistency, and nothing that compounds into real pipeline.',
+    approach: 'We define a sharp positioning, build a content-pillar system, and run a weekly founder-led engine across LinkedIn, X and YouTube.',
+    proof: 'A B2B founder became a category voice and closed seven-figure deals attributed directly to content.',
+    outcomes: [{ value: '5x', label: 'Inbound pipeline' }, { value: 'Top 1%', label: 'Voice in category' }, { value: '90d', label: 'To a defined brand' }],
+    includes: ['Positioning & narrative', 'Weekly founder content engine', 'Ghostwriting & editing', 'LinkedIn + X growth', 'Inbound funnel & attribution'],
+    services: ['founder-branding', 'personal-branding', 'linkedin-growth'],
+  },
+  d2c: {
+    tagline: 'Build an owned audience that lowers CAC and compounds every quarter.',
+    summary: 'We help D2C brands build a content engine and creator network that turns paid-dependent growth into owned, compounding demand.',
+    problem: 'D2C growth stalls when every sale is rented from ad platforms. CAC climbs, margins compress, and there’s no owned audience to fall back on.',
+    approach: 'We build an owned-audience content engine, layer in UGC and creator collaborations, and tie everything to funnels that compound.',
+    proof: 'A D2C brand grew an engaged community 210% and cut paid dependency in two quarters.',
+    outcomes: [{ value: '-38%', label: 'Blended CAC' }, { value: '+210%', label: 'Engaged community' }, { value: '4.6x', label: 'Blended ROAS' }],
+    includes: ['Owned-audience content engine', 'UGC & creator collaborations', 'Performance creative', 'Funnel & lifecycle content', 'Community management'],
+    services: ['social-media-management', 'performance-marketing', 'content-strategy'],
+  },
+  saas: {
+    tagline: 'Category authority and inbound pipeline your sales team can actually close.',
+    summary: 'We give SaaS and startups a category-defining point of view and a demand-gen content system that produces attributable pipeline.',
+    problem: 'SaaS content becomes a treadmill of feature posts nobody reads — busy, expensive and impossible to attribute to revenue.',
+    approach: 'We design a category POV, a demand-gen content system mapped to buyer intent, and clean attribution back to pipeline.',
+    proof: 'A SaaS brand 4x’d qualified demo requests by aligning content to buyer intent.',
+    outcomes: [{ value: '4x', label: 'Qualified demos' }, { value: '+850%', label: 'Attributed demand' }, { value: '12mo', label: 'Roadmap delivered' }],
+    includes: ['Category POV & messaging', 'Demand-gen content system', 'Founder + brand channels', 'SEO & distribution', 'Pipeline attribution'],
+    services: ['content-strategy', 'founder-branding', 'performance-marketing'],
+  },
+  education: {
+    tagline: 'A personal monopoly that makes you the default name in your niche.',
+    summary: 'We build educators and coaches a signature body of work and launch funnels that turn audience into enrolments.',
+    problem: 'Educators have the expertise but no system — content is inconsistent, and every launch feels like starting from zero.',
+    approach: 'We package your signature frameworks into content pillars and build cohort and course funnels that compound authority and enrolments.',
+    proof: 'A coach became the default name in their niche and sold out three back-to-back cohorts.',
+    outcomes: [{ value: '#1', label: 'Voice in niche' }, { value: '3.2x', label: 'Inbound students' }, { value: 'Sold out', label: 'Launches' }],
+    includes: ['Signature framework content', 'Authority pillar system', 'Course & cohort funnels', 'Email & community', 'Launch campaigns'],
+    services: ['personal-branding', 'content-strategy', 'youtube-growth'],
+  },
+  agencies: {
+    tagline: 'White-label production and systems that scale delivery without the chaos.',
+    summary: 'We become the production engine behind agencies and studios — white-label output and systems that scale capacity without the operational mess.',
+    problem: 'Agencies hit a ceiling: delivery is chaotic, talent is scarce, and every new client adds operational drag.',
+    approach: 'We plug in as a white-label pod with documented pipelines and AI-assisted output, so you scale delivery without scaling headcount.',
+    proof: 'A creative agency tripled delivery capacity without adding a single full-time editor.',
+    outcomes: [{ value: '3x', label: 'Delivery capacity' }, { value: 'White-label', label: 'Under your brand' }, { value: '48h', label: 'Turnaround' }],
+    includes: ['White-label production', 'Documented delivery systems', 'Editing & motion at scale', 'AI-assisted pipelines', 'Overflow & surge capacity'],
+    services: ['video-editing', 'thumbnail-design', 'ai-content-systems'],
+  },
+  podcasters: {
+    tagline: 'Turn long conversations into a clip engine that travels across every feed.',
+    summary: 'We run the full podcast operation — from production to a short-form clip engine that puts your best moments everywhere.',
+    problem: 'Podcasts die in the gap between recording and distribution — great conversations that nobody ever sees.',
+    approach: 'We run the studio end to end: multicam production, a short-form clip engine, and cross-platform distribution.',
+    proof: 'A founder podcast hit the top 50 business charts in India within 12 weeks of launch.',
+    outcomes: [{ value: '20+', label: 'Clips per episode' }, { value: '5x', label: 'Reach vs audio-only' }, { value: '0', label: 'Ops on your plate' }],
+    includes: ['Show strategy & format', 'Multicam record-to-publish', 'Short-form clip engine', 'Cross-platform distribution', 'Guest & booking support'],
+    services: ['podcast-production', 'video-editing', 'social-media-management'],
+  },
+  b2b: {
+    tagline: 'Executive thought leadership and demand your sales team can attribute.',
+    summary: 'We build B2B and enterprise teams executive-led thought leadership and account-aware content that produces measurable demand.',
+    problem: 'Enterprise content is faceless and forgettable — disconnected from the pipeline it’s supposed to create.',
+    approach: 'We activate executives as thought leaders, build account-aware content, and close the loop between sales and content.',
+    proof: 'An enterprise team drove +850% attributed demand by putting its executives on camera.',
+    outcomes: [{ value: '+850%', label: 'Attributed demand' }, { value: 'Top 1%', label: 'Executive voice' }, { value: 'ABM', label: 'Account-aware' }],
+    includes: ['Executive thought-leadership', 'Account-aware content', 'LinkedIn + video', 'Sales-to-content loop', 'Demand attribution'],
+    services: ['founder-branding', 'linkedin-growth', 'content-strategy'],
+  },
+}
+
 // —— Pricing / engagement tiers ——
 export const pricing = [
   {

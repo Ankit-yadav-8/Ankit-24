@@ -21,17 +21,27 @@ function mulberry32(seed) {
   }
 }
 
-// A mostly-upward, slightly noisy series — feels like a real growth chart.
+// A mostly-upward series with its OWN growth rate, volatility and the odd
+// pullback — so two seeds produce visibly different shapes, not clones.
 export function seededTrend(seed, n = 10) {
   const rnd = mulberry32(hashStr(String(seed)))
-  let v = 60 + rnd() * 30
+  const volatility = 0.06 + rnd() * 0.16
+  const baseGrowth = 0.05 + rnd() * 0.24
+  let v = 45 + rnd() * 55
   const out = [v]
   for (let i = 1; i < n; i++) {
-    const growth = 1 + (0.08 + rnd() * 0.30)
-    v = v * growth * (0.97 + rnd() * 0.08)
+    const dip = rnd() < 0.22 ? 1 - volatility * (1 + rnd()) : 1
+    const growth = 1 + baseGrowth * (0.55 + rnd() * 0.95)
+    v = Math.max(8, v * growth * dip * (1 - volatility / 2 + rnd() * volatility))
     out.push(v)
   }
   return out.map((x) => Math.round(x))
+}
+
+// N deterministic integers in [min, max] from a seed (for KPIs, splits, bars).
+export function seededValues(seed, n, min = 0, max = 100) {
+  const rnd = mulberry32(hashStr(String(seed)))
+  return Array.from({ length: n }, () => Math.round(min + rnd() * (max - min)))
 }
 
 // Catmull-Rom → cubic-bezier smoothing for a clean, organic line.

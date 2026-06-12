@@ -77,7 +77,7 @@ export default function Solutions() {
                     ))}
                   </ul>
 
-                  <Button to="/contact" size="sm" arrow magnetic={false}>Get your growth plan</Button>
+                  <Button to={`/solutions/${it.id}`} size="sm" arrow magnetic={false}>Explore {it.title.split(' ')[0]}</Button>
                 </Reveal>
               )
             })}
