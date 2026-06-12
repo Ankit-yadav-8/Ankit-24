@@ -6,6 +6,11 @@ import { useSite } from '../../context/SiteContext.jsx'
 
 const ease = [0.22, 1, 0.36, 1]
 
+// Staggered reveal for dropdown items — each card/link slides up in sequence.
+const MotionLink = motion(Link)
+const panelContainer = { hidden: {}, show: { transition: { staggerChildren: 0.045, delayChildren: 0.04 } } }
+const panelItem = { hidden: { opacity: 0, y: 12 }, show: { opacity: 1, y: 0, transition: { duration: 0.34, ease } } }
+
 const Chevron = () => (
   <svg className="nav__chev" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.4" strokeLinecap="round" strokeLinejoin="round">
     <polyline points="6 9 12 15 18 9" />
@@ -100,18 +105,18 @@ export default function Navbar() {
         <div className="mega mega--services">
           <div className="mega__cols">
             {Object.entries(serviceGroups).map(([cat, items]) => (
-              <div className="mega__col" key={cat}>
-                <h6 className="mega__cat">{cat}</h6>
+              <motion.div className="mega__col" key={cat} variants={panelContainer} initial="hidden" animate="show">
+                <motion.h6 className="mega__cat" variants={panelItem}>{cat}</motion.h6>
                 {items.map((s) => (
-                  <Link className="mega__svc" to={`/services/${s.slug}`} key={s.slug}>
+                  <MotionLink className="mega__svc" to={`/services/${s.slug}`} key={s.slug} variants={panelItem}>
                     <span className="mega__ico">{s.icon}</span>
                     <span className="mega__svc-txt">
                       <b>{s.title}</b>
                       <em>{s.tagline}</em>
                     </span>
-                  </Link>
+                  </MotionLink>
                 ))}
-              </div>
+              </motion.div>
             ))}
           </div>
           <aside className="mega__feature">
@@ -128,18 +133,18 @@ export default function Navbar() {
     const feature = PANEL_FEATURE[key]
     return (
       <div className={`mega mega--rich ${feature ? '' : 'mega--rich-solo'}`}>
-        <div className="mega__grid">
+        <motion.div className="mega__grid" variants={panelContainer} initial="hidden" animate="show">
           {items.map((it) => (
-            <Link className="mega__card" to={it.to} key={it.label + it.to}>
+            <MotionLink className="mega__card" to={it.to} key={it.label + it.to} variants={panelItem}>
               <span className="mega__ico">{it.icon || '◇'}</span>
               <span className="mega__card-txt">
                 <b>{it.label}</b>
                 {it.desc && <em>{it.desc}</em>}
               </span>
               <span className="mega__card-arrow" aria-hidden>→</span>
-            </Link>
+            </MotionLink>
           ))}
-        </div>
+        </motion.div>
         {feature && (
           <aside className="mega__feature">
             <span className="tag tag--gold">{feature.tag}</span>
@@ -214,10 +219,11 @@ export default function Navbar() {
           <motion.div
             className="nav__dropdown"
             key={active}
-            initial={{ opacity: 0, y: 10 }}
-            animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: 8 }}
-            transition={{ duration: 0.24, ease }}
+            initial={{ opacity: 0, y: 14, scale: 0.985 }}
+            animate={{ opacity: 1, y: 0, scale: 1 }}
+            exit={{ opacity: 0, y: 8, scale: 0.99 }}
+            transition={{ duration: 0.28, ease }}
+            style={{ transformOrigin: 'top center' }}
             onMouseEnter={() => openMenu(active)}
           >
             <div className="container">{renderPanel(active)}</div>

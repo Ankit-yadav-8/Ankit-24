@@ -1732,3 +1732,37 @@ img, svg, video, iframe, canvas { max-width: 100%; height: auto; }
 @media (max-width: 560px) {
   .sol-kpis--row { grid-template-columns: 1fr; }
 }
+
+/* ══════════════════════════════════════════════════════════════
+   Nav dropdown polish — animated chevron, richer tiles, hover lift
+   ══════════════════════════════════════════════════════════════ */
+.nav__trigger .nav__chev { transition: transform 0.3s var(--ease); }
+.nav__trigger.is-open .nav__chev { transform: rotate(180deg); }
+
+/* richer rest-state icon tiles + a glow on hover */
+.mega__card .mega__ico {
+  background: linear-gradient(150deg, var(--surface-2), color-mix(in srgb, var(--gold) 12%, var(--surface-2)));
+  box-shadow: inset 0 0 0 1px var(--line);
+}
+.mega__card:hover .mega__ico { box-shadow: 0 10px 22px rgba(73, 40, 253, 0.3); }
+
+/* service rows get the same lift + icon flourish as the rich cards */
+.mega__svc { will-change: transform; border: 1px solid transparent; }
+.mega__svc:hover { box-shadow: var(--elev-1); transform: translateY(-1px); border-color: var(--line); }
+.mega__svc .mega__ico { transition: background 0.22s ease, color 0.22s ease, transform 0.32s var(--ease); }
+.mega__svc:hover .mega__ico { transform: scale(1.07) rotate(-4deg); }
+
+/* slow, soft glow drifting behind the featured panel */
+.mega__feature::after {
+  content: ''; position: absolute; width: 230px; height: 230px; right: -64px; top: -64px;
+  background: radial-gradient(circle, rgba(124, 92, 255, 0.5), transparent 65%);
+  filter: blur(20px); pointer-events: none;
+  animation: megaGlow 7s ease-in-out infinite;
+}
+@keyframes megaGlow {
+  0%, 100% { transform: translate(0, 0) scale(1); opacity: 0.5; }
+  50% { transform: translate(-16px, 12px) scale(1.14); opacity: 0.85; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .mega__feature::after { animation: none; }
+}
