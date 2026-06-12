@@ -102,6 +102,7 @@ export default function DashboardFloat() {
           {open && (
             <motion.div
               className="dashmodal__scrim"
+              data-lenis-prevent
               onClick={() => setOpen(false)}
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
