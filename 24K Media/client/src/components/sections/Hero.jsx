@@ -50,6 +50,7 @@ export default function Hero() {
         />
         <div className="glow glow--gold hero__glow-1" />
         <div className="glow glow--gold hero__glow-2" />
+        <div className="glow hero__glow-3" />
         {PARTICLES.map((p) => (
           <motion.span
             key={p.id}
