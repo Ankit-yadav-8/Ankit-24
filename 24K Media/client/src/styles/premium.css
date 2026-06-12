@@ -1766,3 +1766,50 @@ img, svg, video, iframe, canvas { max-width: 100%; height: auto; }
 @media (prefers-reduced-motion: reduce) {
   .mega__feature::after { animation: none; }
 }
+
+/* the dark feature panel slides in each time a menu opens */
+.mega__feature { animation: megaFeatureIn 0.5s var(--ease) both; }
+@keyframes megaFeatureIn {
+  from { opacity: 0; transform: translateX(16px); }
+  to { opacity: 1; transform: translateX(0); }
+}
+
+/* ══════════════════════════════════════════════════════════════
+   Footer — animated multi-orb glow + live "onboarding" status
+   ══════════════════════════════════════════════════════════════ */
+.footer__glow { animation: footerGlow 9s ease-in-out infinite; }
+.footer__glow--2 {
+  top: auto; bottom: -160px; left: 12%; transform: none;
+  width: 420px; height: 300px; border-radius: 50%;
+  background: radial-gradient(circle, rgba(124, 92, 255, 0.5), transparent 65%);
+  filter: blur(110px); opacity: 0.5; animation: footerGlow2 11s ease-in-out infinite;
+}
+.footer__glow--3 {
+  top: auto; bottom: -120px; right: 8%; left: auto; transform: none;
+  width: 360px; height: 260px; border-radius: 50%;
+  background: radial-gradient(circle, rgba(73, 160, 255, 0.45), transparent 65%);
+  filter: blur(110px); opacity: 0.45; animation: footerGlow3 13s ease-in-out infinite;
+}
+@keyframes footerGlow { 0%, 100% { transform: translateX(-50%) scale(1); opacity: 0.5; } 50% { transform: translateX(-50%) scale(1.12); opacity: 0.72; } }
+@keyframes footerGlow2 { 0%, 100% { transform: translate(0, 0) scale(1); opacity: 0.4; } 50% { transform: translate(30px, -18px) scale(1.16); opacity: 0.62; } }
+@keyframes footerGlow3 { 0%, 100% { transform: translate(0, 0) scale(1); opacity: 0.38; } 50% { transform: translate(-26px, -14px) scale(1.14); opacity: 0.6; } }
+
+.footer__status {
+  display: inline-flex; align-items: center; gap: 0.5rem; margin-bottom: 1rem;
+  font-size: 0.78rem; font-weight: 700; letter-spacing: 0.01em; color: #2bb673;
+  background: rgba(43, 182, 115, 0.1); border: 1px solid rgba(43, 182, 115, 0.22);
+  padding: 0.4rem 0.85rem; border-radius: 100px;
+}
+.footer__status i { width: 8px; height: 8px; border-radius: 50%; background: #2bb673; animation: statusPulse 2s ease-in-out infinite; }
+@keyframes statusPulse {
+  0% { box-shadow: 0 0 0 0 rgba(43, 182, 115, 0.5); }
+  70% { box-shadow: 0 0 0 8px rgba(43, 182, 115, 0); }
+  100% { box-shadow: 0 0 0 0 rgba(43, 182, 115, 0); }
+}
+
+/* brighter, glowing social icons in the footer */
+.footer__social a:hover { box-shadow: 0 10px 26px rgba(73, 40, 253, 0.4); transform: translateY(-3px) scale(1.06); }
+
+@media (prefers-reduced-motion: reduce) {
+  .mega__feature, .footer__glow, .footer__glow--2, .footer__glow--3, .footer__status i { animation: none; }
+}

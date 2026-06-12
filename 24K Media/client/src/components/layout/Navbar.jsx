@@ -195,7 +195,7 @@ export default function Navbar() {
 
         <div className="nav__right">
           <Link to="/contact" className="nav__cta">
-            Let’s Collaborate
+            Build With Us
             <span className="nav__cta-ic">
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round">
                 <line x1="7" y1="17" x2="17" y2="7" />
@@ -264,11 +264,18 @@ export default function Navbar() {
                         exit={{ height: 0, opacity: 0 }}
                         transition={{ duration: 0.28, ease }}
                       >
-                        {childrenFor(item.key).map((c) => (
-                          <Link key={c.label + c.to} to={c.to} onClick={() => setOpen(false)}>
+                        {childrenFor(item.key).map((c, ci) => (
+                          <MotionLink
+                            key={c.label + c.to}
+                            to={c.to}
+                            onClick={() => setOpen(false)}
+                            initial={{ opacity: 0, x: -12 }}
+                            animate={{ opacity: 1, x: 0 }}
+                            transition={{ duration: 0.3, ease, delay: 0.05 + ci * 0.045 }}
+                          >
                             {c.icon && <span className="nav__mico">{c.icon}</span>}
                             {c.label}
-                          </Link>
+                          </MotionLink>
                         ))}
                       </motion.div>
                     )}

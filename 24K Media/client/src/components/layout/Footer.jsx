@@ -36,14 +36,18 @@ export default function Footer() {
   }
 
   const toTop = () => window.scrollTo({ top: 0, behavior: 'smooth' })
+  const month = new Date().toLocaleString('en-US', { month: 'long' })
 
   return (
     <footer className="footer">
       <div className="footer__glow" />
+      <div className="footer__glow footer__glow--2" />
+      <div className="footer__glow footer__glow--3" />
       <div className="container">
         {/* —— Newsletter / CTA band —— */}
         <div className="footer__cta">
           <div>
+            <span className="footer__status"><i />Now onboarding · {month} — limited creator slots</span>
             <h3>Build an internet brand people can’t ignore.</h3>
             <p>Get the playbooks, frameworks and case studies we use to grow creators and founders — straight to your inbox.</p>
           </div>
