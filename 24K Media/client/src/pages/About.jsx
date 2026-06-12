@@ -54,8 +54,8 @@ export default function About() {
               </div>
             </Reveal>
             <Reveal delay={0.1} className="founder__journey">
-              <span className="eyebrow">The Journey</span>
-              <h2 className="founder__journey-title">From IIT Roorkee to 24K Media.</h2>
+              <span className="eyebrow">The Team</span>
+              <h2 className="founder__journey-title">Built by operators, <span className="gold-fill italic-serif">run as a team.</span></h2>
               <div className="timeline">
                 {founder.timeline.map((t, i) => (
                   <div className={`tl-item ${i === founder.timeline.length - 1 ? 'active' : ''}`} key={t.year}>

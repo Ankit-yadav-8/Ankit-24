@@ -67,10 +67,10 @@ export const whyPillars = [
       '48-hour edit cycles and weekly publishing cadence, held to a calendar you can trust.',
   },
   {
-    id: 'founder-led',
-    title: 'Founder-Led Execution',
+    id: 'operator-led',
+    title: 'Operator-Led Execution',
     description:
-      'Built by an operator who has shipped products and grown audiences from zero.',
+      'Built and run by a team of operators who have shipped products and grown audiences from zero.',
   },
 ]
 
@@ -355,19 +355,19 @@ export const testimonials = [
   { id: 't6', quote: 'Working with them feels like having a media company on retainer, not an agency. Fast, sharp, accountable.', name: 'Ananya Gupta', role: 'CEO', company: 'TenetAI', rating: 5, avatar: U('photo-1544005313-94ddf0286df2', 160) },
 ]
 
+// The studio is team-led — introduced collectively, never as a single named person.
 export const founder = {
-  name: 'The Founder',
-  role: 'Founder & Operator, 24K Media',
-  image: U('photo-1556761175-b413da4baf72', 800),
+  name: 'The 24K Team',
+  role: 'Strategists, editors, designers & growth leads',
+  image: U('photo-1522071820081-009f0129c71c', 800),
   bio:
-    'An operator who has shipped products, grown audiences from zero and obsessed over the craft of attention. 24K Media is the studio that turns that playbook into infrastructure for the next generation of Indian creators and founders.',
+    'We’re a team of operators — strategists, editors, designers and distribution leads who’ve grown audiences from zero and shipped products that scaled. 24K Media turns that combined playbook into media infrastructure for the next generation of Indian creators and founders.',
   mission: 'Help 10,000 Indian creators build sustainable businesses on the back of their own audience.',
   timeline: [
-    { year: '2016', title: 'IIT Roorkee', description: 'Engineering foundations, first products and the obsession with how things are built.' },
-    { year: '2018', title: 'Startups', description: 'Early operator roles — learning growth, distribution and the reality of shipping under pressure.' },
-    { year: '2020', title: 'Product', description: 'Built and scaled products, owning the full loop from positioning to retention.' },
-    { year: '2022', title: 'Growth', description: 'Grew audiences from zero and reverse-engineered what actually compounds online.' },
-    { year: '2026', title: '24K Media', description: 'Turned the playbook into a studio — media infrastructure for creators and founders.' },
+    { year: 'Operators', title: 'Built in the trenches', description: 'A team that has shipped products, grown channels from zero and run real campaigns — not a freelancer queue.' },
+    { year: 'Craft', title: 'Obsessed with attention', description: 'Strategists, editors and designers who treat retention, packaging and distribution as an engineering problem.' },
+    { year: 'System', title: 'A documented playbook', description: 'Every win becomes a repeatable system — formats, pipelines and dashboards the whole team runs together.' },
+    { year: '2026', title: '24K Media', description: 'The studio that turns that playbook into media infrastructure for India’s creators and founders.' },
   ],
 }
 

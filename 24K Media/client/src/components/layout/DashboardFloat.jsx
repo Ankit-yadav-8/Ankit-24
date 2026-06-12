@@ -1,4 +1,5 @@
 import { useEffect, useState } from 'react'
+import { createPortal } from 'react-dom'
 import { AnimatePresence, motion } from 'framer-motion'
 import { Link } from 'react-router-dom'
 import TrendChart from '../ui/TrendChart.jsx'
@@ -18,7 +19,7 @@ const ChartIcon = () => (
 
 // Floating tab → opens a centered modal with the full creator dashboard.
 export default function DashboardFloat() {
-  const [open, setOpen] = useState(false)
+  const [open, setOpen] = useState(typeof window !== 'undefined' && window.location.search.includes('dashopen'))
   const seed = 'float'
 
   useEffect(() => {
@@ -96,11 +97,12 @@ export default function DashboardFloat() {
         )}
       </AnimatePresence>
 
-      <AnimatePresence>
-        {open && (
-          <motion.div
-            className="dashmodal__scrim"
-            onClick={() => setOpen(false)}
+      {createPortal(
+        <AnimatePresence>
+          {open && (
+            <motion.div
+              className="dashmodal__scrim"
+              onClick={() => setOpen(false)}
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
@@ -230,8 +232,10 @@ export default function DashboardFloat() {
               </Link>
             </motion.div>
           </motion.div>
-        )}
-      </AnimatePresence>
+          )}
+        </AnimatePresence>,
+        document.body,
+      )}
     </>
   )
 }

@@ -8,8 +8,8 @@ export default function FounderSection() {
     <section className="section">
       <div className="container">
         <SectionHead
-          eyebrow="Founder Story"
-          title={<>Built by an operator, <span className="gold-fill italic-serif">not an agency.</span></>}
+          eyebrow="The Team"
+          title={<>Built by operators, <span className="gold-fill italic-serif">run as a team.</span></>}
         />
         <div className="founder__wrap">
           <Reveal>
