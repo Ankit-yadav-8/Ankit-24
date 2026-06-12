@@ -3,6 +3,7 @@ import CreatorWall from '../components/sections/CreatorWall.jsx'
 import SocialProof from '../components/sections/SocialProof.jsx'
 import ServicesSection from '../components/sections/ServicesSection.jsx'
 import WhyUs from '../components/sections/WhyUs.jsx'
+import StorySection from '../components/sections/StorySection.jsx'
 import CollaborationsSection from '../components/sections/CollaborationsSection.jsx'
 import PricingSection from '../components/sections/PricingSection.jsx'
 import Testimonials from '../components/sections/Testimonials.jsx'
@@ -20,6 +21,7 @@ export default function Home() {
       <SocialProof />
       <ServicesSection limit={6} />
       <WhyUs />
+      <StorySection />
       <CollaborationsSection />
       <PricingSection />
       <Testimonials />

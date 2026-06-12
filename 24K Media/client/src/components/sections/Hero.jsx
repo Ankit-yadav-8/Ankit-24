@@ -3,9 +3,9 @@ import { motion, AnimatePresence, useScroll, useTransform } from 'framer-motion'
 import Button from '../ui/Button.jsx'
 import { useSite } from '../../context/SiteContext.jsx'
 
-const PARTICLES = Array.from({ length: 14 }).map((_, i) => ({
+const PARTICLES = Array.from({ length: 24 }).map((_, i) => ({
   id: i,
-  size: 3 + (i % 4),
+  size: 3 + (i % 5),
   top: (i * 67) % 100,
   left: (i * 41) % 100,
   delay: (i % 6) * 0.4,
@@ -43,6 +43,11 @@ export default function Hero() {
     <section className="hero">
       <div className="hero__bg">
         <motion.div className="hero__grid" style={{ y: yGrid }} />
+        <motion.div
+          className="hero__orb"
+          animate={{ rotate: 360 }}
+          transition={{ duration: 32, repeat: Infinity, ease: 'linear' }}
+        />
         <div className="glow glow--gold hero__glow-1" />
         <div className="glow glow--gold hero__glow-2" />
         {PARTICLES.map((p) => (
@@ -88,6 +93,7 @@ export default function Hero() {
               >
                 Can’t <span className="gold-fill italic-serif ignore">Ignore.</span>
               </motion.span>
+              <span className="hero__shine" aria-hidden />
             </h1>
 
             <motion.p
@@ -156,6 +162,15 @@ export default function Hero() {
               transition={{ opacity: { duration: 0.8, delay: 0.6 }, y: { duration: 8, repeat: Infinity, ease: 'easeInOut' } }}
             >
               <img src={U('photo-1611162617474-5b21e879e113')} alt="" loading="lazy" />
+            </motion.div>
+
+            <motion.div
+              className="hero__card hero__card--3"
+              initial={{ opacity: 0, y: 30, rotate: -5 }}
+              animate={{ opacity: 1, y: [0, -10, 0], rotate: -5 }}
+              transition={{ opacity: { duration: 0.8, delay: 0.75 }, y: { duration: 9, repeat: Infinity, ease: 'easeInOut' } }}
+            >
+              <img src={U('photo-1600880292089-90a7e086ee0c')} alt="" loading="lazy" />
             </motion.div>
 
             <motion.div

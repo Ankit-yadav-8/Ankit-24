@@ -3,6 +3,7 @@ import PageHeader from '../components/ui/PageHeader.jsx'
 import Reveal from '../components/ui/Reveal.jsx'
 import SectionHead from '../components/ui/SectionHead.jsx'
 import ProcessSection from '../components/sections/ProcessSection.jsx'
+import StorySection from '../components/sections/StorySection.jsx'
 import CTABand from '../components/sections/CTABand.jsx'
 import { useSite } from '../context/SiteContext.jsx'
 
@@ -68,6 +69,9 @@ export default function About() {
           </div>
         </div>
       </section>
+
+      {/* Our Story — origin narrative + animated timeline */}
+      <StorySection />
 
       {/* Principles */}
       <section className="section">

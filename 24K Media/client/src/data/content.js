@@ -475,6 +475,8 @@ export const industries = [
   { id: 'saas', icon: '◈', title: 'SaaS & Startups', desc: 'Category authority and inbound pipeline your sales team can actually close.' },
   { id: 'education', icon: '◎', title: 'Educators & Coaches', desc: 'A personal monopoly that makes you the default name in your niche.' },
   { id: 'agencies', icon: '⬡', title: 'Agencies & Studios', desc: 'White-label production and systems that scale your delivery without the chaos.' },
+  { id: 'podcasters', icon: '◍', title: 'Podcasters & Hosts', desc: 'Turn long conversations into a clip engine that travels across every feed.' },
+  { id: 'b2b', icon: '▣', title: 'B2B & Enterprise', desc: 'Executive thought leadership and demand that your sales team can attribute.' },
 ]
 
 // —— Pricing / engagement tiers ——
