@@ -1633,3 +1633,102 @@ img, svg, video, iframe, canvas { max-width: 100%; height: auto; }
   .svc-cta-row > *, .cta-band__ctas > *, .gcpop__ctas > * { flex: 1 1 100%; }
   .svc-cta-row .btn, .cta-band__ctas .btn, .gcpop__ctas .btn { width: 100%; white-space: normal; }
 }
+
+/* ══════════════════════════════════════════════════════════════
+   Solution detail — its own type + layout system (distinct from services)
+   ══════════════════════════════════════════════════════════════ */
+.sol-detail { --sol-accent: var(--gold); }
+.sol-detail .eyebrow::before { background: linear-gradient(90deg, var(--sol-accent), transparent); }
+
+/* Hero */
+.sol-hero { display: grid; grid-template-columns: 1.15fr 0.85fr; gap: clamp(32px, 5vw, 72px); align-items: center; }
+.sol-hero__ico {
+  width: 76px; height: 76px; border-radius: 22px; display: grid; place-items: center;
+  font-size: 2.1rem; color: #fff; margin-bottom: 1.4rem;
+  background: linear-gradient(150deg, var(--sol-accent), color-mix(in srgb, var(--sol-accent) 55%, #1b1d1e));
+  box-shadow: 0 14px 34px color-mix(in srgb, var(--sol-accent) 32%, transparent);
+}
+.sol-kicker { font-size: 0.78rem; font-weight: 800; letter-spacing: 0.14em; text-transform: uppercase; color: var(--sol-accent); }
+.sol-hero__title { font-family: var(--font-display); font-size: clamp(2.1rem, 5vw, 3.4rem); font-weight: 500; line-height: 1.05; margin: 0.7rem 0 1.1rem; letter-spacing: -0.01em; }
+.sol-hero__sum { font-size: 1.12rem; max-width: 54ch; }
+
+/* Oversized KPI panel */
+.sol-kpis { display: grid; gap: 14px; }
+.sol-kpis--row { grid-template-columns: 1fr 1fr 1fr; }
+.sol-kpi {
+  position: relative; padding: 1.5rem 1.6rem 1.5rem 1.8rem; border-radius: var(--radius-lg);
+  background: var(--surface); border: 1px solid var(--line); box-shadow: var(--elev-1);
+}
+.sol-kpi::before { content: ''; position: absolute; left: 0; top: 1.3rem; bottom: 1.3rem; width: 4px; border-radius: 4px; background: var(--sol-accent); }
+.sol-kpi__v { display: block; font-family: var(--font-display); font-size: clamp(2.1rem, 4.5vw, 2.9rem); font-weight: 600; line-height: 1; color: var(--sol-accent); }
+.sol-kpi__l { display: block; margin-top: 0.45rem; font-size: 0.86rem; color: var(--ink-soft); }
+.sol-kpis--row .sol-kpi__v { font-size: clamp(1.7rem, 4vw, 2.2rem); }
+
+/* The shift — before vs after */
+.sol-shift { display: grid; grid-template-columns: 1fr auto 1fr; gap: 22px; align-items: stretch; }
+.sol-shift__col { padding: 2rem; border-radius: var(--radius-lg); background: var(--surface); border: 1px solid var(--line); }
+.sol-shift__col--bad { background: var(--smoke-2); }
+.sol-shift__col--good { border-color: color-mix(in srgb, var(--sol-accent) 40%, var(--line)); box-shadow: 0 18px 44px color-mix(in srgb, var(--sol-accent) 14%, transparent); }
+.sol-shift__tag { display: inline-block; font-size: 0.74rem; font-weight: 800; letter-spacing: 0.08em; text-transform: uppercase; margin-bottom: 0.9rem; }
+.sol-shift__col--bad .sol-shift__tag { color: var(--ink-faint); }
+.sol-shift__col--good .sol-shift__tag { color: var(--sol-accent); }
+.sol-shift__col > p { color: var(--ink-soft); line-height: 1.6; }
+.sol-shift__arrow { align-self: center; font-size: 1.8rem; color: var(--sol-accent); font-weight: 700; }
+.sol-x, .sol-check { margin-top: 1.2rem; display: grid; gap: 0.7rem; }
+.sol-x li, .sol-check li { position: relative; padding-left: 1.8rem; font-size: 0.95rem; line-height: 1.45; }
+.sol-x li { color: var(--ink-soft); }
+.sol-x li::before { content: '✕'; position: absolute; left: 0; top: 0; color: var(--ink-faint); font-weight: 700; }
+.sol-check li::before { content: '✓'; position: absolute; left: 0; top: 0; color: var(--sol-accent); font-weight: 700; }
+
+/* Metrics row: trend + outcome bars */
+.sol-metrics { display: grid; grid-template-columns: 1.5fr 1fr; gap: 24px; align-items: stretch; }
+.sol-metrics--rev { direction: rtl; }
+.sol-metrics--rev > * { direction: ltr; }
+.sol-trend, .sol-bars { padding: clamp(1.6rem, 3vw, 2.4rem); }
+.sol-bars h3 { font-family: var(--font-display); font-size: clamp(1.4rem, 3vw, 1.9rem); font-weight: 500; margin: 0.5rem 0 1.4rem; }
+.sol-bar-list { display: grid; gap: 1.2rem; }
+.sol-bar__top { display: flex; justify-content: space-between; align-items: baseline; margin-bottom: 0.5rem; }
+.sol-bar__top span { font-size: 0.9rem; color: var(--ink-soft); }
+.sol-bar__top b { font-family: var(--font-display); font-size: 1.25rem; font-weight: 600; color: var(--sol-accent); }
+.sol-bar__track { height: 9px; border-radius: 9px; background: var(--smoke-2); overflow: hidden; }
+.sol-bar__fill {
+  display: block; height: 100%; border-radius: 9px; transform-origin: left;
+  background: linear-gradient(90deg, color-mix(in srgb, var(--sol-accent) 55%, #fff), var(--sol-accent));
+  animation: solGrow 1s var(--ease) both;
+}
+@keyframes solGrow { from { transform: scaleX(0); } to { transform: scaleX(1); } }
+
+/* What we ship — numbered roadmap */
+.sol-ship { display: grid; grid-template-columns: repeat(2, 1fr); gap: 16px; }
+.sol-ship__item {
+  display: flex; align-items: center; gap: 1.1rem; padding: 1.3rem 1.5rem;
+  border-radius: var(--radius-lg); background: var(--surface); border: 1px solid var(--line); box-shadow: var(--elev-1);
+}
+.sol-ship__n { font-family: var(--font-display); font-size: 1.5rem; font-weight: 600; color: color-mix(in srgb, var(--sol-accent) 70%, var(--ink-faint)); flex: none; min-width: 2.2ch; }
+.sol-ship__item p { font-size: 1rem; line-height: 1.45; }
+
+/* Proof pull-quote */
+.sol-proof {
+  padding: clamp(2rem, 4vw, 3.2rem); border-radius: var(--radius-lg); text-align: center;
+  background: var(--surface); border: 1px solid var(--line);
+  border-top: 3px solid var(--sol-accent);
+}
+.sol-proof__q { font-family: var(--font-display); font-size: clamp(1.4rem, 3.2vw, 2.1rem); font-weight: 500; line-height: 1.35; max-width: 30ch; margin: 1rem auto 0; }
+
+/* Segment FAQ */
+.sol-faq { display: grid; grid-template-columns: repeat(2, 1fr); gap: 18px; }
+.sol-faq__item { padding: 1.6rem 1.7rem; border-radius: var(--radius-lg); background: var(--surface); border: 1px solid var(--line); border-left: 3px solid var(--sol-accent); }
+.sol-faq__item h4 { font-family: var(--font-display); font-size: 1.12rem; font-weight: 500; margin-bottom: 0.6rem; }
+.sol-faq__item p { color: var(--ink-soft); line-height: 1.6; }
+
+@media (max-width: 860px) {
+  .sol-hero { grid-template-columns: 1fr; }
+  .sol-shift { grid-template-columns: 1fr; }
+  .sol-shift__arrow { transform: rotate(90deg); justify-self: center; }
+  .sol-metrics { grid-template-columns: 1fr; }
+  .sol-metrics--rev { direction: ltr; }
+  .sol-ship, .sol-faq { grid-template-columns: 1fr; }
+}
+@media (max-width: 560px) {
+  .sol-kpis--row { grid-template-columns: 1fr; }
+}
