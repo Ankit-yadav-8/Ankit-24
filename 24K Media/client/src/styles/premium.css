@@ -1388,3 +1388,61 @@ img, svg, video, iframe, canvas { max-width: 100%; height: auto; }
   .dash-bar { grid-template-columns: 1fr auto; }
   .dash-bar__track { display: none; }
 }
+
+/* ══════════════════════════════════════════════════════════════
+   28 · FLOATING DASHBOARD (right-middle, personal 1-to-1 preview)
+   ══════════════════════════════════════════════════════════════ */
+.dashfloat__tab {
+  position: fixed; right: 0; top: 50%; transform: translateY(-50%);
+  z-index: 880; display: flex; flex-direction: column; align-items: center; gap: 8px;
+  padding: 14px 8px; border: none; border-radius: 16px 0 0 16px; cursor: pointer;
+  background: linear-gradient(160deg, var(--gold), var(--gold-2)); color: #fff;
+  box-shadow: -8px 12px 30px rgba(73, 40, 253, 0.34);
+  transition: transform 0.3s var(--ease), box-shadow 0.3s var(--ease);
+}
+.dashfloat__tab:hover { transform: translateY(-50%) translateX(-3px); box-shadow: -12px 16px 42px rgba(73, 40, 253, 0.46); }
+.dashfloat__tab svg { width: 20px; height: 20px; }
+.dashfloat__tab span { writing-mode: vertical-rl; transform: rotate(180deg); font-size: 0.66rem; font-weight: 800; letter-spacing: 0.12em; text-transform: uppercase; }
+.dashfloat__pulse { width: 8px; height: 8px; border-radius: 50%; background: #fff; animation: dashTabPulse 2s ease-out infinite; }
+@keyframes dashTabPulse { 0% { box-shadow: 0 0 0 0 rgba(255, 255, 255, 0.55); } 100% { box-shadow: 0 0 0 9px rgba(255, 255, 255, 0); } }
+
+.dashfloat__scrim { position: fixed; inset: 0; z-index: 990; background: rgba(15, 17, 20, 0.30); backdrop-filter: blur(2px); }
+.dashfloat {
+  position: fixed; right: 18px; top: 50%; transform: translateY(-50%);
+  z-index: 996; width: 366px; max-width: calc(100vw - 32px); max-height: 88vh; overflow-y: auto;
+  background: var(--surface); border: 1px solid var(--line); border-radius: 22px;
+  box-shadow: var(--elev-3); padding: 1.2rem;
+}
+.dashfloat__head { display: flex; align-items: flex-start; justify-content: space-between; gap: 1rem; }
+.dashfloat__eyebrow { display: inline-flex; align-items: center; gap: 0.4rem; font-size: 0.72rem; font-weight: 800; text-transform: uppercase; letter-spacing: 0.08em; color: #2bb673; }
+.dashfloat__eyebrow i { width: 7px; height: 7px; border-radius: 50%; background: #2bb673; animation: dashPulse 1.8s ease-in-out infinite; }
+.dashfloat__head h4 { font-family: var(--font-display); font-size: 1.3rem; font-weight: 500; margin-top: 0.25rem; }
+.dashfloat__close { width: 32px; height: 32px; flex: none; border-radius: 10px; display: grid; place-items: center; background: var(--surface-2); border: 1px solid var(--line); color: var(--ink); }
+.dashfloat__close svg { width: 16px; height: 16px; }
+.dashfloat__close:hover { background: var(--surface-3); }
+.dashfloat__note { font-size: 0.86rem; color: var(--ink-soft); margin: 0.7rem 0 1rem; line-height: 1.5; }
+.dashfloat__note b { color: var(--ink); }
+.dashfloat__kpis { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-bottom: 12px; }
+.dashfloat__kpi { padding: 0.7rem 0.8rem; border-radius: 13px; background: var(--surface-2); border: 1px solid var(--line); }
+.dashfloat__kpi-label { font-size: 0.7rem; font-weight: 600; color: var(--ink-soft); }
+.dashfloat__kpi-value { display: block; font-family: var(--font-display); font-size: 1.25rem; line-height: 1.1; margin-top: 0.1rem; }
+.dashfloat__kpi-delta { font-size: 0.7rem; font-weight: 800; color: #2bb673; }
+.dashfloat__kpi-spark { margin-top: 0.35rem; }
+.dashfloat__panel { padding: 0.9rem 1rem; border-radius: 14px; background: var(--surface); border: 1px solid var(--line); margin-bottom: 12px; }
+.dashfloat__panel-h { display: flex; align-items: center; justify-content: space-between; margin-bottom: 0.6rem; }
+.dashfloat__panel-h h5 { font-size: 0.92rem; font-weight: 700; }
+.dashfloat__panel-h span { font-size: 0.7rem; font-weight: 600; color: var(--ink-faint); background: var(--surface-2); padding: 0.2rem 0.5rem; border-radius: 100px; }
+.dashfloat__cta {
+  display: flex; align-items: center; justify-content: center; gap: 0.5rem; width: 100%;
+  padding: 0.85rem; border-radius: 13px; background: var(--ink); color: #fff; font-weight: 700; font-size: 0.92rem;
+  transition: background 0.25s ease, transform 0.25s var(--ease);
+}
+.dashfloat__cta svg { width: 16px; height: 16px; transition: transform 0.3s var(--ease); }
+.dashfloat__cta:hover { background: #000; transform: translateY(-2px); }
+.dashfloat__cta:hover svg { transform: translateX(3px); }
+
+@media (max-width: 480px) {
+  .dashfloat { right: 12px; left: 12px; width: auto; max-width: none; }
+  .dashfloat__tab span { display: none; }
+  .dashfloat__tab { padding: 12px; gap: 6px; }
+}

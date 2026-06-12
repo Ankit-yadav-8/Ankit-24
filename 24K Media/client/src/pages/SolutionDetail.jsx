@@ -4,7 +4,6 @@ import Reveal from '../components/ui/Reveal.jsx'
 import Button from '../components/ui/Button.jsx'
 import ServiceCard from '../components/ui/ServiceCard.jsx'
 import TrendChart from '../components/ui/TrendChart.jsx'
-import Dashboard from '../components/sections/Dashboard.jsx'
 import CTABand from '../components/sections/CTABand.jsx'
 import NotFound from './NotFound.jsx'
 import { seededTrend } from '../lib/charts.js'
@@ -86,15 +85,6 @@ export default function SolutionDetail() {
           </Reveal>
         </div>
       </section>
-
-      <Dashboard
-        seed={`sol-${slug}`}
-        channel={base.title}
-        handle={`@${slug}`}
-        eyebrow="Live Dashboard"
-        title={<>The dashboard behind <span className="gold-fill italic-serif">{base.title}.</span></>}
-        text="Every engagement ships with a live analytics dashboard — so progress is measured, not guessed."
-      />
 
       <section className="section section--smoke2">
         <div className="container">

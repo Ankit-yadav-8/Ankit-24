@@ -1,7 +1,6 @@
 import Hero from '../components/sections/Hero.jsx'
 import CreatorWall from '../components/sections/CreatorWall.jsx'
 import SocialProof from '../components/sections/SocialProof.jsx'
-import Dashboard from '../components/sections/Dashboard.jsx'
 import ServicesSection from '../components/sections/ServicesSection.jsx'
 import WhyUs from '../components/sections/WhyUs.jsx'
 import StorySection from '../components/sections/StorySection.jsx'
@@ -20,7 +19,6 @@ export default function Home() {
       <Hero />
       <CreatorWall />
       <SocialProof />
-      <Dashboard seed="home-creator" channel="Rahul Creates" handle="@rahulcreates" />
       <ServicesSection limit={6} />
       <WhyUs />
       <StorySection />

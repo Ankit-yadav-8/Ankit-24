@@ -4,6 +4,7 @@ import Navbar from './Navbar.jsx'
 import Footer from './Footer.jsx'
 import ScrollToTop from './ScrollToTop.jsx'
 import FloatingActions from './FloatingActions.jsx'
+import DashboardFloat from './DashboardFloat.jsx'
 
 // Shell: persistent nav + footer with a premium fade/curtain page transition.
 export default function Layout() {
@@ -27,6 +28,7 @@ export default function Layout() {
       </AnimatePresence>
       <Footer />
       <FloatingActions />
+      <DashboardFloat />
     </>
   )
 }
