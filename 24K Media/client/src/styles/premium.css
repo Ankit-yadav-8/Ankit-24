@@ -1446,3 +1446,71 @@ img, svg, video, iframe, canvas { max-width: 100%; height: auto; }
   .dashfloat__tab span { display: none; }
   .dashfloat__tab { padding: 12px; gap: 6px; }
 }
+
+/* ══════════════════════════════════════════════════════════════
+   29 · CENTERED DASHBOARD MODAL (full report on tab click)
+   ══════════════════════════════════════════════════════════════ */
+.dashmodal__scrim {
+  position: fixed; inset: 0; z-index: 1100;
+  background: rgba(15, 17, 20, 0.5); -webkit-backdrop-filter: blur(3px); backdrop-filter: blur(3px);
+  display: flex; align-items: center; justify-content: center; padding: 20px;
+}
+.dashmodal {
+  width: min(1020px, 100%); max-height: 90vh; overflow-y: auto; position: relative;
+  background: var(--surface); border: 1px solid var(--line); border-radius: 24px;
+  box-shadow: var(--elev-3); padding: clamp(1.2rem, 2.5vw, 1.9rem);
+}
+.dashmodal__head { display: flex; align-items: center; justify-content: space-between; gap: 1rem; }
+.dashmodal__channel { display: flex; align-items: center; gap: 0.8rem; }
+.dashmodal__avatar { width: 46px; height: 46px; border-radius: 13px; flex: none; display: grid; place-items: center; font-family: var(--font-display); font-size: 1.35rem; color: #fff; background: linear-gradient(135deg, var(--gold), var(--gold-2)); }
+.dashmodal__channel b { display: block; font-size: 1.05rem; font-weight: 700; }
+.dashmodal__channel em { font-style: normal; font-size: 0.84rem; color: var(--ink-soft); }
+.dashmodal__head-right { display: flex; align-items: center; gap: 0.7rem; }
+.dashmodal__live { display: inline-flex; align-items: center; gap: 0.4rem; font-size: 0.76rem; font-weight: 800; color: #2bb673; background: rgba(43, 182, 115, 0.1); padding: 0.34rem 0.7rem; border-radius: 100px; white-space: nowrap; }
+.dashmodal__live i { width: 7px; height: 7px; border-radius: 50%; background: #2bb673; animation: dashPulse 1.8s ease-in-out infinite; }
+.dashmodal__close { width: 36px; height: 36px; flex: none; border-radius: 11px; display: grid; place-items: center; background: var(--surface-2); border: 1px solid var(--line); color: var(--ink); }
+.dashmodal__close svg { width: 17px; height: 17px; }
+.dashmodal__close:hover { background: var(--surface-3); }
+.dashmodal__note { font-size: 0.92rem; color: var(--ink-soft); margin: 0.9rem 0 1.3rem; line-height: 1.55; max-width: 72ch; }
+.dashmodal__note b { color: var(--ink); }
+
+.dashmodal__kpis { display: grid; grid-template-columns: repeat(4, 1fr); gap: 14px; margin-bottom: 14px; }
+.dashmodal__grid { display: grid; grid-template-columns: 1.7fr 1fr; gap: 14px; }
+.dashmodal__full { grid-column: 1 / -1; }
+
+/* weekly views report — vertical bars */
+.weekbars { display: flex; align-items: flex-end; gap: 10px; height: 170px; padding-top: 8px; }
+.weekbar { flex: 1; display: flex; flex-direction: column; align-items: center; gap: 6px; height: 100%; justify-content: flex-end; }
+.weekbar__val { font-size: 0.72rem; font-weight: 700; color: var(--ink-soft); }
+.weekbar__col { width: 100%; max-width: 36px; flex: 1; display: flex; align-items: flex-end; }
+.weekbar__fill { width: 100%; border-radius: 7px 7px 0 0; background: linear-gradient(180deg, #7c5cff, #4928fd); min-height: 4px; }
+.weekbar.is-best .weekbar__fill { background: linear-gradient(180deg, #ffd36a, var(--gold)); }
+.weekbar.is-best .weekbar__val { color: var(--gold); }
+.weekbar__day { font-size: 0.72rem; font-weight: 600; color: var(--ink-faint); }
+
+/* this-week summary chips */
+.dashmodal__summary { display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; }
+.dashmodal__sum { padding: 0.9rem 1rem; border-radius: 13px; background: var(--surface-2); border: 1px solid var(--line); }
+.dashmodal__sum span { font-size: 0.74rem; color: var(--ink-soft); font-weight: 600; }
+.dashmodal__sum b { display: block; font-family: var(--font-display); font-size: 1.3rem; font-weight: 500; margin-top: 0.2rem; }
+
+.dashmodal__cta {
+  display: flex; align-items: center; justify-content: center; gap: 0.5rem; width: 100%;
+  margin-top: 16px; padding: 0.95rem; border-radius: 14px;
+  background: linear-gradient(100deg, var(--gold), var(--gold-2)); color: #fff; font-weight: 700; font-size: 0.98rem;
+  box-shadow: var(--shadow-gold); transition: transform 0.25s var(--ease);
+}
+.dashmodal__cta svg { width: 17px; height: 17px; transition: transform 0.3s var(--ease); }
+.dashmodal__cta:hover { transform: translateY(-2px); }
+.dashmodal__cta:hover svg { transform: translateX(3px); }
+
+@media (max-width: 860px) {
+  .dashmodal__kpis { grid-template-columns: repeat(2, 1fr); }
+  .dashmodal__grid { grid-template-columns: 1fr; }
+}
+@media (max-width: 560px) {
+  .dashmodal { padding: 1.1rem; border-radius: 18px; max-height: 92vh; }
+  .dashmodal__summary { grid-template-columns: 1fr 1fr; }
+  .weekbars { height: 140px; }
+  .dashmodal__note { font-size: 0.86rem; }
+}
