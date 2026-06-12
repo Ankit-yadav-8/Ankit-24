@@ -1518,3 +1518,118 @@ img, svg, video, iframe, canvas { max-width: 100%; height: auto; }
   .weekbars { height: 140px; }
   .dashmodal__note { font-size: 0.86rem; }
 }
+
+/* ══════════════════════════════════════════════════════════════
+   Service detail — per-service accent theming + heavier content
+   ══════════════════════════════════════════════════════════════ */
+.svc-detail { --svc-accent: var(--gold); }
+.svc-detail .svc-detail__icon {
+  color: var(--svc-accent);
+  border-color: color-mix(in srgb, var(--svc-accent) 30%, transparent);
+  background: color-mix(in srgb, var(--svc-accent) 10%, #fff);
+}
+.svc-detail .svc-outcome__value { color: var(--svc-accent); }
+.svc-detail .eyebrow::before { background: linear-gradient(90deg, var(--svc-accent), transparent); }
+.svc-detail .svc-deliverables li::before {
+  border-color: var(--svc-accent);
+  background-color: color-mix(in srgb, var(--svc-accent) 16%, #fff);
+}
+
+/* CTA rows wrap, and go full-width on phones */
+.svc-cta-row { margin-top: 2rem; display: flex; gap: 1rem; flex-wrap: wrap; }
+
+/* Dual chart row */
+.svc-duo { display: grid; grid-template-columns: 1.55fr 1fr; gap: 24px; align-items: stretch; }
+.svc-duo--rev { direction: rtl; }
+.svc-duo--rev > * { direction: ltr; }
+.svc-pie { display: flex; flex-direction: column; }
+.svc-pie h3 { font-family: var(--font-display); font-size: clamp(1.4rem, 3vw, 1.9rem); font-weight: 500; margin: 0.5rem 0 0.2rem; }
+.svc-pie .piechart { margin-top: auto; display: flex; flex-direction: column; align-items: center; gap: 1.1rem; }
+
+/* Numbered problem/approach/proof blocks */
+.svc-block { position: relative; overflow: hidden; }
+.svc-block__k {
+  position: absolute; top: 0.7rem; right: 1rem;
+  font-family: var(--font-display); font-size: 3.4rem; font-weight: 600; line-height: 1;
+  color: color-mix(in srgb, var(--svc-accent) 16%, transparent);
+}
+.svc-block h3 { position: relative; }
+
+/* Deliverables — two columns on wider screens */
+.svc-deliverables--grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 0 28px; }
+.svc-deliverables--grid li:nth-last-child(2):nth-child(odd) { border-bottom: 1px solid var(--line); }
+
+/* Playbook steps */
+.svc-playbook { display: grid; grid-template-columns: repeat(4, 1fr); gap: 18px; }
+.svc-step {
+  position: relative; padding: 1.8rem 1.5rem; border-radius: var(--radius-lg);
+  background: var(--surface); border: 1px solid var(--line); box-shadow: var(--elev-1);
+}
+.svc-step::before {
+  content: ''; position: absolute; left: 0; top: 1.8rem; bottom: 1.8rem; width: 3px; border-radius: 3px;
+  background: var(--svc-accent);
+}
+.svc-step__num { font-family: var(--font-display); font-size: 0.95rem; font-weight: 700; color: var(--svc-accent); }
+.svc-step h4 { font-family: var(--font-display); font-size: 1.2rem; font-weight: 500; margin: 0.5rem 0 0.5rem; }
+.svc-step p { color: var(--ink-soft); font-size: 0.95rem; line-height: 1.5; }
+
+/* Service FAQ */
+.svc-faq { display: grid; grid-template-columns: repeat(2, 1fr); gap: 18px; }
+.svc-faq__item {
+  padding: 1.6rem 1.7rem; border-radius: var(--radius-lg);
+  background: var(--surface); border: 1px solid var(--line); border-left: 3px solid var(--svc-accent);
+}
+.svc-faq__item h4 { font-family: var(--font-display); font-size: 1.12rem; font-weight: 500; margin-bottom: 0.6rem; }
+.svc-faq__item p { color: var(--ink-soft); line-height: 1.6; }
+
+@media (max-width: 860px) {
+  .svc-duo { grid-template-columns: 1fr; }
+  .svc-duo--rev { direction: ltr; }
+  .svc-playbook { grid-template-columns: repeat(2, 1fr); }
+  .svc-faq { grid-template-columns: 1fr; }
+}
+@media (max-width: 560px) {
+  .svc-deliverables--grid { grid-template-columns: 1fr; }
+  .svc-playbook { grid-template-columns: 1fr; }
+}
+
+/* ══════════════════════════════════════════════════════════════
+   Global "Book a Growth Call" popup
+   ══════════════════════════════════════════════════════════════ */
+.gcpop {
+  position: fixed; z-index: 1180; left: 0; right: 0; margin-inline: auto;
+  bottom: clamp(18px, 4vw, 30px); width: min(430px, calc(100vw - 32px));
+  background: var(--surface); border: 1px solid var(--line); border-radius: 22px;
+  box-shadow: var(--elev-3); padding: 1.5rem 1.6rem 1.6rem;
+}
+.gcpop__close {
+  position: absolute; top: 0.85rem; right: 0.85rem; width: 30px; height: 30px;
+  display: grid; place-items: center; border-radius: 9px;
+  background: var(--surface-2); border: 1px solid var(--line); color: var(--ink-soft);
+}
+.gcpop__close svg { width: 15px; height: 15px; }
+.gcpop__close:hover { background: var(--surface-3); color: var(--ink); }
+.gcpop__tag {
+  display: inline-flex; align-items: center; gap: 0.45rem; font-size: 0.74rem; font-weight: 800;
+  letter-spacing: 0.04em; text-transform: uppercase; color: #2bb673;
+  background: rgba(43, 182, 115, 0.1); padding: 0.32rem 0.7rem; border-radius: 100px;
+}
+.gcpop__tag i { width: 7px; height: 7px; border-radius: 50%; background: #2bb673; }
+.gcpop__title { font-family: var(--font-display); font-size: 1.3rem; font-weight: 500; line-height: 1.2; margin: 0.9rem 0 0.5rem; max-width: 22ch; }
+.gcpop__sub { font-size: 0.92rem; color: var(--ink-soft); line-height: 1.55; }
+.gcpop__ctas { display: flex; gap: 0.7rem; margin-top: 1.2rem; flex-wrap: wrap; }
+.gcpop__ctas .btn { padding: 0.8rem 1.3rem; font-size: 0.92rem; }
+/* lift clear of the bottom-corner floating action buttons on phones */
+@media (max-width: 560px) { .gcpop { bottom: 92px; } }
+
+/* ══════════════════════════════════════════════════════════════
+   Responsive buttons — never overflow on small screens
+   ══════════════════════════════════════════════════════════════ */
+@media (max-width: 460px) {
+  .svc-cta-row, .cta-band__ctas, .gcpop__ctas {
+    width: 100%; display: flex; flex-wrap: wrap; gap: 0.7rem;
+  }
+  /* direct children are magnetic wrappers (div) or raw buttons */
+  .svc-cta-row > *, .cta-band__ctas > *, .gcpop__ctas > * { flex: 1 1 100%; }
+  .svc-cta-row .btn, .cta-band__ctas .btn, .gcpop__ctas .btn { width: 100%; white-space: normal; }
+}
