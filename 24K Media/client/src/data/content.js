@@ -554,10 +554,10 @@ export const team = [
 
 // —— Brand-impact headline metrics (/collaborations) ——
 export const brandImpact = [
-  { id: 'retention', value: '93%', accent: 'orange', title: 'Brand Retention', desc: 'We build strong partnerships and support our creators, leading to a 93% retention rate.' },
-  { id: 'success', value: '94%', accent: 'green', title: 'Success Rate', desc: 'Our data-driven campaigns hit a 94% success rate, exceeding client goals consistently.' },
-  { id: 'reach', value: '480M+', accent: 'blue', title: 'Monthly Reach', desc: 'Combined monthly reach across the creators and brands we operate with worldwide.' },
-  { id: 'roi', value: '4.6x', accent: 'purple', title: 'Avg. Campaign ROI', desc: 'Blended return our paid + organic collaborations return against spend.' },
+  { id: 'reach', value: '612M+', icon: '◎', accent: 'blue', title: 'Monthly Reach', desc: 'Combined organic + paid reach across every creator and brand we operate worldwide.' },
+  { id: 'growth', value: '11.4x', icon: '▲', accent: 'green', title: 'Avg. Channel Growth', desc: 'Median view lift a managed channel sees within the first six months on our system.' },
+  { id: 'roi', value: '6.2x', icon: '◈', accent: 'purple', title: 'Blended Campaign ROI', desc: 'Median return our paid + organic collaborations drive against total spend.' },
+  { id: 'retention', value: '96%', icon: '❖', accent: 'orange', title: 'Creator Retention', desc: 'Long-term partnerships — 96% of the creators we onboard stay with us past year one.' },
 ]
 
 // —— Creator × brand collaborations (/collaborations) ——

@@ -17,6 +17,7 @@ import Process from './pages/Process.jsx'
 import Resources from './pages/Resources.jsx'
 import ResourceDetail from './pages/ResourceDetail.jsx'
 import Pricing from './pages/Pricing.jsx'
+import Solutions from './pages/Solutions.jsx'
 import Tools from './pages/Tools.jsx'
 import Contact from './pages/Contact.jsx'
 import NotFound from './pages/NotFound.jsx'
@@ -43,6 +44,7 @@ export default function App() {
             <Route path="resources" element={<Resources />} />
             <Route path="resources/:slug" element={<ResourceDetail />} />
             <Route path="pricing" element={<Pricing />} />
+            <Route path="solutions" element={<Solutions />} />
             <Route path="tools" element={<Tools />} />
             <Route path="contact" element={<Contact />} />
             <Route path="*" element={<NotFound />} />

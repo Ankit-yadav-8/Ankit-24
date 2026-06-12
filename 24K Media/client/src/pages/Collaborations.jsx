@@ -30,6 +30,7 @@ export default function Collaborations() {
             {brandImpact.map((s, i) => (
               <Reveal key={s.id} className={`impact-card accent-${s.accent}`} delay={(i % 2) * 0.08}>
                 <span className="impact-card__bar" />
+                {s.icon && <span className="impact-card__ico">{s.icon}</span>}
                 <div className="impact-card__value">{s.value}</div>
                 <h3 className="impact-card__title">{s.title}</h3>
                 <p className="impact-card__desc">{s.desc}</p>

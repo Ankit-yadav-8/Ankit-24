@@ -3,9 +3,18 @@ import PageHeader from '../components/ui/PageHeader.jsx'
 import Reveal from '../components/ui/Reveal.jsx'
 import Button from '../components/ui/Button.jsx'
 import ServiceCard from '../components/ui/ServiceCard.jsx'
+import TrendChart from '../components/ui/TrendChart.jsx'
 import CTABand from '../components/sections/CTABand.jsx'
 import NotFound from './NotFound.jsx'
+import { seededTrend } from '../lib/charts.js'
 import { useSite } from '../context/SiteContext.jsx'
+
+const CAT_COLOR = {
+  Content: 'var(--gold)',
+  Brand: '#9b5de5',
+  Strategy: '#3f8efc',
+  Distribution: '#2bb673',
+}
 
 export default function ServiceDetail() {
   const { slug } = useParams()
@@ -16,6 +25,11 @@ export default function ServiceDetail() {
   const related = services.filter((s) => s.slug !== slug && s.category === service.category).slice(0, 3)
   const fallbackRelated = services.filter((s) => s.slug !== slug).slice(0, 3)
   const recos = related.length ? related : fallbackRelated
+
+  const color = CAT_COLOR[service.category] || 'var(--gold)'
+  const trend = seededTrend(service.slug, 10)
+  const growth = Math.round((trend[trend.length - 1] / trend[0] - 1) * 100)
+  const labels = trend.map((_, i) => `Month ${i + 1}`)
 
   return (
     <>
@@ -49,6 +63,25 @@ export default function ServiceDetail() {
               </div>
             </Reveal>
           </div>
+        </div>
+      </section>
+
+      <section className="section section--tight" style={{ paddingTop: 0 }}>
+        <div className="container">
+          <Reveal className="card svc-chart" style={{ '--svc-accent': color }}>
+            <div className="svc-chart__head">
+              <div className="svc-chart__intro">
+                <span className="eyebrow">Typical Trajectory</span>
+                <h3>{service.outcomes[0].label}</h3>
+                <p className="text-soft">Modeled growth over the first 10 months on the {service.title} system — hover the line to inspect each month.</p>
+              </div>
+              <div className="svc-chart__delta">
+                <b>+{growth}%</b>
+                <span>compounded over 10 months</span>
+              </div>
+            </div>
+            <TrendChart data={trend} labels={labels} color={color} height={190} format={(v) => `${v} index`} />
+          </Reveal>
         </div>
       </section>
 

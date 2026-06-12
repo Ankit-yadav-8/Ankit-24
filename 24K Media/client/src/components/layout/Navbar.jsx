@@ -79,7 +79,7 @@ export default function Navbar() {
   }, [services])
 
   const solutions = useMemo(
-    () => (industries || []).map((i) => ({ label: i.title, to: '/contact', desc: i.desc, icon: i.icon })),
+    () => (industries || []).map((i) => ({ label: i.title, to: '/solutions', desc: i.desc, icon: i.icon })),
     [industries]
   )
 
