@@ -16,9 +16,14 @@ export default function WhyUs() {
           {whyPillars.map((p, i) => (
             <Reveal key={p.id} className="card pillar" delay={(i % 3) * 0.08}>
               <span className="card-gold-line" />
-              <div className="pillar__num">{String(i + 1).padStart(2, '0')}</div>
-              <h3 className="pillar__title">{p.title}</h3>
-              <p className="pillar__desc">{p.description}</p>
+              <div className="pillar__media">
+                <img src={p.image} alt="" loading="lazy" />
+                <span className="pillar__num">{String(i + 1).padStart(2, '0')}</span>
+              </div>
+              <div className="pillar__body">
+                <h3 className="pillar__title">{p.title}</h3>
+                <p className="pillar__desc">{p.description}</p>
+              </div>
             </Reveal>
           ))}
         </div>

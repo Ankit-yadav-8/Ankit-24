@@ -4,7 +4,7 @@ import Button from '../ui/Button.jsx'
 import Reveal from '../ui/Reveal.jsx'
 import { useSite } from '../../context/SiteContext.jsx'
 
-export default function PortfolioSection() {
+export default function PortfolioSection({ limit = 6 }) {
   const { portfolio, portfolioFilters } = useSite()
   return (
     <section className="section section--smoke2">
@@ -15,7 +15,7 @@ export default function PortfolioSection() {
           text="Thumbnails, videos, websites and campaigns across creators, startups and modern brands."
         />
         <Reveal>
-          <FilterableWork items={portfolio} filters={portfolioFilters} limit={6} />
+          <FilterableWork items={portfolio} filters={portfolioFilters} limit={limit} />
         </Reveal>
         <div style={{ marginTop: '2.6rem', display: 'flex', justifyContent: 'center' }}>
           <Button to="/portfolio" variant="ghost" arrow>View full portfolio</Button>

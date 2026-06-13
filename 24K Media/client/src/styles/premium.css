@@ -1542,9 +1542,11 @@ img, svg, video, iframe, canvas { max-width: 100%; height: auto; }
 .svc-duo { display: grid; grid-template-columns: 1.55fr 1fr; gap: 24px; align-items: stretch; }
 .svc-duo--rev { direction: rtl; }
 .svc-duo--rev > * { direction: ltr; }
-.svc-pie { display: flex; flex-direction: column; }
+.svc-pie { display: flex; flex-direction: column; padding: clamp(1.6rem, 3vw, 2.4rem); }
 .svc-pie h3 { font-family: var(--font-display); font-size: clamp(1.4rem, 3vw, 1.9rem); font-weight: 500; margin: 0.5rem 0 0.2rem; }
-.svc-pie .piechart { margin-top: auto; display: flex; flex-direction: column; align-items: center; gap: 1.1rem; }
+/* Center the donut + legend as one block in the space left under the header,
+   instead of dumping it at the bottom edge (which left a big void above). */
+.svc-pie .piechart { margin: auto 0; display: flex; flex-direction: column; align-items: center; gap: 1.4rem; }
 
 /* Numbered problem/approach/proof blocks */
 .svc-block { position: relative; overflow: hidden; }
@@ -1923,3 +1925,102 @@ body::before { display: none !important; }       /* aurora gradient */
   border: 1px solid rgba(73, 40, 253, 0.14);
 }
 .team-card__photo { background: var(--accent-tint, var(--surface-2)); }
+
+/* ══════════════════════════════════════════════════════════════
+   ★ IMAGE-RICH CARDS  ·  pillars · industries · resources now lead
+     with a photo. Clean white body, gentle zoom on hover — stays
+     on-brand with the minimalist white system above.
+   ══════════════════════════════════════════════════════════════ */
+
+/* Shared media block (cover image + soft bottom scrim for legibility) */
+.pillar__media,
+.industry__media,
+.resource-card__media {
+  position: relative;
+  overflow: hidden;
+  background: var(--surface-2);
+}
+.pillar__media img,
+.industry__media img,
+.resource-card__media img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.8s var(--ease);
+}
+.pillar:hover .pillar__media img,
+.industry:hover .industry__media img,
+.resource-card:hover .resource-card__media img { transform: scale(1.07); }
+.pillar__media::after,
+.industry__media::after,
+.resource-card__media::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, transparent 50%, rgba(21, 23, 26, 0.28));
+}
+
+/* —— Why-us pillars · image header + numbered badge —— */
+.pillar { padding: 0; overflow: hidden; }
+.pillar__media { aspect-ratio: 16 / 10; }
+.pillar__media .pillar__num {
+  position: absolute;
+  left: 16px;
+  bottom: 12px;
+  z-index: 1;
+  width: auto;
+  font-family: var(--font-display);
+  font-size: 0.95rem;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+  color: #fff;
+  -webkit-text-stroke: 0;
+  background: rgba(73, 40, 253, 0.92);
+  padding: 0.24rem 0.62rem;
+  border-radius: 9px;
+  box-shadow: 0 6px 16px rgba(73, 40, 253, 0.34);
+}
+.pillar__body { padding: 1.5rem 1.6rem 1.7rem; }
+.pillar__body .pillar__title { margin-top: 0; }
+
+/* —— Industries · image header with overlapping icon tile —— */
+.industry { padding: 0; overflow: hidden; }
+.industry__media { aspect-ratio: 16 / 10; }
+.industry__media .industry__ico {
+  position: absolute;
+  left: 16px;
+  bottom: 14px;
+  z-index: 2;
+  margin: 0;
+  box-shadow: var(--elev-2);
+}
+.industry__body { padding: 1.5rem 1.6rem 1.7rem; }
+.industry__body .industry__title { margin-top: 0; }
+
+/* —— Resource cards · cover image + floating category tag —— */
+.resource-card { padding: 0; overflow: hidden; min-height: 0; }
+.resource-card__media { aspect-ratio: 16 / 9; }
+.resource-card__media .resource-card__cat {
+  position: absolute;
+  top: 12px;
+  left: 12px;
+  z-index: 1;
+  align-self: auto;
+}
+.resource-card__body {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  padding: 1.5rem 1.6rem 1.6rem;
+}
+.resource-card__body .resource-card__title { margin-top: 0; }
+.resource-card__body .resource-card__excerpt { flex: 1; }
+
+/* —— Animation polish · gentle, consistent image zoom on work tiles —— */
+.work-card__media img,
+.showreel__item img { transition: transform 0.8s var(--ease); }
+.showreel__item:hover img { transform: scale(1.06); }
+
+@media (max-width: 860px) {
+  .pillar__media, .industry__media { aspect-ratio: 16 / 9; }
+}

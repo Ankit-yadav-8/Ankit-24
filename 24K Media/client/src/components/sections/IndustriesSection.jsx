@@ -17,9 +17,14 @@ export default function IndustriesSection() {
           {industries.map((it, i) => (
             <Reveal key={it.id} className="card industry" delay={(i % 3) * 0.08}>
               <span className="card-gold-line" />
-              <span className="industry__ico">{it.icon}</span>
-              <h3 className="industry__title">{it.title}</h3>
-              <p className="industry__desc">{it.desc}</p>
+              <div className="industry__media">
+                <img src={it.image} alt="" loading="lazy" />
+                <span className="industry__ico">{it.icon}</span>
+              </div>
+              <div className="industry__body">
+                <h3 className="industry__title">{it.title}</h3>
+                <p className="industry__desc">{it.desc}</p>
+              </div>
             </Reveal>
           ))}
         </div>

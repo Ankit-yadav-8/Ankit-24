@@ -39,36 +39,42 @@ export const whyPillars = [
   {
     id: 'strategy-first',
     title: 'Strategy Before Execution',
+    image: U('photo-1542744094-3a31f272c490', 800),
     description:
       'Every channel starts with positioning, audience and a 90-day thesis — never a camera turned on by accident.',
   },
   {
     id: 'dedicated-team',
     title: 'Dedicated Growth Team',
+    image: U('photo-1522071820081-009f0129c71c', 800),
     description:
       'A strategist, editor, designer and distribution lead assigned to your brand. Not a freelancer queue.',
   },
   {
     id: 'data-driven',
     title: 'Data-Driven Decisions',
+    image: U('photo-1600880292089-90a7e086ee0c', 800),
     description:
       'Retention curves, CTR and revenue per asset decide what we make next — not opinion.',
   },
   {
     id: 'full-ecosystem',
     title: 'Full Content Ecosystem',
+    image: U('photo-1556761175-b413da4baf72', 800),
     description:
       'Long-form, shorts, podcast, newsletter and site working as one compounding system.',
   },
   {
     id: 'fast-turnaround',
     title: 'Fast Turnaround',
+    image: U('photo-1593720213428-28a5b9e94613', 800),
     description:
       '48-hour edit cycles and weekly publishing cadence, held to a calendar you can trust.',
   },
   {
     id: 'operator-led',
     title: 'Operator-Led Execution',
+    image: U('photo-1598550874175-4d0ef436c909', 800),
     description:
       'Built and run by a team of operators who have shipped products and grown audiences from zero.',
   },
@@ -416,6 +422,7 @@ export const resources = [
   {
     slug: 'retention-is-the-only-metric',
     title: 'Retention Is the Only Metric That Compounds',
+    image: U('photo-1611162617474-5b21e879e113', 800),
     category: 'Playbook',
     excerpt: 'Why average view duration — not subscribers — is the number that decides whether a channel grows.',
     readTime: '6 min read',
@@ -429,6 +436,7 @@ export const resources = [
   {
     slug: 'personal-monopoly-playbook',
     title: 'The Personal Monopoly Playbook',
+    image: U('photo-1600880292089-90a7e086ee0c', 800),
     category: 'Strategy',
     excerpt: 'How founders become the default name in their category by owning a specific intersection of ideas.',
     readTime: '8 min read',
@@ -442,6 +450,7 @@ export const resources = [
   {
     slug: 'thumbnails-decide-the-click',
     title: 'Thumbnails Decide the Click. Titles Decide the Watch.',
+    image: U('photo-1626785774573-4b799315345d', 800),
     category: 'Playbook',
     excerpt: 'A practical system for packaging that lifts CTR without resorting to clickbait.',
     readTime: '5 min read',
@@ -455,6 +464,7 @@ export const resources = [
   {
     slug: 'content-to-revenue',
     title: 'From Content to Revenue: Closing the Loop',
+    image: U('photo-1551434678-e076c223a692', 800),
     category: 'Report',
     excerpt: 'The frameworks we use to tie content output to pipeline, so growth is bankable — not vanity.',
     readTime: '7 min read',
@@ -469,14 +479,14 @@ export const resources = [
 
 // —— Who we serve ——
 export const industries = [
-  { id: 'creators', icon: '▶', title: 'Creators & YouTubers', desc: 'Turn a channel into a predictable growth engine and a real business.' },
-  { id: 'founders', icon: '♦', title: 'Founders & Operators', desc: 'Make the founder the most valuable distribution channel the company owns.' },
-  { id: 'd2c', icon: '◐', title: 'D2C & E-commerce', desc: 'Build an owned audience that lowers CAC and compounds every quarter.' },
-  { id: 'saas', icon: '◈', title: 'SaaS & Startups', desc: 'Category authority and inbound pipeline your sales team can actually close.' },
-  { id: 'education', icon: '◎', title: 'Educators & Coaches', desc: 'A personal monopoly that makes you the default name in your niche.' },
-  { id: 'agencies', icon: '⬡', title: 'Agencies & Studios', desc: 'White-label production and systems that scale your delivery without the chaos.' },
-  { id: 'podcasters', icon: '◍', title: 'Podcasters & Hosts', desc: 'Turn long conversations into a clip engine that travels across every feed.' },
-  { id: 'b2b', icon: '▣', title: 'B2B & Enterprise', desc: 'Executive thought leadership and demand that your sales team can attribute.' },
+  { id: 'creators', icon: '▶', title: 'Creators & YouTubers', image: U('photo-1605810230434-7631ac76ec81', 800), desc: 'Turn a channel into a predictable growth engine and a real business.' },
+  { id: 'founders', icon: '♦', title: 'Founders & Operators', image: U('photo-1522071820081-009f0129c71c', 800), desc: 'Make the founder the most valuable distribution channel the company owns.' },
+  { id: 'd2c', icon: '◐', title: 'D2C & E-commerce', image: U('photo-1551434678-e076c223a692', 800), desc: 'Build an owned audience that lowers CAC and compounds every quarter.' },
+  { id: 'saas', icon: '◈', title: 'SaaS & Startups', image: U('photo-1600880292089-90a7e086ee0c', 800), desc: 'Category authority and inbound pipeline your sales team can actually close.' },
+  { id: 'education', icon: '◎', title: 'Educators & Coaches', image: U('photo-1542744094-3a31f272c490', 800), desc: 'A personal monopoly that makes you the default name in your niche.' },
+  { id: 'agencies', icon: '⬡', title: 'Agencies & Studios', image: U('photo-1556761175-b413da4baf72', 800), desc: 'White-label production and systems that scale your delivery without the chaos.' },
+  { id: 'podcasters', icon: '◍', title: 'Podcasters & Hosts', image: U('photo-1593720213428-28a5b9e94613', 800), desc: 'Turn long conversations into a clip engine that travels across every feed.' },
+  { id: 'b2b', icon: '▣', title: 'B2B & Enterprise', image: U('photo-1574717024653-61fd2cf4d44d', 800), desc: 'Executive thought leadership and demand that your sales team can attribute.' },
 ]
 
 // —— Per-segment detail (one dedicated page each at /solutions/:id) ——
