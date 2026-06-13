@@ -1001,6 +1001,7 @@ img, svg, video, iframe, canvas { max-width: 100%; height: auto; }
 
 /* —— "We merge …" pill-highlight band —— */
 .mergeband { text-align: center; }
+.mergeband__stack { display: flex; flex-direction: column; gap: clamp(1.3rem, 3vw, 2.2rem); }
 .mergeband__head {
   max-width: 54ch;
   margin-inline: auto;

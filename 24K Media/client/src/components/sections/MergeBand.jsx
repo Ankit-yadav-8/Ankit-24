@@ -1,22 +1,28 @@
 import Reveal from '../ui/Reveal.jsx'
-import { useSite } from '../../context/SiteContext.jsx'
 
-// "We merge [Fresh Ideas] [Proven Systems] [Smart Execution] …" — inline pastel
-// pill highlights, CreatorTube style. Centered, high-contrast, black type.
+// A pastel pill highlight used inside the merge-band statements.
+const Pill = ({ accent, icon, children }) => (
+  <span className={`pill-hl accent-${accent}`}>
+    <span className="pill-hl__ico">{icon}</span>
+    {children}
+  </span>
+)
+
+// Two stacked "equation" thoughts, each with inline pill highlights —
+// CreatorTube style, centered, high-contrast black type.
 export default function MergeBand() {
-  const { mergePillars } = useSite()
   return (
     <section className="section section--tight mergeband">
-      <div className="container">
+      <div className="container mergeband__stack">
         <Reveal as="h2" className="mergeband__head">
-          We merge{' '}
-          {mergePillars.map((p, i) => (
-            <span className={`pill-hl accent-${p.accent}`} key={p.id}>
-              <span className="pill-hl__ico">{p.icon}</span>
-              {p.label}
-            </span>
-          ))}{' '}
-          into internet brands people can’t ignore.
+          Your <Pill accent="purple" icon="✦">Story</Pill> + our{' '}
+          <Pill accent="orange" icon="◎">Strategy</Pill> ={' '}
+          <Pill accent="blue" icon="◐">Content That Grows</Pill>.
+        </Reveal>
+        <Reveal as="h2" className="mergeband__head" delay={0.1}>
+          We help you go from <Pill accent="pink" icon="✦">Hidden Gem</Pill> to{' '}
+          <Pill accent="blue" icon="◐">Go-To Creator</Pill> with content people{' '}
+          <Pill accent="green" icon="◎">Can’t Stop Sharing</Pill>.
         </Reveal>
       </div>
     </section>
