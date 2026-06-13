@@ -20,7 +20,6 @@ const initialData = {
   resources: fallback.resources,
   industries: fallback.industries,
   solutionsDetail: fallback.solutionsDetail,
-  pricing: fallback.pricing,
   comparison: fallback.comparison,
   faqs: fallback.faqs,
   tools: fallback.tools,

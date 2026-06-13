@@ -20,7 +20,6 @@ const localSite = {
   story: fallback.story,
   resources: fallback.resources,
   industries: fallback.industries,
-  pricing: fallback.pricing,
   comparison: fallback.comparison,
   faqs: fallback.faqs,
   tools: fallback.tools,

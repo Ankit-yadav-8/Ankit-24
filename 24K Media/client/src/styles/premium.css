@@ -2027,3 +2027,15 @@ body::before { display: none !important; }       /* aurora gradient */
 @media (max-width: 860px) {
   .pillar__media, .industry__media { aspect-ratio: 16 / 9; }
 }
+
+/* ══════════════════════════════════════════════════════════════
+   ★ HOME · tighter vertical rhythm so sections sit closer together
+     (scoped to the landing page only — interior pages keep their
+     more generous spacing).
+   ══════════════════════════════════════════════════════════════ */
+.home .section { padding-block: clamp(42px, 6vw, 86px); }
+.home .section--tight { padding-block: clamp(30px, 4.5vw, 58px); }
+@media (max-width: 860px) {
+  .home .section { padding-block: clamp(36px, 8vw, 64px); }
+  .home .section--tight { padding-block: clamp(26px, 6vw, 48px); }
+}

@@ -27,7 +27,6 @@ const RESOURCE_ITEMS = [
 
 const COMPANY_ITEMS = [
   { label: 'About 24K', to: '/about', desc: 'Who we are and how we operate.', icon: '✦' },
-  { label: 'The Team', to: '/team', desc: 'The people behind the studio.', icon: '◓' },
   { label: 'Our Process', to: '/process', desc: 'Discovery to growth, step by step.', icon: '◎' },
   { label: 'Collaborations', to: '/collaborations', desc: 'Creator × brand partnerships.', icon: '⬡' },
   { label: 'Contact', to: '/contact', desc: 'Book a growth call with the team.', icon: '◆' },
@@ -40,12 +39,12 @@ const PANEL_FEATURE = {
   company: { tag: 'Say hi', title: 'Let’s build something', body: 'Meet the team and see whether 24K is the right partner for your next chapter.', cta: 'Start a conversation', to: '/contact' },
 }
 
-// One merged, tidy bar: two list menus + one mega + a direct Pricing link.
+// One merged, tidy bar: two list menus + one mega + a direct Team link.
 const MENU = [
   { key: 'services', label: 'Services', mega: true },
   { key: 'solutions', label: 'Solutions' },
   { key: 'resources', label: 'Resources' },
-  { key: 'pricing', label: 'Pricing', to: '/pricing' },
+  { key: 'team', label: 'Team', to: '/team' },
   { key: 'company', label: 'Company' },
 ]
 

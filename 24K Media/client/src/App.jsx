@@ -16,7 +16,6 @@ import Collaborations from './pages/Collaborations.jsx'
 import Process from './pages/Process.jsx'
 import Resources from './pages/Resources.jsx'
 import ResourceDetail from './pages/ResourceDetail.jsx'
-import Pricing from './pages/Pricing.jsx'
 import Solutions from './pages/Solutions.jsx'
 import SolutionDetail from './pages/SolutionDetail.jsx'
 import Tools from './pages/Tools.jsx'
@@ -43,7 +42,6 @@ export default function App() {
             <Route path="process" element={<Process />} />
             <Route path="resources" element={<Resources />} />
             <Route path="resources/:slug" element={<ResourceDetail />} />
-            <Route path="pricing" element={<Pricing />} />
             <Route path="solutions" element={<Solutions />} />
             <Route path="solutions/:slug" element={<SolutionDetail />} />
             <Route path="tools" element={<Tools />} />

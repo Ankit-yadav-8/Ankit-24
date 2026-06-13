@@ -12,17 +12,16 @@ import StorySection from '../components/sections/StorySection.jsx'
 import ProcessSection from '../components/sections/ProcessSection.jsx'
 import CollaborationsSection from '../components/sections/CollaborationsSection.jsx'
 import ResourcesSection from '../components/sections/ResourcesSection.jsx'
-import PricingSection from '../components/sections/PricingSection.jsx'
 import Testimonials from '../components/sections/Testimonials.jsx'
 import FaqSection from '../components/sections/FaqSection.jsx'
 import CTABand from '../components/sections/CTABand.jsx'
 
 // A full, content-heavy landing: proof → promise → services → why → work →
 // results → who we serve → story → process → partnerships → resources →
-// pricing → voices → answers → CTA. Image-rich throughout.
+// voices → answers → CTA. Image-rich throughout.
 export default function Home() {
   return (
-    <>
+    <div className="home">
       <Hero />
       <CreatorWall />
       <SocialProof />
@@ -37,10 +36,9 @@ export default function Home() {
       <ProcessSection />
       <CollaborationsSection />
       <ResourcesSection />
-      <PricingSection />
       <Testimonials />
       <FaqSection />
       <CTABand />
-    </>
+    </div>
   )
 }

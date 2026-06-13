@@ -573,28 +573,6 @@ export const solutionsDetail = {
   },
 }
 
-// —— Pricing / engagement tiers ——
-export const pricing = [
-  {
-    id: 'starter', name: 'Starter', price: '₹75K', period: '/month',
-    tagline: 'For creators finding their footing and ready to get serious.',
-    featured: false, cta: 'Start with Starter',
-    features: ['1 primary channel managed', '8 short-form + 4 long-form / month', 'Retention-first editing', 'Thumbnail design & A/B tests', 'Monthly analytics review', 'Dedicated strategist'],
-  },
-  {
-    id: 'growth', name: 'Growth', price: '₹1.8L', period: '/month',
-    tagline: 'Our most popular plan — a full, compounding content engine.',
-    featured: true, cta: 'Scale with Growth',
-    features: ['Up to 3 platforms managed', '20 shorts + 8 long-form / month', 'Podcast or founder-branding track', 'Full design & motion graphics', 'Distribution & community management', 'Bi-weekly strategy sprints', 'Priority 48-hour turnaround'],
-  },
-  {
-    id: 'scale', name: 'Scale', price: 'Custom', period: '',
-    tagline: 'For brands going all-in on media as core infrastructure.',
-    featured: false, cta: 'Talk to us',
-    features: ['Everything in Growth', 'Unlimited platforms & formats', 'Dedicated pod (4–6 specialists)', 'Performance marketing & funnels', 'AI content systems & automation', 'Quarterly business reviews', 'Embedded media team'],
-  },
-]
-
 // —— 24K vs the usual ——
 export const comparison = {
   columns: ['24K Media', 'Freelancers', 'In-house hire'],
