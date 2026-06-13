@@ -16,7 +16,7 @@ export default function MergeBand() {
               {p.label}
             </span>
           ))}{' '}
-          into one growth engine that turns attention into authority — and authority into an internet brand people can’t ignore.
+          into internet brands people can’t ignore.
         </Reveal>
       </div>
     </section>
