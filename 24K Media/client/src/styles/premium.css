@@ -1002,21 +1002,23 @@ img, svg, video, iframe, canvas { max-width: 100%; height: auto; }
 /* —— "We merge …" pill-highlight band —— */
 .mergeband { text-align: center; }
 .mergeband__head {
-  max-width: 64ch;
+  max-width: 54ch;
   margin-inline: auto;
   font-family: var(--font-display);
   font-weight: 500;
-  font-size: clamp(1.55rem, 3.4vw, 2.6rem);
-  line-height: 1.32;
+  font-size: clamp(1.5rem, 3.2vw, 2.5rem);
+  line-height: 1.55;            /* room so pill backgrounds never crowd between lines */
   letter-spacing: -0.02em;
   color: var(--ink);
+  text-wrap: balance;           /* even line lengths — no pill stranded at the edge */
 }
 .pill-hl {
   display: inline-flex;
   align-items: center;
+  vertical-align: middle;       /* sit centered on the text line, not raised */
   gap: 0.4rem;
-  padding: 0.06em 0.62em;
-  margin: 0.1em 0.12em;
+  padding: 0.1em 0.62em;
+  margin: 0.12em 0.14em;
   border-radius: 999px;
   background: var(--accent-tint);
   border: 1px solid var(--accent-line);
