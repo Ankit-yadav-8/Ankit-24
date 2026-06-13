@@ -529,6 +529,20 @@ body::before {
 .team-card__socials a svg { width: 15px; height: 15px; }
 .team-card__socials a:hover { background: var(--accent); color: #fff; border-color: var(--accent); transform: translateY(-2px); }
 
+/* —— Cards without a photo: clean accent panel, no dark overlay —— */
+.team-card--nophoto .team-card__photo::after { display: none; }
+.team-card--nophoto .team-card__photo {
+  display: grid; place-items: center;
+  background: linear-gradient(160deg, var(--accent-tint), #fff);
+}
+/* —— Held "position open" seat —— */
+.team-card--placeholder { border-style: dashed; border-color: var(--accent-line); }
+.team-card--placeholder .team-card__name { color: var(--ink-soft); }
+.team-card__seat {
+  font-family: var(--font-display); font-size: 3rem; font-weight: 300; line-height: 1;
+  color: var(--accent-ink); opacity: 0.55;
+}
+
 .culture-card { position: relative; padding: 2rem 1.9rem; }
 .culture-card__dot { display: inline-block; width: 12px; height: 12px; border-radius: 50%; background: var(--gold); box-shadow: 0 0 0 5px var(--gold-soft); margin-bottom: 1.2rem; }
 .culture-card h3 { font-family: var(--font-display); font-size: 1.35rem; font-weight: 500; }

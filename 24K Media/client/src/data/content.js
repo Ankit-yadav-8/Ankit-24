@@ -617,13 +617,15 @@ export const nicheRPM = [
 ]
 
 // —— The team behind the studio (/team) ——
+// Founders (no public photo yet → render with a plain accent panel). The last
+// three are the video-editing pod; tm3 is a held "position open" seat.
 export const team = [
-  { id: 'tm1', name: 'Arjun Khanna', role: 'Founder & Growth Lead', accent: 'purple', bio: 'Operator-turned-builder. Sets the thesis and owns the growth engine end to end.', socials: { x: '#', linkedin: '#' }, image: U('photo-1500648767791-00dcc994a43e', 480) },
-  { id: 'tm2', name: 'Riya Sharma', role: 'Head of Content Strategy', accent: 'blue', bio: 'Turns positioning into pillars, calendars and topic systems that compound weekly.', socials: { x: '#', linkedin: '#' }, image: U('photo-1494790108377-be9c29b29330', 480) },
-  { id: 'tm3', name: 'Kabir Mehta', role: 'Lead Video Editor', accent: 'orange', bio: 'Cuts every frame to the retention graph — ruthless openings, clean sound design.', socials: { x: '#', linkedin: '#' }, image: U('photo-1507003211169-0a1dd7228f2d', 480) },
-  { id: 'tm4', name: 'Naina Verma', role: 'Design & Thumbnails', accent: 'pink', bio: 'The 5% of pixels that win 50% of the clicks. Builds a brand’s whole visual language.', socials: { x: '#', linkedin: '#' }, image: U('photo-1438761681033-6461ffad8d80', 480) },
-  { id: 'tm5', name: 'Dev Patel', role: 'Distribution & Paid', accent: 'green', bio: 'Pairs winning organic creative with tight funnels and tests relentlessly to revenue.', socials: { x: '#', linkedin: '#' }, image: U('photo-1544005313-94ddf0286df2', 480) },
-  { id: 'tm6', name: 'Ishaan Roy', role: 'Web & AI Systems', accent: 'yellow', bio: 'Ships fast, beautiful sites and brand-trained AI pipelines that multiply output.', socials: { x: '#', linkedin: '#' }, image: U('photo-1472099645785-5658abf4ff4e', 480) },
+  { id: 'tm1', name: 'Ankit Yadav', role: 'Founder', accent: 'purple', bio: 'IIT Roorkee alumnus and co-founder of CollegeParichay, built from a hostel room into a platform students rely on. Sets the studio’s vision, positioning and growth direction.', socials: {}, image: null },
+  { id: 'tm2', name: 'Ankit Kumar', role: 'CTO · Web & AI / ML Analytics', accent: 'blue', bio: 'Co-founder and CTO from IIT Roorkee. Leads engineering, web and the AI / ML analytics stack — the systems and data the studio runs on.', socials: {}, image: null },
+  { id: 'tm3', placeholder: true, name: 'Position open', role: 'Joining soon', accent: 'green', bio: 'We’re growing the studio — this seat is held for the next sharp editor, designer or strategist who lives for craft.', socials: {} },
+  { id: 'tm4', name: 'Sameer Kumar', role: 'Head of Video Editing', accent: 'orange', bio: 'Video editor and cinematographer, Joint Secretary of CineSec at IIT Roorkee. 10+ short films, music videos and documentaries — storytelling met with technical precision.', socials: { instagram: 'https://www.instagram.com/sk_x_17', linkedin: 'https://www.linkedin.com/in/sameer-kumar-537625335', portfolio: 'https://framesbysameer.carrd.co/' }, image: 'team/sameer.jpg' },
+  { id: 'tm5', name: 'Anish Harsha', role: 'Video Editor', accent: 'pink', bio: 'Visual storyteller from the Thomso and Cognizance teams at IIT Roorkee. Turns raw footage into promos, reels and cinematic edits that hold attention.', socials: { instagram: 'https://www.instagram.com/anish_harsha14/', linkedin: 'https://www.linkedin.com/in/anish-harsha-jannabhatla-51b97231b/', portfolio: 'https://drive.google.com/drive/folders/1hx04wr59GGmCu5y5aVjFQy4dTVw1xt6I' }, image: 'team/anish.jpg' },
+  { id: 'tm6', name: 'Sorabh Katariya', role: 'Video Editor', accent: 'yellow', bio: 'DaVinci Resolve specialist at IIT Roorkee. Crafts short-form content with sharp pacing, sound design and clean caption animation.', socials: { linkedin: 'https://www.linkedin.com/in/sorabh-katariya' }, image: 'team/sorabh.jpg' },
 ]
 
 // —— Brand-impact headline metrics (/collaborations) ——
