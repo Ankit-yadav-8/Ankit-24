@@ -28,7 +28,6 @@ export default function App() {
     <SmoothScroll>
       <Cursor />
       <ScrollProgress />
-      <div className="grain" />
       <div className="app">
         <Routes>
           <Route element={<Layout />}>

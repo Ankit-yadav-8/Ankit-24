@@ -12,7 +12,6 @@ export default function StorySection() {
 
   return (
     <section className="section story">
-      <div className="glow glow--gold story__glow" />
       <div className="container">
         <div className="story__wrap">
           {/* LEFT — narrative */}

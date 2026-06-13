@@ -1846,3 +1846,80 @@ img, svg, video, iframe, canvas { max-width: 100%; height: auto; }
   .hero__glow-1, .hero__glow-2, .hero__glow-3,
   .cta-band__glow, .cta-band__glow--2, .cta-band__glow--3 { animation: none; }
 }
+
+/* ══════════════════════════════════════════════════════════════
+   ★ MINIMALIST WHITE  ·  pure-white canvas, no glow, no ambient
+     motion. Loaded last so it overrides every earlier surface.
+     Keeps the playful accent palette + clean cards — just on a
+     calm, flat white background.
+   ══════════════════════════════════════════════════════════════ */
+
+/* —— 1 · Pure-white canvas · remove aurora wash, grain & particles —— */
+body { background: #ffffff !important; }
+body::before { display: none !important; }       /* aurora gradient */
+.grain { display: none !important; }              /* film-grain overlay */
+
+/* —— 2 · Kill every decorative glow / orb / shine / parallax grid —— */
+.glow,
+.hero__bg, .hero__grid, .hero__orb, .hero__shine, .hero__particle,
+.hero__glow-1, .hero__glow-2, .hero__glow-3,
+.pagehead__glow, .story__glow,
+.cta-band__glow, .cta-band__glow--2, .cta-band__glow--3,
+.footer__glow, .footer__glow--2, .footer__glow--3 {
+  display: none !important;
+}
+.mega__feature::after { display: none !important; }   /* drifting menu glow */
+
+/* —— 3 · Stop ambient/looping background-ish animations —— */
+.gold-fill { animation: none !important; }             /* static gradient text */
+.nav__logo span { animation: none !important; }        /* static wordmark */
+.mega__feature { animation: none !important; }
+@keyframes shimmer { to { background-position: 0 center; } }
+
+/* —— 4 · Flatten all full-width section / page surfaces to white —— */
+.section--smoke2,
+.section--ink,
+.cta-band,
+.creatorwall,
+.footer { background: #ffffff !important; }
+
+/* Hairlines do the separating now that tints are gone */
+.section--smoke2 { border-top: 1px solid var(--line); }
+.cta-band { border-top: 1px solid var(--line); }
+.footer { border-top: 1px solid var(--line); }
+
+/* —— 5 · Minimalist card system · crisp hairline + gentle lift —— */
+:root {
+  --elev-1: 0 1px 2px rgba(21, 23, 26, 0.04);
+  --elev-2: 0 8px 24px rgba(21, 23, 26, 0.08);
+  --elev-3: 0 18px 50px rgba(21, 23, 26, 0.10);
+}
+.card,
+.service-card, .industry, .pillar, .testi-card, .price-card, .tool-card,
+.faq-item, .team-card, .collab-card, .about-stat, .value-card,
+.solution-card, .system-card, .contact__method,
+.sol-kpi, .sol-ship__item, .svc-step, .svc-faq__item, .sol-faq__item,
+.story-card {
+  background: #ffffff;
+  border: 1px solid var(--line);
+  box-shadow: var(--elev-1);
+}
+.card:hover,
+.service-card:hover, .industry:hover, .pillar:hover, .price-card:hover,
+.tool-card:hover, .team-card:hover, .collab-card:hover, .about-stat:hover,
+.value-card:hover, .solution-card:hover, .contact__method:hover {
+  box-shadow: var(--elev-2);
+}
+.card { backdrop-filter: none; }
+
+/* —— 6 · Flatten heavy in-card gradients (keep light accent pops) —— */
+.price-card.is-featured {
+  background: #ffffff;
+  border-color: rgba(73, 40, 253, 0.35);
+  box-shadow: 0 14px 40px rgba(73, 40, 253, 0.12);
+}
+.founder__mission {
+  background: var(--gold-soft);
+  border: 1px solid rgba(73, 40, 253, 0.14);
+}
+.team-card__photo { background: var(--accent-tint, var(--surface-2)); }

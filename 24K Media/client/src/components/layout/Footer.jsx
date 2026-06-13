@@ -40,9 +40,6 @@ export default function Footer() {
 
   return (
     <footer className="footer">
-      <div className="footer__glow" />
-      <div className="footer__glow footer__glow--2" />
-      <div className="footer__glow footer__glow--3" />
       <div className="container">
         {/* —— Newsletter / CTA band —— */}
         <div className="footer__cta">

@@ -3,15 +3,6 @@ import { motion, AnimatePresence, useScroll, useTransform } from 'framer-motion'
 import Button from '../ui/Button.jsx'
 import { useSite } from '../../context/SiteContext.jsx'
 
-const PARTICLES = Array.from({ length: 24 }).map((_, i) => ({
-  id: i,
-  size: 3 + (i % 5),
-  top: (i * 67) % 100,
-  left: (i * 41) % 100,
-  delay: (i % 6) * 0.4,
-  dur: 6 + (i % 5),
-}))
-
 const U = (id, w = 800) => `https://images.unsplash.com/${id}?auto=format&fit=crop&w=${w}&q=80`
 const AVATARS = [
   'photo-1500648767791-00dcc994a43e',
@@ -28,7 +19,6 @@ export default function Hero() {
   const { company } = useSite()
   const [line, setLine] = useState(0)
   const { scrollY } = useScroll()
-  const yGrid = useTransform(scrollY, [0, 600], [0, 120])
   const yContent = useTransform(scrollY, [0, 600], [0, 70])
   const opacity = useTransform(scrollY, [0, 460], [1, 0])
 
@@ -41,27 +31,6 @@ export default function Hero() {
 
   return (
     <section className="hero">
-      <div className="hero__bg">
-        <motion.div className="hero__grid" style={{ y: yGrid }} />
-        <motion.div
-          className="hero__orb"
-          animate={{ rotate: 360 }}
-          transition={{ duration: 32, repeat: Infinity, ease: 'linear' }}
-        />
-        <div className="glow glow--gold hero__glow-1" />
-        <div className="glow glow--gold hero__glow-2" />
-        <div className="glow hero__glow-3" />
-        {PARTICLES.map((p) => (
-          <motion.span
-            key={p.id}
-            className="hero__particle"
-            style={{ width: p.size, height: p.size, top: `${p.top}%`, left: `${p.left}%` }}
-            animate={{ y: [0, -22, 0], opacity: [0.2, 0.7, 0.2] }}
-            transition={{ duration: p.dur, delay: p.delay, repeat: Infinity, ease: 'easeInOut' }}
-          />
-        ))}
-      </div>
-
       <motion.div className="container hero__inner" style={{ y: yContent, opacity }}>
         <div className="hero__grid2">
           <div className="hero__lead">
@@ -94,7 +63,6 @@ export default function Hero() {
               >
                 Can’t <span className="gold-fill italic-serif ignore">Ignore.</span>
               </motion.span>
-              <span className="hero__shine" aria-hidden />
             </h1>
 
             <motion.p

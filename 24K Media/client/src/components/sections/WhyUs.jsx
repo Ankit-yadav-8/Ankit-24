@@ -6,7 +6,6 @@ export default function WhyUs() {
   const { whyPillars } = useSite()
   return (
     <section className="section section--ink" style={{ position: 'relative', overflow: 'hidden' }}>
-      <div className="glow glow--gold" style={{ width: 480, height: 480, top: -160, left: -120, opacity: 0.5 }} />
       <div className="container" style={{ position: 'relative', zIndex: 2 }}>
         <SectionHead
           eyebrow="Why 24K Media"

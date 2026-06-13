@@ -7,7 +7,6 @@ export default function IndustriesSection() {
   const { industries } = useSite()
   return (
     <section className="section">
-      <div className="glow glow--gold" style={{ width: 420, height: 420, top: '8%', left: '-160px', opacity: 0.4 }} />
       <div className="container" style={{ position: 'relative', zIndex: 2 }}>
         <SectionHead
           eyebrow="Who We Serve"

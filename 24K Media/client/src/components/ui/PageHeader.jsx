@@ -5,8 +5,6 @@ import Reveal from './Reveal.jsx'
 export default function PageHeader({ eyebrow, title, text, crumbs = [] }) {
   return (
     <header className="pagehead">
-      <div className="glow glow--gold pagehead__glow" />
-      <div className="hero__grid" style={{ opacity: 0.5 }} />
       <div className="container pagehead__inner">
         {crumbs.length > 0 && (
           <Reveal as="nav" className="breadcrumb" y={10}>

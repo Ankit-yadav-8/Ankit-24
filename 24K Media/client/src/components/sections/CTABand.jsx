@@ -6,9 +6,6 @@ export default function CTABand() {
   const { company } = useSite()
   return (
     <section className="section section--ink cta-band">
-      <div className="glow glow--gold cta-band__glow" />
-      <div className="glow cta-band__glow--2" />
-      <div className="glow cta-band__glow--3" />
       <div className="container">
         <div className="cta-band__inner">
           <Reveal as="span" className="eyebrow" style={{ justifyContent: 'center', display: 'inline-flex' }}>
