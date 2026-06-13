@@ -16,7 +16,7 @@ export default function MergeBand() {
               {p.label}
             </span>
           ))}{' '}
-          to create content that engages your audience, grows your subscriber base &amp; frees up your time.
+          into one growth engine that turns attention into authority — and authority into an internet brand people can’t ignore.
         </Reveal>
       </div>
     </section>
