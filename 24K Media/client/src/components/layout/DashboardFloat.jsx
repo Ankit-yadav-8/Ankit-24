@@ -17,9 +17,59 @@ const ChartIcon = () => (
   </svg>
 )
 
+const ChevIcon = () => (
+  <svg className="dash-panel__chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.4" strokeLinecap="round" strokeLinejoin="round" aria-hidden>
+    <polyline points="6 9 12 15 18 9" />
+  </svg>
+)
+
+// True on phone widths — drives the collapsible (dropdown) panel layout.
+function useIsMobile() {
+  const [mobile, setMobile] = useState(false)
+  useEffect(() => {
+    const mq = window.matchMedia('(max-width: 640px)')
+    const sync = () => setMobile(mq.matches)
+    sync()
+    mq.addEventListener('change', sync)
+    return () => mq.removeEventListener('change', sync)
+  }, [])
+  return mobile
+}
+
+// A dashboard section. On desktop it's always open; on mobile it collapses
+// behind a dropdown arrow so the full report is easy to review on a phone.
+function Panel({ id, title, tag, className = '', isMobile, isOpen, onToggle, children }) {
+  const open = !isMobile || isOpen
+  return (
+    <div className={`dash-panel ${className} ${isMobile ? 'dash-panel--collapsible' : ''} ${open ? 'is-open' : ''}`}>
+      {isMobile ? (
+        <button type="button" className="dash-panel__head dash-panel__toggle" onClick={() => onToggle(id)} aria-expanded={open}>
+          <h4>{title}</h4>
+          <span className="dash-panel__head-right">
+            <span className="dash-panel__tag">{tag}</span>
+            <ChevIcon />
+          </span>
+        </button>
+      ) : (
+        <div className="dash-panel__head"><h4>{title}</h4><span className="dash-panel__tag">{tag}</span></div>
+      )}
+      {open && <div className="dash-panel__body">{children}</div>}
+    </div>
+  )
+}
+
 // Floating tab → opens a centered modal with the full creator dashboard.
 export default function DashboardFloat() {
   const [open, setOpen] = useState(typeof window !== 'undefined' && window.location.search.includes('dashopen'))
+  const isMobile = useIsMobile()
+  // On mobile, start with the headline chart open; the rest expand on tap.
+  const [openPanels, setOpenPanels] = useState(() => new Set(['views']))
+  const togglePanel = (id) =>
+    setOpenPanels((prev) => {
+      const next = new Set(prev)
+      next.has(id) ? next.delete(id) : next.add(id)
+      return next
+    })
   const seed = 'float'
 
   useEffect(() => {
@@ -76,6 +126,8 @@ export default function DashboardFloat() {
     { label: 'New subs · 7d', value: `+${(2 + sm[2] / 12).toFixed(1)}K` },
     { label: 'Avg. CTR', value: `${(4 + sm[3] / 14).toFixed(1)}%` },
   ]
+
+  const panelProps = { isMobile, onToggle: togglePanel }
 
   return (
     <>
@@ -135,102 +187,98 @@ export default function DashboardFloat() {
                 </div>
               </div>
 
-              <p className="dashmodal__note">
-                Every creator gets this — a personal dashboard built live <b>after your growth call</b>, reviewed 1-to-1 with your strategist every week.
-              </p>
+              <div className="dashmodal__body">
+                <p className="dashmodal__note">
+                  Every creator gets this — a personal dashboard built live <b>after your growth call</b>, reviewed 1-to-1 with your strategist every week.
+                </p>
 
-              <div className="dashmodal__kpis">
-                {kpis.map((k, i) => (
-                  <motion.div
-                    className="dash-kpi"
-                    key={k.label}
-                    initial={{ opacity: 0, y: 14 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    transition={{ duration: 0.4, delay: 0.1 + i * 0.06, ease }}
-                  >
-                    <span className="dash-kpi__label">{k.label}</span>
-                    <span className="dash-kpi__value">{k.value}</span>
-                    <span className="dash-kpi__delta">▲ {k.delta}</span>
-                    <div className="dash-kpi__spark">
-                      <TrendChart data={k.series} color={k.color} height={32} showDots={false} showGrid={false} interactive={false} />
-                    </div>
-                  </motion.div>
-                ))}
-              </div>
-
-              <div className="dashmodal__grid">
-                <div className="dash-panel dashmodal__wide">
-                  <div className="dash-panel__head"><h4>Views over time</h4><span className="dash-panel__tag">monthly</span></div>
-                  <TrendChart data={views} labels={MONTHS} color="#4928fd" height={180} format={(v) => `${v}K views`} />
+                <div className="dashmodal__kpis">
+                  {kpis.map((k, i) => (
+                    <motion.div
+                      className="dash-kpi"
+                      key={k.label}
+                      initial={{ opacity: 0, y: 14 }}
+                      animate={{ opacity: 1, y: 0 }}
+                      transition={{ duration: 0.4, delay: 0.1 + i * 0.06, ease }}
+                    >
+                      <span className="dash-kpi__label">{k.label}</span>
+                      <span className="dash-kpi__value">{k.value}</span>
+                      <span className="dash-kpi__delta">▲ {k.delta}</span>
+                      <div className="dash-kpi__spark">
+                        <TrendChart data={k.series} color={k.color} height={32} showDots={false} showGrid={false} interactive={false} />
+                      </div>
+                    </motion.div>
+                  ))}
                 </div>
 
-                <div className="dash-panel">
-                  <div className="dash-panel__head"><h4>Traffic sources</h4><span className="dash-panel__tag">28d</span></div>
-                  <PieChart data={traffic} size={172} thickness={24} centerLabel={`${Math.round((dom.value / trafficTotal) * 100)}%`} centerSub={dom.label} />
-                </div>
+                <div className="dashmodal__grid">
+                  <Panel id="views" title="Views over time" tag="monthly" className="dashmodal__wide" isOpen={openPanels.has('views')} {...panelProps}>
+                    <TrendChart data={views} labels={MONTHS} color="#4928fd" height={180} format={(v) => `${v}K views`} />
+                  </Panel>
 
-                <div className="dash-panel dashmodal__wide">
-                  <div className="dash-panel__head"><h4>Weekly views report</h4><span className="dash-panel__tag">last 7 days</span></div>
-                  <div className="weekbars">
-                    {DAYS.map((d, i) => (
-                      <div className={`weekbar ${weekly[i] === maxWeek ? 'is-best' : ''}`} key={d}>
-                        <span className="weekbar__val">{weekly[i]}K</span>
-                        <div className="weekbar__col">
-                          <motion.span
-                            className="weekbar__fill"
-                            initial={{ height: 0 }}
-                            animate={{ height: `${(weekly[i] / maxWeek) * 100}%` }}
-                            transition={{ duration: 0.8, delay: 0.2 + i * 0.07, ease }}
-                          />
+                  <Panel id="traffic" title="Traffic sources" tag="28d" isOpen={openPanels.has('traffic')} {...panelProps}>
+                    <PieChart data={traffic} size={172} thickness={24} centerLabel={`${Math.round((dom.value / trafficTotal) * 100)}%`} centerSub={dom.label} />
+                  </Panel>
+
+                  <Panel id="weekly" title="Weekly views report" tag="last 7 days" className="dashmodal__wide" isOpen={openPanels.has('weekly')} {...panelProps}>
+                    <div className="weekbars">
+                      {DAYS.map((d, i) => (
+                        <div className={`weekbar ${weekly[i] === maxWeek ? 'is-best' : ''}`} key={d}>
+                          <span className="weekbar__val">{weekly[i]}K</span>
+                          <div className="weekbar__col">
+                            <motion.span
+                              className="weekbar__fill"
+                              initial={{ height: 0 }}
+                              animate={{ height: `${(weekly[i] / maxWeek) * 100}%` }}
+                              transition={{ duration: 0.8, delay: 0.2 + i * 0.07, ease }}
+                            />
+                          </div>
+                          <span className="weekbar__day">{d}</span>
                         </div>
-                        <span className="weekbar__day">{d}</span>
-                      </div>
-                    ))}
-                  </div>
+                      ))}
+                    </div>
+                  </Panel>
+
+                  <Panel id="devices" title="Audience devices" tag="share" isOpen={openPanels.has('devices')} {...panelProps}>
+                    <PieChart data={devices} size={172} thickness={24} />
+                  </Panel>
+
+                  <Panel id="topvids" title="Top performing videos" tag="by retention" className="dashmodal__full" isOpen={openPanels.has('topvids')} {...panelProps}>
+                    <ul className="dash-bars">
+                      {topVideos.map((v, i) => (
+                        <li className="dash-bar" key={v.title}>
+                          <span className="dash-bar__title">{v.title}</span>
+                          <span className="dash-bar__track">
+                            <motion.span
+                              className="dash-bar__fill"
+                              initial={{ width: 0 }}
+                              animate={{ width: `${(v.val / maxVid) * 100}%` }}
+                              transition={{ duration: 0.9, delay: 0.15 + i * 0.1, ease }}
+                            />
+                          </span>
+                          <span className="dash-bar__val">{v.val}%</span>
+                        </li>
+                      ))}
+                    </ul>
+                  </Panel>
+
+                  <Panel id="summary" title="This week at a glance" tag="summary" className="dashmodal__full" isOpen={openPanels.has('summary')} {...panelProps}>
+                    <div className="dashmodal__summary">
+                      {summary.map((s) => (
+                        <div className="dashmodal__sum" key={s.label}>
+                          <span>{s.label}</span>
+                          <b>{s.value}</b>
+                        </div>
+                      ))}
+                    </div>
+                  </Panel>
                 </div>
 
-                <div className="dash-panel">
-                  <div className="dash-panel__head"><h4>Audience devices</h4><span className="dash-panel__tag">share</span></div>
-                  <PieChart data={devices} size={172} thickness={24} />
-                </div>
-
-                <div className="dash-panel dashmodal__full">
-                  <div className="dash-panel__head"><h4>Top performing videos</h4><span className="dash-panel__tag">by retention</span></div>
-                  <ul className="dash-bars">
-                    {topVideos.map((v, i) => (
-                      <li className="dash-bar" key={v.title}>
-                        <span className="dash-bar__title">{v.title}</span>
-                        <span className="dash-bar__track">
-                          <motion.span
-                            className="dash-bar__fill"
-                            initial={{ width: 0 }}
-                            animate={{ width: `${(v.val / maxVid) * 100}%` }}
-                            transition={{ duration: 0.9, delay: 0.15 + i * 0.1, ease }}
-                          />
-                        </span>
-                        <span className="dash-bar__val">{v.val}%</span>
-                      </li>
-                    ))}
-                  </ul>
-                </div>
-
-                <div className="dash-panel dashmodal__full">
-                  <div className="dash-panel__head"><h4>This week at a glance</h4><span className="dash-panel__tag">summary</span></div>
-                  <div className="dashmodal__summary">
-                    {summary.map((s) => (
-                      <div className="dashmodal__sum" key={s.label}>
-                        <span>{s.label}</span>
-                        <b>{s.value}</b>
-                      </div>
-                    ))}
-                  </div>
-                </div>
+                <Link to="/contact" className="dashmodal__cta" onClick={() => setOpen(false)}>
+                  Book your growth call to get yours
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round"><line x1="5" y1="12" x2="19" y2="12" /><polyline points="12 5 19 12 12 19" /></svg>
+                </Link>
               </div>
-
-              <Link to="/contact" className="dashmodal__cta" onClick={() => setOpen(false)}>
-                Book your growth call to get yours
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round"><line x1="5" y1="12" x2="19" y2="12" /><polyline points="12 5 19 12 12 19" /></svg>
-              </Link>
             </motion.div>
           </motion.div>
           )}
