@@ -65,7 +65,12 @@ export default function Team() {
                   <span className="team-card__line" />
                   <div className="team-card__photo">
                     {m.image ? (
-                      <img src={`${import.meta.env.BASE_URL}${m.image}`} alt={m.name} loading="lazy" />
+                      <img
+                        src={`${import.meta.env.BASE_URL}${m.image}`}
+                        alt={m.name}
+                        loading="lazy"
+                        style={m.imgPos ? { objectPosition: m.imgPos } : undefined}
+                      />
                     ) : m.placeholder ? (
                       <span className="team-card__seat" aria-hidden>+</span>
                     ) : null}
