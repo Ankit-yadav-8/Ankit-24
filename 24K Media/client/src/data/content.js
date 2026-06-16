@@ -617,11 +617,11 @@ export const nicheRPM = [
 ]
 
 // —— The team behind the studio (/team) ——
-// Founders (no public photo yet → render with a plain accent panel). The last
-// three are the video-editing pod; tm3 is a held "position open" seat.
+// Leadership first, then the video-editing pod; tm3 is a held "position open" seat.
 export const team = [
-  { id: 'tm1', name: 'Ankit Yadav', role: 'Founder', accent: 'purple', bio: 'IIT Roorkee alumnus and co-founder of CollegeParichay, built from a hostel room into a platform students rely on. Sets the studio’s vision, positioning and growth direction.', socials: {}, image: null },
-  { id: 'tm2', name: 'Ankit Kumar', role: 'CTO · Web & AI / ML Analytics', accent: 'blue', bio: 'Co-founder and CTO from IIT Roorkee. Leads engineering, web and the AI / ML analytics stack — the systems and data the studio runs on.', socials: {}, image: null },
+  { id: 'tm1', name: 'Ankit Yadav', role: 'Founder', accent: 'purple', bio: 'IIT Roorkee alumnus who has built platforms from a hostel room into products people rely on. Sets the studio’s vision, positioning and growth direction.', socials: {}, image: null },
+  { id: 'tm2', name: 'Ankit Kumar', role: 'Web & AI Analytics', accent: 'blue', bio: 'Co-founder from IIT Roorkee. Leads engineering, web and the AI analytics stack — the systems and data the studio runs on.', socials: {}, image: 'team/ankit-kumar.png' },
+  { id: 'tm7', name: 'K. Gopal', role: 'Operations Head', accent: 'green', bio: 'Runs day-to-day operations — onboarding, delivery and the studio’s production rhythm. Keeps every brand’s work shipping on schedule.', socials: {}, image: 'team/gopal.png' },
   { id: 'tm3', placeholder: true, name: 'Position open', role: 'Joining soon', accent: 'green', bio: 'We’re growing the studio — this seat is held for the next sharp editor, designer or strategist who lives for craft.', socials: {} },
   { id: 'tm4', name: 'Sameer Kumar', role: 'Head of Video Editing', accent: 'orange', bio: 'Video editor and cinematographer, Joint Secretary of CineSec at IIT Roorkee. 10+ short films, music videos and documentaries — storytelling met with technical precision.', socials: { instagram: 'https://www.instagram.com/sk_x_17', linkedin: 'https://www.linkedin.com/in/sameer-kumar-537625335', portfolio: 'https://framesbysameer.carrd.co/' }, image: 'team/sameer.jpg' },
   { id: 'tm5', name: 'Anish Harsha', role: 'Video Editor', accent: 'pink', bio: 'Visual storyteller from the Thomso and Cognizance teams at IIT Roorkee. Turns raw footage into promos, reels and cinematic edits that hold attention.', socials: { instagram: 'https://www.instagram.com/anish_harsha14/', linkedin: 'https://www.linkedin.com/in/anish-harsha-jannabhatla-51b97231b/', portfolio: 'https://drive.google.com/drive/folders/1hx04wr59GGmCu5y5aVjFQy4dTVw1xt6I' }, image: 'team/anish.jpg' },
