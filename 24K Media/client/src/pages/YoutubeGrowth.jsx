@@ -17,11 +17,10 @@ const ACCENT = '#4928fd' // electric violet — the site's primary accent
 const ACCENT_2 = '#7c5cff'
 const ease = [0.22, 1, 0.36, 1]
 
-// Real, modelled trajectory for the flagship finance-creator engagement —
-// subscribers in thousands across the first ten months on the system.
-const SUBS = [18, 26, 41, 63, 92, 137, 198, 271, 348, 410]
-const SUB_LABELS = SUBS.map((_, i) => `Month ${i + 1}`)
-const subsGrowth = Math.round((SUBS[SUBS.length - 1] / SUBS[0] - 1) * 100)
+// Modelled avg-views index across 10 months on the system (month 1 = 100).
+const VIEW_INDEX = [100, 108, 117, 128, 141, 157, 175, 195, 216, 231]
+const INDEX_LABELS = VIEW_INDEX.map((_, i) => `Month ${i + 1}`)
+const indexGrowth = VIEW_INDEX[VIEW_INDEX.length - 1] - VIEW_INDEX[0]
 
 // Audience-retention curve — % of viewers still watching across video length.
 const RETENTION = [100, 86, 78, 73, 70, 68, 66, 65, 64, 63]
@@ -29,63 +28,87 @@ const RET_LABELS = RETENTION.map((_, i) => `${i * 10 + 10}%`)
 
 // Monthly views (millions) — the compounding output the system produces.
 const VIEWS = [
-  { label: 'M1', value: 2.1 },
-  { label: 'M2', value: 3.4 },
-  { label: 'M3', value: 5.6 },
-  { label: 'M4', value: 8.9 },
-  { label: 'M5', value: 13.2 },
-  { label: 'M6', value: 19.7 },
-  { label: 'M7', value: 27.4 },
-  { label: 'M8', value: 36.5 },
+  { label: 'M1', value: 2.1 }, { label: 'M2', value: 3.4 }, { label: 'M3', value: 5.6 },
+  { label: 'M4', value: 8.9 }, { label: 'M5', value: 13.2 }, { label: 'M6', value: 19.7 },
+  { label: 'M7', value: 27.4 }, { label: 'M8', value: 36.5 },
 ]
 const viewsMax = Math.max(...VIEWS.map((v) => v.value))
 
-// Where the lift actually shows up across the channel funnel.
+// Where the lift shows up — kept on our violet palette (no theme change).
 const IMPACT = [
-  { label: 'Watch-time', value: 38, color: ACCENT },
-  { label: 'Subscribers', value: 27, color: ACCENT_2 },
-  { label: 'Revenue', value: 21, color: '#a78bff' },
-  { label: 'Authority', value: 14, color: '#cdbcff' },
+  { label: 'Reach', value: 26, color: ACCENT },
+  { label: 'Retention', value: 23, color: ACCENT_2 },
+  { label: 'Revenue', value: 26, color: '#a78bff' },
+  { label: 'Authority', value: 25, color: '#cdbcff' },
 ]
 
-const OUTCOMES = [
-  { value: 23, suffix: 'x', label: 'Avg. monthly views in 6 months' },
+const HERO_STATS = [
+  { value: 11, suffix: 'x', label: 'Avg. views in 6 months' },
   { value: 340, prefix: '+', suffix: '%', label: 'Watch-time lift' },
-  { value: 6.0, decimals: 1, suffix: '%', label: 'Channel CTR (from 4.1%)' },
-  { value: 48, suffix: 'h', label: 'Edit turnaround, every cut' },
+  { value: 48, suffix: 'h', label: 'Edit turnaround' },
 ]
+
+const METRICS = [
+  { value: 11, suffix: 'x', label: 'Avg. views per video', sub: 'measured at 6 months' },
+  { value: 340, prefix: '+', suffix: '%', label: 'Watch-time lift', sub: 'vs. baseline at start' },
+  { value: 48, suffix: 'h', label: 'Edit turnaround', sub: 'delivery SLA, every video' },
+  { text: '18K → 410K', label: 'Subscribers in 9 months', sub: 'finance creator case study' },
+]
+
+// Icon helper — small stroked glyphs in the accent colour.
+const Ico = ({ d, children }) => (
+  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+    {children || <path d={d} />}
+  </svg>
+)
 
 const PILLARS = [
-  { k: '01', title: 'Channel thesis', desc: 'One sharp promise the channel keeps every upload — the reason a stranger subscribes and a subscriber returns.', img: U('photo-1626785774573-4b799315345d', 900) },
-  { k: '02', title: 'Packaging lab', desc: 'Title + thumbnail engineered and A/B-tested as a pair. We protect the click before we earn the watch.', img: U('photo-1611162617474-5b21e879e113', 900) },
-  { k: '03', title: 'Retention edit', desc: 'Every cut is built around the watch-time graph — ruthless openings, pattern interrupts, clean sound.', img: U('photo-1598550874175-4d0ef436c909', 900) },
-  { k: '04', title: 'Analytics loop', desc: 'Weekly review of CTR, retention and AVD. We double down on what compounds and kill what stalls.', img: U('photo-1551288049-bebda4e38f71', 900) },
-  { k: '05', title: 'Shorts engine', desc: 'Every long-form video becomes three to five native Shorts that feed new viewers back to the channel.', img: U('photo-1492619375914-88005aa9e8fb', 900) },
-  { k: '06', title: 'Community loop', desc: 'We turn the comment section into research — the questions your audience asks become your next videos.', img: U('photo-1600880292089-90a7e086ee0c', 900) },
-]
-
-const STEPS = [
-  ['Teardown', 'We audit your last 30 videos — formats, hooks, retention curves and the real growth ceiling holding you back.'],
-  ['Format system', 'A documented set of repeatable formats, hook frameworks and a packaging language unique to your channel.'],
-  ['Production engine', 'Scripting, retention-first editing and tested thumbnails shipped on a dependable 48-hour cycle.'],
-  ['Compound', 'Weekly analytics reviews turn every winning video into the template for the next three.'],
+  {
+    k: '01 — The Problem',
+    title: 'Talented creators plateau',
+    desc: 'Publishing is random, packaging is weak and retention is never measured. The ceiling is not talent — it is the absence of a system.',
+    icon: <Ico><circle cx="12" cy="12" r="10" /><line x1="12" y1="8" x2="12" y2="12" /><line x1="12" y1="16" x2="12.01" y2="16" /></Ico>,
+  },
+  {
+    k: '02 — Our Approach',
+    title: 'Install the system',
+    desc: 'A documented format system, A/B-tested packaging and retention-curve editing — built once, refined every week on real data.',
+    icon: <Ico><polyline points="22 12 18 12 15 21 9 3 6 12 2 12" /></Ico>,
+  },
+  {
+    k: '03 — The Proof',
+    title: '18K → 410K subscribers',
+    desc: 'A finance creator grew from obscurity to authority in nine months on this exact system — keeping every subscriber, account and asset.',
+    icon: <Ico><polyline points="20 6 9 17 4 12" /></Ico>,
+  },
 ]
 
 const FEATURES = [
-  'Channel strategy & documented format system',
-  'Scripting & hook frameworks for every video',
-  'Retention-first long-form editing',
-  'Title + thumbnail concepts, A/B tested each upload',
-  'Shorts repurposing from every long-form cut',
-  'Weekly analytics review & iteration call',
+  { title: 'Channel strategy & format system', desc: 'A documented playbook of series, formats and niche positioning that compounds over time.', icon: <Ico><rect x="3" y="3" width="18" height="18" rx="2" /><path d="M3 9h18M9 21V9" /></Ico> },
+  { title: 'Scripting & hook frameworks', desc: 'Repeatable hook structures that pull viewers past the 30-second mark, every single video.', icon: <Ico><path d="M12 20h9" /><path d="M16.5 3.5a2.12 2.12 0 0 1 3 3L7 19l-4 1 1-4 12.5-12.5z" /></Ico> },
+  { title: 'Retention-first editing', desc: 'Every cut and pacing decision built around the retention curve, not just aesthetics.', icon: <Ico><polygon points="23 7 16 12 23 17 23 7" /><rect x="1" y="5" width="15" height="14" rx="2" /></Ico> },
+  { title: 'Thumbnail & title A/B testing', desc: 'Systematic packaging tests that push CTR to the ceiling of your niche, month over month.', icon: <Ico><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z" /></Ico> },
+  { title: 'Analytics review & iteration', desc: 'Weekly data review on CTR, retention and watch-time — acted on, never just reported.', icon: <Ico><line x1="18" y1="20" x2="18" y2="10" /><line x1="12" y1="20" x2="12" y2="4" /><line x1="6" y1="20" x2="6" y2="14" /></Ico> },
+]
+
+const STEPS = [
+  ['Audit', 'We tear down your channel, formats and retention curve to find the real ceiling.'],
+  ['System', 'A documented format + packaging system, tuned to your niche, audience and growth thesis.'],
+  ['Produce', 'Retention-first editing and design, shipped on a dependable 48-hour cycle, every video.'],
+  ['Iterate', 'Weekly review of CTR, retention and watch-time. We double down on what compounds.'],
+]
+
+const CASE_METRICS = [
+  { value: 22, suffix: 'x', label: 'subscriber growth' },
+  { prefix: '$', value: 30, suffix: 'K', label: 'monthly revenue' },
+  { value: 0, label: 'viral moments needed' },
 ]
 
 const FAQS = [
-  { q: 'How soon does YouTube Growth show results?', a: 'Packaging and retention lifts usually land inside 60–90 days. Subscriber and revenue compounding builds through months 3–6 as the format system and back-catalogue start pulling together.' },
-  { q: 'Do I need to be on camera every day?', a: 'No. We design a cadence that protects your time — most creators record in focused batches while we run scripting, editing, packaging and publishing around them.' },
-  { q: 'What exactly is included?', a: 'Channel strategy & format system · Scripting & hook frameworks · Retention-first editing · Thumbnail & title A/B testing · Weekly analytics review — tailored to your niche and goals.' },
-  { q: 'Do I keep full ownership?', a: 'Always. The channel, content, thumbnails and every asset are 100% yours. We build infrastructure you own — never rent.' },
-  { q: 'Is there a minimum commitment?', a: 'We work in 90-day engagements because compounding needs runway. After that it is month-to-month — we earn the renewal with results.' },
+  { q: 'How soon does YouTube Growth show results?', a: 'Most clients see measurable lifts in retention and reach within 60–90 days, with compounding subscriber and revenue growth through months 3–6. The system is built for long-term compounding, not short-term spikes.' },
+  { q: 'What exactly is included in the engagement?', a: 'Channel strategy & format system, scripting & hook frameworks, retention-first editing, thumbnail & title A/B testing, weekly analytics review, and iteration on everything that compounds — tailored to your niche and audience.' },
+  { q: 'Do I keep full ownership of my channel?', a: 'Always. Every asset, channel, account and piece of content is 100% yours. We build infrastructure you own and operate — never rent. You can walk away with everything intact at any time.' },
+  { q: 'Is there a minimum commitment?', a: 'We work in 90-day engagements because compounding needs runway. After the initial period it is month-to-month — we earn the renewal with documented results, never lock-in contracts.' },
 ]
 
 // Animated vertical bar chart — bars grow in on scroll, lift on hover.
@@ -118,46 +141,48 @@ export default function YoutubeGrowth() {
   return (
     <div className="svc-detail ytg" style={{ '--svc-accent': ACCENT }}>
       <PageHeader
-        eyebrow="Content Service"
+        eyebrow="Content Service · 01"
         title={<>YouTube <span className="gold-fill italic-serif">Growth</span></>}
-        text="We turn a channel into a predictable growth engine — from thesis to thumbnail to the retention curve that keeps viewers watching."
+        text="We build predictable, compounding YouTube growth — from channel thesis to thumbnail to the retention curve that keeps viewers watching."
         crumbs={[{ label: 'Services', to: '/services' }, { label: 'YouTube Growth' }]}
       />
 
-      {/* Hero: pitch + media with floating proof */}
+      {/* HERO — pitch + visual card */}
       <section className="section section--tight">
         <div className="container">
           <div className="ytg-hero">
             <Reveal>
               <div className="svc-detail__icon">▶</div>
-              <h2 style={{ fontSize: 'clamp(1.9rem, 4vw, 2.7rem)', marginBottom: '1rem' }}>
-                Growth that stops being luck.
+              <h2 style={{ fontSize: 'clamp(1.9rem, 4vw, 2.8rem)', marginBottom: '1rem' }}>
+                Turn your channel into a <span className="gold-fill italic-serif">growth engine.</span>
               </h2>
-              <p className="text-soft" style={{ fontSize: '1.1rem', maxWidth: '52ch' }}>
-                Talented creators plateau because publishing is random, packaging is weak and
-                retention is never measured. We install the system that makes every upload
-                compound — and report the numbers that prove it.
+              <p className="text-soft" style={{ fontSize: '1.1rem', maxWidth: '50ch' }}>
+                No guessing, no hoping for a viral moment. We install the system that makes every
+                upload compound — from channel thesis to thumbnail to retention curve.
               </p>
               <div className="svc-cta-row">
                 <Button to="/contact" arrow>Book Growth Call</Button>
                 <Button to="/case-studies" variant="ghost">See results</Button>
               </div>
+              <div className="ytg-herostats">
+                {HERO_STATS.map((s) => (
+                  <div key={s.label}>
+                    <div className="ytg-herostats__v">
+                      <Counter value={s.value} prefix={s.prefix || ''} suffix={s.suffix || ''} />
+                    </div>
+                    <div className="ytg-herostats__l">{s.label}</div>
+                  </div>
+                ))}
+              </div>
             </Reveal>
+
             <Reveal delay={0.1} className="ytg-hero__media">
               <img src={U('photo-1593720213428-28a5b9e94613', 1100)} alt="Creator studio" loading="lazy" />
-              <motion.div
-                className="ytg-hero__badge ytg-hero__badge--a"
-                animate={{ y: [0, -10, 0] }}
-                transition={{ duration: 4, repeat: Infinity, ease: 'easeInOut' }}
-              >
+              <motion.div className="ytg-hero__badge ytg-hero__badge--a" animate={{ y: [0, -10, 0] }} transition={{ duration: 4, repeat: Infinity, ease: 'easeInOut' }}>
                 <b>410K</b>
                 <span>subscribers in 9 months</span>
               </motion.div>
-              <motion.div
-                className="ytg-hero__badge ytg-hero__badge--b"
-                animate={{ y: [0, 10, 0] }}
-                transition={{ duration: 4.6, repeat: Infinity, ease: 'easeInOut', delay: 0.4 }}
-              >
+              <motion.div className="ytg-hero__badge ytg-hero__badge--b" animate={{ y: [0, 10, 0] }} transition={{ duration: 4.6, repeat: Infinity, ease: 'easeInOut', delay: 0.4 }}>
                 <b>6.0%</b>
                 <span>channel CTR</span>
               </motion.div>
@@ -166,70 +191,187 @@ export default function YoutubeGrowth() {
         </div>
       </section>
 
-      {/* Outcomes strip — animated counters */}
-      <section className="section section--tight" style={{ paddingTop: 0 }}>
+      {/* METRICS STRIP */}
+      <div className="ytg-metrics">
         <div className="container">
-          <Reveal className="ytg-stats">
-            {OUTCOMES.map((o) => (
-              <div className="ytg-stat" key={o.label}>
-                <div className="ytg-stat__value">
-                  <Counter value={o.value} decimals={o.decimals || 0} prefix={o.prefix || ''} suffix={o.suffix || ''} />
-                </div>
-                <div className="ytg-stat__label">{o.label}</div>
+          <Reveal className="ytg-metrics__grid">
+            {METRICS.map((m) => (
+              <div className="ytg-metric" key={m.label}>
+                <span className="ytg-metric__n">
+                  {m.text ? m.text : <Counter value={m.value} prefix={m.prefix || ''} suffix={m.suffix || ''} />}
+                </span>
+                <div className="ytg-metric__l">{m.label}</div>
+                <div className="ytg-metric__s">{m.sub}</div>
               </div>
             ))}
           </Reveal>
         </div>
+      </div>
+
+      {/* GROWTH TRAJECTORY */}
+      <section className="section">
+        <div className="container">
+          <div className="section-head">
+            <span className="eyebrow">Typical Trajectory</span>
+            <h2 style={{ fontSize: 'clamp(1.8rem, 4vw, 2.6rem)' }}>Avg. views over 10 months</h2>
+            <p>Modelled performance on the YouTube Growth system — hover each month to inspect the lift.</p>
+          </div>
+          <Reveal className="card svc-chart">
+            <div className="svc-chart__head">
+              <div className="svc-chart__intro">
+                <span className="eyebrow">Views index · month 1 = 100</span>
+              </div>
+              <div className="svc-chart__delta"><b>+{indexGrowth}%</b><span>over 10 months</span></div>
+            </div>
+            <TrendChart data={VIEW_INDEX} labels={INDEX_LABELS} color={ACCENT} height={260} format={(v) => `${v} index`} />
+          </Reveal>
+        </div>
       </section>
 
-      {/* Performance — four charts */}
+      {/* IMPACT DISTRIBUTION */}
       <section className="section section--smoke2">
         <div className="container">
           <div className="section-head">
-            <span className="eyebrow">The Numbers</span>
-            <h2 style={{ fontSize: 'clamp(1.8rem, 4vw, 2.6rem)' }}>Growth you can see in the analytics</h2>
+            <span className="eyebrow">Impact Mix</span>
+            <h2 style={{ fontSize: 'clamp(1.8rem, 4vw, 2.6rem)' }}>Where the lift shows up</h2>
+            <p>How the gains from YouTube Growth distribute across your entire funnel.</p>
           </div>
-
-          <div className="svc-duo">
-            <Reveal className="card svc-chart">
-              <div className="svc-chart__head">
-                <div className="svc-chart__intro">
-                  <span className="eyebrow">Typical Trajectory</span>
-                  <h3>Subscribers (K)</h3>
-                  <p className="text-soft">Modelled subscriber growth over the first 10 months — hover the line to inspect each month.</p>
-                </div>
-                <div className="svc-chart__delta"><b>+{subsGrowth}%</b><span>over 10 months</span></div>
+          <Reveal className="card">
+            <div className="ytg-impact">
+              <div className="ytg-impact__donut">
+                <PieChart data={IMPACT} size={240} thickness={28} centerLabel="+131%" centerSub="blended lift" />
               </div>
-              <TrendChart data={SUBS} labels={SUB_LABELS} color={ACCENT} height={200} format={(v) => `${v}K subscribers`} />
-            </Reveal>
+              <div>
+                <div className="ytg-impact__rows">
+                  {IMPACT.map((d, i) => (
+                    <div className="ytg-impact__row" key={d.label}>
+                      <div className="ytg-impact__top">
+                        <span><span className="ytg-impact__dot" style={{ background: d.color }} />{d.label}</span>
+                        <b>{d.value}%</b>
+                      </div>
+                      <div className="ytg-impact__track">
+                        <motion.span
+                          className="ytg-impact__fill"
+                          style={{ background: d.color }}
+                          initial={{ width: 0 }}
+                          whileInView={{ width: `${d.value}%` }}
+                          viewport={{ once: true }}
+                          transition={{ duration: 1.1, delay: 0.1 * i, ease }}
+                        />
+                      </div>
+                    </div>
+                  ))}
+                </div>
+                <div className="ytg-impact__note">
+                  <p>Growth compounds simultaneously — reach unlocks retention, retention drives revenue, and both build the authority that accelerates the entire flywheel.</p>
+                </div>
+              </div>
+            </div>
+          </Reveal>
+        </div>
+      </section>
 
-            <Reveal className="card svc-pie" delay={0.08}>
-              <span className="eyebrow">Where the lift shows up</span>
-              <h3>Impact mix</h3>
-              <p className="text-soft" style={{ marginBottom: '1rem' }}>How the gains typically distribute across the channel funnel.</p>
-              <PieChart data={IMPACT} size={172} thickness={22} centerLabel={`+${subsGrowth}%`} centerSub="blended" />
+      {/* PILLARS — Problem / Approach / Proof */}
+      <section className="section">
+        <div className="container">
+          <div className="section-head">
+            <span className="eyebrow">The System</span>
+            <h2 style={{ fontSize: 'clamp(1.8rem, 4vw, 2.6rem)' }}>Problem. Approach. Proof.</h2>
+          </div>
+          <div className="ytg-pills">
+            {PILLARS.map((p, i) => (
+              <Reveal className="ytg-pill" key={p.k} delay={(i % 3) * 0.08}>
+                <span className="ytg-pill__k">{p.k}</span>
+                <span className="ytg-pill__ico">{p.icon}</span>
+                <h3>{p.title}</h3>
+                <p>{p.desc}</p>
+              </Reveal>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* WHAT YOU GET — feature list + image */}
+      <section className="section section--smoke2">
+        <div className="container">
+          <div className="ytg-feat">
+            <div>
+              <div className="section-head" style={{ marginBottom: 28 }}>
+                <span className="eyebrow">Deliverables</span>
+                <h2 style={{ fontSize: 'clamp(1.8rem, 4vw, 2.4rem)' }}>What you get</h2>
+                <p>A full stack of owned infrastructure — nothing rented, nothing locked away.</p>
+              </div>
+              <div className="ytg-feat__list">
+                {FEATURES.map((f, i) => (
+                  <Reveal className="ytg-feat__item" key={f.title} delay={(i % 3) * 0.05}>
+                    <span className="ytg-feat__ico">{f.icon}</span>
+                    <div>
+                      <div className="ytg-feat__t">{f.title}</div>
+                      <p className="ytg-feat__d">{f.desc}</p>
+                    </div>
+                  </Reveal>
+                ))}
+              </div>
+            </div>
+            <Reveal className="ytg-feat__vis" delay={0.1}>
+              <div className="ytg-feat__img">
+                <img src={U('photo-1574717024653-61fd2cf4d44d', 800)} alt="Editing workspace" loading="lazy" />
+              </div>
+              <div className="ytg-feat__float">
+                <div className="ytg-feat__float-n">48h</div>
+                <div className="ytg-feat__float-l">Edit turnaround</div>
+              </div>
             </Reveal>
           </div>
+        </div>
+      </section>
 
-          <div className="svc-duo" style={{ marginTop: 24 }}>
+      {/* PROCESS */}
+      <section className="section">
+        <div className="container">
+          <div className="section-head" style={{ textAlign: 'center', margin: '0 auto clamp(40px, 5vw, 60px)' }}>
+            <span className="eyebrow">The Engagement</span>
+            <h2 style={{ fontSize: 'clamp(1.8rem, 4vw, 2.6rem)' }}>How we run YouTube Growth</h2>
+            <p style={{ marginInline: 'auto' }}>Four phases. Documented outcomes. No surprises.</p>
+          </div>
+          <div className="ytg-proc">
+            {STEPS.map(([title, desc], i) => (
+              <Reveal className="ytg-pstep" key={title} delay={(i % 4) * 0.08}>
+                <span className="ytg-pnum">{String(i + 1).padStart(2, '0')}</span>
+                <h4>{title}</h4>
+                <p>{desc}</p>
+              </Reveal>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* MORE SIGNALS — extra charts */}
+      <section className="section section--smoke2">
+        <div className="container">
+          <div className="section-head">
+            <span className="eyebrow">Read the whole funnel</span>
+            <h2 style={{ fontSize: 'clamp(1.8rem, 4vw, 2.6rem)' }}>More than a subscriber count</h2>
+            <p>The two signals that actually move the algorithm — retention and compounding reach.</p>
+          </div>
+          <div className="svc-duo">
             <Reveal className="card svc-chart">
               <div className="svc-chart__head">
                 <div className="svc-chart__intro">
                   <span className="eyebrow">Audience Retention</span>
                   <h3>Still watching (%)</h3>
-                  <p className="text-soft">Average retention across video length after the retention-first edit — the curve that trains the algorithm.</p>
+                  <p className="text-soft">Average retention across video length after the retention-first edit.</p>
                 </div>
                 <div className="svc-chart__delta"><b>63%</b><span>at the finish</span></div>
               </div>
               <TrendChart data={RETENTION} labels={RET_LABELS} color={ACCENT_2} height={200} format={(v) => `${v}% watching`} />
             </Reveal>
-
             <Reveal className="card svc-chart" delay={0.08}>
               <div className="svc-chart__head">
                 <div className="svc-chart__intro">
                   <span className="eyebrow">Monthly Views</span>
                   <h3>Reach (millions)</h3>
-                  <p className="text-soft">Monthly views compounding as the format system and back-catalogue start working together.</p>
+                  <p className="text-soft">Monthly views compounding as the system and back-catalogue work together.</p>
                 </div>
                 <div className="svc-chart__delta"><b>36.5M</b><span>by month 8</span></div>
               </div>
@@ -239,111 +381,48 @@ export default function YoutubeGrowth() {
         </div>
       </section>
 
-      {/* Problem / Approach / Proof */}
-      <section className="section">
-        <div className="container">
-          <div className="svc-blocks">
-            <Reveal className="card svc-block">
-              <span className="svc-block__k">01</span>
-              <h3>The Problem</h3>
-              <p>Great videos stay unwatched. The thumbnail loses the click, the first 30 seconds lose the viewer, and nobody is measuring why.</p>
-            </Reveal>
-            <Reveal className="card svc-block" delay={0.08}>
-              <span className="svc-block__k">02</span>
-              <h3>Our Approach</h3>
-              <p>We install a documented format system, test packaging on every upload, and edit each video around the retention curve.</p>
-            </Reveal>
-            <Reveal className="card svc-block" delay={0.16}>
-              <span className="svc-block__k">03</span>
-              <h3>The Proof</h3>
-              <p>A finance creator went from 18K to 410K subscribers in nine months on this exact system — with revenue following the watch-time.</p>
-            </Reveal>
-          </div>
-        </div>
-      </section>
-
-      {/* Six pillars with imagery */}
-      <section className="section section--smoke2">
-        <div className="container">
-          <div className="section-head">
-            <span className="eyebrow">The Engine</span>
-            <h2 style={{ fontSize: 'clamp(1.8rem, 4vw, 2.6rem)' }}>Six parts, one compounding system</h2>
-          </div>
-          <div className="ytg-pillars">
-            {PILLARS.map((p, i) => (
-              <Reveal className="ytg-pillar" key={p.k} delay={(i % 3) * 0.08}>
-                <div className="ytg-pillar__media">
-                  <img src={p.img} alt={p.title} loading="lazy" />
-                  <span className="ytg-pillar__k">{p.k}</span>
-                </div>
-                <div className="ytg-pillar__body">
-                  <h4>{p.title}</h4>
-                  <p>{p.desc}</p>
-                </div>
-              </Reveal>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* What you get */}
-      <section className="section section--smoke2">
-        <div className="container">
-          <Reveal className="card" style={{ padding: 'clamp(1.8rem, 3vw, 2.6rem)' }}>
-            <span className="eyebrow">What you get</span>
-            <ul className="svc-deliverables svc-deliverables--grid" style={{ marginTop: '1.4rem' }}>
-              {FEATURES.map((d) => <li key={d}>{d}</li>)}
-            </ul>
-          </Reveal>
-        </div>
-      </section>
-
-      {/* How we run it */}
+      {/* CASE STUDY */}
       <section className="section">
         <div className="container">
           <div className="section-head">
-            <span className="eyebrow">The Engagement</span>
-            <h2 style={{ fontSize: 'clamp(1.8rem, 4vw, 2.6rem)' }}>How we run YouTube Growth</h2>
+            <span className="eyebrow">Case Study</span>
+            <h2 style={{ fontSize: 'clamp(1.8rem, 4vw, 2.6rem)' }}>The proof in practice</h2>
           </div>
-          <div className="svc-playbook">
-            {STEPS.map(([title, desc], i) => (
-              <Reveal className="svc-step" key={title} delay={(i % 4) * 0.07}>
-                <span className="svc-step__num">{String(i + 1).padStart(2, '0')}</span>
-                <h4>{title}</h4>
-                <p>{desc}</p>
-              </Reveal>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* Case-study callout */}
-      <section className="section section--smoke2">
-        <div className="container">
-          <Reveal className="ytg-case">
-            <div className="ytg-case__media">
-              <img src={U('photo-1605810230434-7631ac76ec81', 1100)} alt="Creator on the growth system" loading="lazy" />
+          <Reveal className="card ytg-case2">
+            <div className="ytg-case2__nums">
+              <div><div className="ytg-case2__big ytg-case2__big--dim">18K</div><div className="ytg-case2__lbl">Start</div></div>
+              <div className="ytg-case2__arr"><span>→</span><small>9 months</small></div>
+              <div><div className="ytg-case2__big">410K</div><div className="ytg-case2__lbl">Subscribers</div></div>
             </div>
-            <div className="ytg-case__body">
-              <span className="eyebrow">Case Study · Finance</span>
-              <h3>18K → 410K subscribers in 9 months</h3>
+            <div className="ytg-case2__body">
+              <span className="eyebrow">Finance Creator · 9-Month Sprint</span>
+              <h3>From unknown to channel authority in under a year</h3>
               <p className="text-soft">
-                We rebuilt the channel around three repeatable formats, tested every thumbnail as a
-                pair with its title, and re-cut openings for retention. Watch-time climbed +340% and
-                the channel CTR moved from 4.1% to 6.0% — turning attention into a real business.
+                Using the complete YouTube Growth stack — format system, retention editing, systematic
+                packaging and weekly iteration — this finance creator 22x'd their subscriber count and
+                built a ₹30L/month revenue engine. No viral moments required.
               </p>
-              <Button to="/case-studies" variant="ghost" arrow>Read the case studies</Button>
+              <div className="ytg-case2__row">
+                {CASE_METRICS.map((m) => (
+                  <div key={m.label}>
+                    <div className="ytg-case2__rn">
+                      <Counter value={m.value} prefix={m.prefix || ''} suffix={m.suffix || ''} />
+                    </div>
+                    <div className="ytg-case2__rl">{m.label}</div>
+                  </div>
+                ))}
+              </div>
             </div>
           </Reveal>
         </div>
       </section>
 
       {/* FAQ accordion */}
-      <section className="section">
+      <section className="section section--smoke2">
         <div className="container">
-          <div className="section-head">
-            <span className="eyebrow">Questions</span>
-            <h2 style={{ fontSize: 'clamp(1.8rem, 4vw, 2.6rem)' }}>YouTube Growth, answered</h2>
+          <div className="section-head" style={{ maxWidth: 760, marginInline: 'auto', textAlign: 'center' }}>
+            <span className="eyebrow">FAQ</span>
+            <h2 style={{ fontSize: 'clamp(1.8rem, 4vw, 2.6rem)' }}>Questions, answered</h2>
           </div>
           <div className="ytg-acc">
             {FAQS.map((f, i) => {
@@ -356,13 +435,7 @@ export default function YoutubeGrowth() {
                   </button>
                   <AnimatePresence initial={false}>
                     {isOpen && (
-                      <motion.div
-                        className="ytg-acc__a"
-                        initial={{ height: 0, opacity: 0 }}
-                        animate={{ height: 'auto', opacity: 1 }}
-                        exit={{ height: 0, opacity: 0 }}
-                        transition={{ duration: 0.34, ease }}
-                      >
+                      <motion.div className="ytg-acc__a" initial={{ height: 0, opacity: 0 }} animate={{ height: 'auto', opacity: 1 }} exit={{ height: 0, opacity: 0 }} transition={{ duration: 0.34, ease }}>
                         <p>{f.a}</p>
                       </motion.div>
                     )}
@@ -374,10 +447,10 @@ export default function YoutubeGrowth() {
         </div>
       </section>
 
-      {/* Related services */}
-      <section className="section section--smoke2">
+      {/* RELATED SERVICES */}
+      <section className="section">
         <div className="container">
-          <div className="section-head"><h2 style={{ fontSize: 'clamp(1.8rem, 4vw, 2.6rem)' }}>Related services</h2></div>
+          <div className="section-head"><span className="eyebrow">Related</span><h2 style={{ fontSize: 'clamp(1.8rem, 4vw, 2.6rem)' }}>Services that compound together</h2></div>
           <div className="grid grid-3">
             {recos.map((s) => <ServiceCard key={s.slug} service={s} />)}
           </div>
