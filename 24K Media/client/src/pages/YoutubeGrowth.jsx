@@ -64,16 +64,6 @@ const PILLARS = [
   { k: '06', title: 'Community loop', desc: 'We turn the comment section into research — the questions your audience asks become your next videos.', img: U('photo-1600880292089-90a7e086ee0c', 900) },
 ]
 
-// Packaging gallery — tested thumbnail concepts with their winning CTR.
-const GALLERY = [
-  { img: U('photo-1605810230434-7631ac76ec81', 700), ctr: '7.4%' },
-  { img: U('photo-1593720213428-28a5b9e94613', 700), ctr: '6.8%' },
-  { img: U('photo-1574717024653-61fd2cf4d44d', 700), ctr: '6.1%' },
-  { img: U('photo-1611162617474-5b21e879e113', 700), ctr: '5.9%' },
-  { img: U('photo-1626785774573-4b799315345d', 700), ctr: '6.5%' },
-  { img: U('photo-1598550874175-4d0ef436c909', 700), ctr: '7.0%' },
-]
-
 const STEPS = [
   ['Teardown', 'We audit your last 30 videos — formats, hooks, retention curves and the real growth ceiling holding you back.'],
   ['Format system', 'A documented set of repeatable formats, hook frameworks and a packaging language unique to your channel.'],
@@ -290,24 +280,6 @@ export default function YoutubeGrowth() {
                   <h4>{p.title}</h4>
                   <p>{p.desc}</p>
                 </div>
-              </Reveal>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* Packaging gallery */}
-      <section className="section">
-        <div className="container">
-          <div className="section-head">
-            <span className="eyebrow">Packaging Lab</span>
-            <h2 style={{ fontSize: 'clamp(1.8rem, 4vw, 2.6rem)' }}>Thumbnails that earn the click</h2>
-          </div>
-          <div className="ytg-gallery">
-            {GALLERY.map((g, i) => (
-              <Reveal className="ytg-thumb" key={i} delay={(i % 3) * 0.06}>
-                <img src={g.img} alt={`Tested thumbnail concept ${i + 1}`} loading="lazy" />
-                <span className="ytg-thumb__ctr">{g.ctr} CTR</span>
               </Reveal>
             ))}
           </div>
