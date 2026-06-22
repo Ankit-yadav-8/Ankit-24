@@ -3,7 +3,7 @@ import react from '@vitejs/plugin-react'
 
 export default defineConfig({
   plugins: [react()],
-  base: '/Ankit-24/',
+  base: '/',  // ✅ Correct for Vercel,
   server: {
     port: 5173,
     proxy: {
