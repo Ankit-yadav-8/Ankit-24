@@ -1,5 +1,6 @@
 // 24K Media API — Express backend.
 // Serves all CMS content and captures leads from the contact form.
+import 'dotenv/config'
 import express from 'express'
 import cors from 'cors'
 import morgan from 'morgan'
@@ -7,6 +8,7 @@ import { fileURLToPath } from 'url'
 import path from 'path'
 import contentRouter from './routes/content.js'
 import leadsRouter from './routes/leads.js'
+import { isSupabaseEnabled } from './lib/supabase.js'
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url))
 
@@ -59,5 +61,6 @@ app.get('*', (req, res, next) => {
 
 app.listen(PORT, () => {
   console.log(`\n  24K Media API  →  http://localhost:${PORT}`)
-  console.log(`  Health         →  http://localhost:${PORT}/api/health\n`)
+  console.log(`  Health         →  http://localhost:${PORT}/api/health`)
+  console.log(`  Leads store    →  ${isSupabaseEnabled ? 'Supabase' : 'local JSON file'}\n`)
 })
