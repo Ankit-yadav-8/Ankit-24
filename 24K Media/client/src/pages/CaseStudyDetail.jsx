@@ -2,6 +2,7 @@ import { useParams } from 'react-router-dom'
 import { motion, useInView } from 'framer-motion'
 import { useRef } from 'react'
 import PageHeader from '../components/ui/PageHeader.jsx'
+import Seo from '../components/Seo.jsx'
 import Reveal from '../components/ui/Reveal.jsx'
 import Button from '../components/ui/Button.jsx'
 import CTABand from '../components/sections/CTABand.jsx'
@@ -41,6 +42,11 @@ export default function CaseStudyDetail() {
 
   return (
     <>
+      <Seo
+        title={`${cs.headline} — Case Study`}
+        description={cs.summary}
+        path={`/case-studies/${slug}`}
+      />
       <PageHeader
         eyebrow={`${cs.category} · Case Study`}
         title={cs.headline}

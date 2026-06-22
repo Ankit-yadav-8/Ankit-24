@@ -1,4 +1,5 @@
 import PageHeader from '../components/ui/PageHeader.jsx'
+import Seo from '../components/Seo.jsx'
 import Reveal from '../components/ui/Reveal.jsx'
 import SectionHead from '../components/ui/SectionHead.jsx'
 import CTABand from '../components/sections/CTABand.jsx'
@@ -44,6 +45,10 @@ export default function Team() {
   const { team } = useSite()
   return (
     <>
+      <Seo
+        title="Our Team"
+        description="The people behind 24K Media — strategists, editors, designers and growth operators building durable internet brands for creators and founders."
+      />
       <PageHeader
         eyebrow="The Team"
         title={<>The people behind the <span className="gold-fill italic-serif">internet brands.</span></>}

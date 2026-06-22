@@ -1,4 +1,5 @@
 import PageHeader from '../components/ui/PageHeader.jsx'
+import Seo from '../components/Seo.jsx'
 import Reveal from '../components/ui/Reveal.jsx'
 import SectionHead from '../components/ui/SectionHead.jsx'
 import Button from '../components/ui/Button.jsx'
@@ -17,6 +18,10 @@ export default function Collaborations() {
   const { brandImpact, collaborations } = useSite()
   return (
     <>
+      <Seo
+        title="Collaborations & Brand Partnerships"
+        description="Partner with 24K Media on brand collaborations and creator campaigns — distribution, content and measurable growth for modern brands."
+      />
       <PageHeader
         eyebrow="Brand Collaborations"
         title={<>Influencer marketing that <span className="gold-fill italic-serif">impacts.</span></>}

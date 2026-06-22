@@ -1,6 +1,7 @@
 import { useState } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import PageHeader from '../components/ui/PageHeader.jsx'
+import Seo from '../components/Seo.jsx'
 import Reveal from '../components/ui/Reveal.jsx'
 import Button from '../components/ui/Button.jsx'
 import Counter from '../components/ui/Counter.jsx'
@@ -140,6 +141,11 @@ export default function YoutubeGrowth() {
 
   return (
     <div className="svc-detail ytg" style={{ '--svc-accent': ACCENT }}>
+      <Seo
+        title="YouTube Growth Agency — Channel Strategy, Packaging & Scaling"
+        description="Predictable, compounding YouTube growth from 24K Media — channel thesis, packaging, thumbnails, retention-first editing and a weekly optimisation loop."
+        path="/services/youtube-growth"
+      />
       <PageHeader
         eyebrow="Content Service · 01"
         title={<>YouTube <span className="gold-fill italic-serif">Growth</span></>}

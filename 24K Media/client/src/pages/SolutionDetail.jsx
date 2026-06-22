@@ -1,5 +1,6 @@
 import { useParams } from 'react-router-dom'
 import PageHeader from '../components/ui/PageHeader.jsx'
+import Seo from '../components/Seo.jsx'
 import Reveal from '../components/ui/Reveal.jsx'
 import SectionHead from '../components/ui/SectionHead.jsx'
 import Button from '../components/ui/Button.jsx'
@@ -89,6 +90,11 @@ export default function SolutionDetail() {
 
   return (
     <div className="sol-detail" style={{ '--sol-accent': color }}>
+      <Seo
+        title={`${base.title} — Growth Solution`}
+        description={detail.summary}
+        path={`/solutions/${slug}`}
+      />
       <PageHeader
         eyebrow={`Solutions · ${base.title}`}
         title={<>{words.slice(0, -1).join(' ')} <span className="gold-fill italic-serif">{words.slice(-1)}</span></>}
