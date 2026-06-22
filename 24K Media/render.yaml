@@ -1,0 +1,26 @@
+# Render blueprint for the 24K Media API (Express).
+# Deploy: Render Dashboard → New → Blueprint → pick this repo.
+# Then fill the env vars marked sync:false in the Render UI.
+services:
+  - type: web
+    name: 24k-media-api
+    runtime: node
+    rootDir: server
+    plan: free
+    buildCommand: npm install
+    startCommand: npm start
+    healthCheckPath: /api/health
+    autoDeploy: true
+    envVars:
+      - key: NODE_VERSION
+        value: "20"
+      # Your Vercel frontend URL(s), comma-separated. e.g. https://24kmedia.vercel.app
+      - key: CORS_ORIGIN
+        sync: false
+      - key: SUPABASE_URL
+        sync: false
+      # SECRET — paste the service_role key here (Render encrypts it).
+      - key: SUPABASE_SERVICE_ROLE_KEY
+        sync: false
+      - key: LEAD_WEBHOOK_URL
+        sync: false

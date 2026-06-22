@@ -38,24 +38,41 @@ export async function fetchSite() {
 }
 
 export async function submitLead(payload) {
+  let res
   try {
-    const res = await fetch(`${BASE}/api/leads`, {
+    res = await fetch(`${BASE}/api/leads`, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify(payload),
     })
-    const data = await res.json().catch(() => ({}))
-    if (!res.ok) {
-      return { ok: false, error: data.error || 'Something went wrong. Please try again.' }
-    }
-    return { ok: true, message: data.message }
   } catch {
-    // Offline-friendly: acknowledge so the demo never dead-ends.
+    // The request never reached a server (no network, wrong URL, CORS block).
     return {
-      ok: true,
-      message:
-        'Thank you — your request has been noted locally. Connect the API to capture leads to the server.',
-      offline: true,
+      ok: false,
+      error:
+        "Couldn't reach the server. Check your connection and make sure the API is running.",
     }
   }
+
+  // We got a response. Try to read its JSON body (may be empty on proxy errors).
+  const data = await res.json().catch(() => ({}))
+
+  if (!res.ok) {
+    // Prefer the API's own message; otherwise explain by status code.
+    if (data.error) return { ok: false, error: data.error }
+    // A 5xx with no JSON body means the proxy/host couldn't reach the API
+    // (e.g. the Express server isn't running) — our API always sends JSON.
+    if (res.status >= 500) {
+      return {
+        ok: false,
+        error: 'The API server is not responding. Is it running on port 4000?',
+      }
+    }
+    return {
+      ok: false,
+      error: `Request failed (HTTP ${res.status}). Please try again.`,
+    }
+  }
+
+  return { ok: true, message: data.message }
 }
