@@ -1,5 +1,6 @@
 import { useState } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
+import { Helmet } from 'react-helmet-async'
 import SectionHead from '../ui/SectionHead.jsx'
 import Reveal from '../ui/Reveal.jsx'
 import Button from '../ui/Button.jsx'
@@ -7,13 +8,33 @@ import { useSite } from '../../context/SiteContext.jsx'
 
 const ease = [0.22, 1, 0.36, 1]
 
+// Build Google FAQPage structured data from the FAQ list.
+function faqJsonLd(faqs) {
+  return {
+    '@context': 'https://schema.org',
+    '@type': 'FAQPage',
+    mainEntity: faqs.map((f) => ({
+      '@type': 'Question',
+      name: f.q,
+      acceptedAnswer: { '@type': 'Answer', text: f.a },
+    })),
+  }
+}
+
 // Animated FAQ accordion.
-export default function FaqSection() {
+// `withSchema` emits FAQPage JSON-LD — enable it on ONE page only (the home
+// page) to avoid duplicate structured data across routes.
+export default function FaqSection({ withSchema = false }) {
   const { faqs } = useSite()
   const [open, setOpen] = useState(0)
 
   return (
     <section className="section section--smoke2">
+      {withSchema && faqs?.length > 0 && (
+        <Helmet>
+          <script type="application/ld+json">{JSON.stringify(faqJsonLd(faqs))}</script>
+        </Helmet>
+      )}
       <div className="container faq">
         <div className="faq__head">
           <SectionHead

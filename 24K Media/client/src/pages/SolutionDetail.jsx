@@ -94,6 +94,15 @@ export default function SolutionDetail() {
         title={`${base.title} — Growth Solution`}
         description={detail.summary}
         path={`/solutions/${slug}`}
+        jsonLd={{
+          '@context': 'https://schema.org',
+          '@type': 'FAQPage',
+          mainEntity: faqs.map((f) => ({
+            '@type': 'Question',
+            name: f.q,
+            acceptedAnswer: { '@type': 'Answer', text: f.a },
+          })),
+        }}
       />
       <PageHeader
         eyebrow={`Solutions · ${base.title}`}
