@@ -12,6 +12,7 @@
     "start": "npm run start --prefix server"
   },
   "devDependencies": {
+    "@vitejs/plugin-react": "^6.0.2",
     "concurrently": "^9.1.0"
   },
   "engines": {
