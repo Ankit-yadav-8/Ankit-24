@@ -1,5 +1,6 @@
 import { useState } from 'react'
 import PageHeader from '../components/ui/PageHeader.jsx'
+import Seo from '../components/Seo.jsx'
 import Reveal from '../components/ui/Reveal.jsx'
 import Button from '../components/ui/Button.jsx'
 import CTABand from '../components/sections/CTABand.jsx'
@@ -86,6 +87,10 @@ export default function Tools() {
 
   return (
     <>
+      <Seo
+        title="Free Creator Tools & Calculators"
+        description="Free calculators, templates and teardowns from the 24K Media studio — RPM and revenue estimators and growth tools, no email wall."
+      />
       <PageHeader
         eyebrow="Free Tools"
         title={<>Tools that make you <span className="gold-fill italic-serif">grow faster.</span></>}

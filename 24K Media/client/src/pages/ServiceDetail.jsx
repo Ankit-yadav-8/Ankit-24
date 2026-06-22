@@ -1,5 +1,6 @@
 import { useParams, Link } from 'react-router-dom'
 import PageHeader from '../components/ui/PageHeader.jsx'
+import Seo from '../components/Seo.jsx'
 import Reveal from '../components/ui/Reveal.jsx'
 import Button from '../components/ui/Button.jsx'
 import ServiceCard from '../components/ui/ServiceCard.jsx'
@@ -94,6 +95,11 @@ export default function ServiceDetail() {
 
   return (
     <div className="svc-detail" style={{ '--svc-accent': accent }}>
+      <Seo
+        title={`${service.title} — Creator Growth Service`}
+        description={service.summary || service.tagline}
+        path={`/services/${slug}`}
+      />
       <PageHeader
         eyebrow={`${service.category} Service`}
         title={<>{service.title.split(' ').slice(0, -1).join(' ')} <span className="gold-fill italic-serif">{service.title.split(' ').slice(-1)}</span></>}

@@ -1,4 +1,5 @@
 import PageHeader from '../components/ui/PageHeader.jsx'
+import Seo from '../components/Seo.jsx'
 import Reveal from '../components/ui/Reveal.jsx'
 import SectionHead from '../components/ui/SectionHead.jsx'
 import Button from '../components/ui/Button.jsx'
@@ -34,6 +35,10 @@ export default function Solutions() {
   const { industries } = useSite()
   return (
     <>
+      <Seo
+        title="Solutions by Goal — Creators, Founders & Brands"
+        description="Outcome-led solutions from 24K Media: turn a channel into a business, make the founder a distribution channel, lower CAC and build category authority."
+      />
       <PageHeader
         eyebrow="Solutions"
         title={<>One growth engine, <span className="gold-fill italic-serif">tuned to your world.</span></>}

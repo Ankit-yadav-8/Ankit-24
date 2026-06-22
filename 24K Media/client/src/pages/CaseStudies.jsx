@@ -1,5 +1,6 @@
 import { Link } from 'react-router-dom'
 import PageHeader from '../components/ui/PageHeader.jsx'
+import Seo from '../components/Seo.jsx'
 import Reveal from '../components/ui/Reveal.jsx'
 import CTABand from '../components/sections/CTABand.jsx'
 import { useSite } from '../context/SiteContext.jsx'
@@ -12,6 +13,10 @@ export default function CaseStudies() {
   const { caseStudies } = useSite()
   return (
     <>
+      <Seo
+        title="Case Studies — Real Creator Growth Results"
+        description="Dashboard-style before/after metrics from 24K Media engagements — views, revenue and authority gains for creators and founders."
+      />
       <PageHeader
         eyebrow="Case Studies"
         title={<>Outcomes with <span className="gold-fill italic-serif">real metrics.</span></>}

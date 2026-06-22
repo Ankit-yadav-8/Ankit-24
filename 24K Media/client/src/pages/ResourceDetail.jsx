@@ -1,5 +1,6 @@
 import { useParams, Link } from 'react-router-dom'
 import PageHeader from '../components/ui/PageHeader.jsx'
+import Seo from '../components/Seo.jsx'
 import Reveal from '../components/ui/Reveal.jsx'
 import ResourceCard from '../components/ui/ResourceCard.jsx'
 import CTABand from '../components/sections/CTABand.jsx'
@@ -16,6 +17,11 @@ export default function ResourceDetail() {
 
   return (
     <>
+      <Seo
+        title={r.title}
+        description={r.excerpt}
+        path={`/resources/${slug}`}
+      />
       <PageHeader
         eyebrow={`${r.category} · ${r.readTime}`}
         title={r.title}

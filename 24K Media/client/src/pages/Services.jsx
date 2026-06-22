@@ -1,5 +1,6 @@
 import { motion } from 'framer-motion'
 import PageHeader from '../components/ui/PageHeader.jsx'
+import Seo from '../components/Seo.jsx'
 import ServiceCard from '../components/ui/ServiceCard.jsx'
 import ProcessSection from '../components/sections/ProcessSection.jsx'
 import CTABand from '../components/sections/CTABand.jsx'
@@ -14,6 +15,10 @@ export default function Services() {
   const { services } = useSite()
   return (
     <>
+      <Seo
+        title="Services — YouTube Growth, Branding & Content"
+        description="Twelve creator-growth services that plug into one system: YouTube growth, video editing, thumbnails, founder & personal branding, LinkedIn growth and more."
+      />
       <PageHeader
         eyebrow="Service Catalogue"
         title={<>The full content & <span className="gold-fill italic-serif">growth ecosystem.</span></>}

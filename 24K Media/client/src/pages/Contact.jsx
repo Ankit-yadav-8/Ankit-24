@@ -1,6 +1,7 @@
 import { useState } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import PageHeader from '../components/ui/PageHeader.jsx'
+import Seo from '../components/Seo.jsx'
 import Reveal from '../components/ui/Reveal.jsx'
 import Magnetic from '../components/ui/Magnetic.jsx'
 import { submitLead } from '../api/client.js'
@@ -56,6 +57,10 @@ export default function Contact() {
 
   return (
     <>
+      <Seo
+        title="Contact — Book a Growth Call"
+        description="Tell us about your channel or brand and book a growth call with 24K Media. We reply within one business day."
+      />
       <PageHeader
         eyebrow="Book Growth Call"
         title={<>Let’s map your <span className="gold-fill italic-serif">next 90 days.</span></>}

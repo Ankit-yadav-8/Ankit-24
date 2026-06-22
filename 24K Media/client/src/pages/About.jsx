@@ -1,5 +1,6 @@
 import { Link } from 'react-router-dom'
 import PageHeader from '../components/ui/PageHeader.jsx'
+import Seo from '../components/Seo.jsx'
 import Reveal from '../components/ui/Reveal.jsx'
 import SectionHead from '../components/ui/SectionHead.jsx'
 import ProcessSection from '../components/sections/ProcessSection.jsx'
@@ -18,6 +19,10 @@ export default function About() {
   const { founder, stats } = useSite()
   return (
     <>
+      <Seo
+        title="About 24K Media"
+        description="24K Media is a premium creator-growth studio — premium by default, proof over claims, creator-first. Meet the team building durable internet brands."
+      />
       <PageHeader
         eyebrow="About 24K Media"
         title={<>Not freelancers. A media <span className="gold-fill italic-serif">empire in the making.</span></>}

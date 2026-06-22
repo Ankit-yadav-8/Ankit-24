@@ -1,4 +1,5 @@
 import PageHeader from '../components/ui/PageHeader.jsx'
+import Seo from '../components/Seo.jsx'
 import Reveal from '../components/ui/Reveal.jsx'
 import SectionHead from '../components/ui/SectionHead.jsx'
 import CTABand from '../components/sections/CTABand.jsx'
@@ -22,6 +23,10 @@ export default function Process() {
   const { processDetail } = useSite()
   return (
     <>
+      <Seo
+        title="Our Process — How We Build Internet Brands"
+        description="The 24K Media operating system: research, strategy, production, distribution and iteration — the repeatable process behind creator growth."
+      />
       <PageHeader
         eyebrow="How We Work"
         title={<>From a blank channel to a <span className="gold-fill italic-serif">growth engine.</span></>}

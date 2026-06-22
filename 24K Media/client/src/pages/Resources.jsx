@@ -1,4 +1,5 @@
 import PageHeader from '../components/ui/PageHeader.jsx'
+import Seo from '../components/Seo.jsx'
 import ResourceCard from '../components/ui/ResourceCard.jsx'
 import Reveal from '../components/ui/Reveal.jsx'
 import CTABand from '../components/sections/CTABand.jsx'
@@ -8,6 +9,10 @@ export default function Resources() {
   const { resources } = useSite()
   return (
     <>
+      <Seo
+        title="Resources — Creator Growth Playbooks & Guides"
+        description="Playbooks, teardowns and editorial guides on YouTube growth, packaging, distribution and personal branding from the 24K Media studio."
+      />
       <PageHeader
         eyebrow="Resources"
         title={<>The growth <span className="gold-fill italic-serif">playbooks.</span></>}

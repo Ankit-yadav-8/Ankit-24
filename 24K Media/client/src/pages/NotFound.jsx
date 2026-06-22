@@ -1,8 +1,10 @@
 import Button from '../components/ui/Button.jsx'
+import Seo from '../components/Seo.jsx'
 
 export default function NotFound() {
   return (
     <section className="notfound container">
+      <Seo title="Page not found (404)" description="The page you’re looking for moved or no longer exists." noindex bare />
       <div>
         <h1 className="display">404</h1>
         <h2 style={{ fontSize: 'clamp(1.6rem,4vw,2.4rem)', marginTop: '-1rem' }}>This page didn’t make the cut.</h2>
